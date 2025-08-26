@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '@/layouts/Layout.astro'
+import MediaCardCollection from '@/components/MediaCardCollection.astro'
+import MediaCard from '@/components/MediaCard.astro'
+const papers = await getCollection('white_papers')
+---
+
+<title>White Papers | Phaeno</title>
+<meta name="description" content="Read technical White Papers published by Phaeno." />
+
+<Layout>
+  <main>
+    <section>
+      <h1>White Papers</h1>
+
+      <input
+        id="mediaSearch"
+        class="mb-6"
+        type="text"
+        placeholder="Search title or author"
+        class="w-full"
+      />
+      <MediaCardCollection>
+        {papers.map(paper => (
+          <MediaCard 
+            searchString={`${paper.data.title} ${paper.data.authors.join(' ')}`.toLowerCase()}
+            title={paper.data.title} 
+            image={paper.data.image} 
+            link={`/media/white-papers/${paper.slug}`}
+          >
+            <div>By {paper.data.authors.join(', ')}</div>
+            <div>{new Date(paper.data.date).toLocaleDateString('en-US')}</div>
+          </MediaCard>
+        ))}      
+      </MediaCardCollection>
+      <br />
+    </section>
+  </main>
+</Layout>

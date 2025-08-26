@@ -1,0 +1,99 @@
+---
+import { FaArrowRight } from 'react-icons/fa6';
+
+interface IProp {
+  link: string
+  label?: string
+  ariaLabel?: string
+  fullWidth?: boolean
+}
+
+const {link, ariaLabel, label="Learn more", fullWidth=false } = Astro.props as IProp;
+---
+
+<div class="slide-button" data-slide>
+  <a 
+    class={'btn' + (fullWidth ? ' full-width' : '')}
+    role="button" 
+    aria-label={`${(ariaLabel) ? ariaLabel : null}`}
+    href={link}
+  >
+    <div class="flex justify-between items-center w-full">
+      <div>{label} <span class="sr-only">{ariaLabel}</span></div>
+      <div class="pl-3"><FaArrowRight size={18}/></div>
+    </div>
+  </a>
+</div>
+
+<style>
+.full-width {
+  width:100%
+}
+
+.slide-button {
+  display: flex;
+  justify-content: end; 
+  margin: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .65rem 1.25rem;
+  background: #545458;
+  color: #fff;
+  font-weight: 600;
+  border-radius: .35rem;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: translateX(-1rem);
+  opacity: 0;
+  transition:
+    transform .45s ease-out,
+    opacity   .45s ease-out
+}
+
+.btn:hover {
+  text-decoration: none;
+  background-color: black;
+  cursor: pointer;
+  transform: scale(1.02);
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2); /* Drop shadow */
+}
+
+/* when the observer adds data-active … */
+.slide-button[data-active] .btn {
+  transform: translateX(0);
+  opacity: 1;
+}
+</style>
+
+<script is:inline>
+(() => {
+  const items = document.querySelectorAll('[data-slide]');
+  const io = new IntersectionObserver(handle, { threshold: 0.35 });
+
+  function handle(entries) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const wrap = entry.target;
+      const btn  = wrap.querySelector('.btn');
+      const distance = wrap.clientWidth - btn.offsetWidth;
+      wrap.style.setProperty('--start', '0px');
+      wrap.style.setProperty('--end', `${distance}px`);
+      wrap.setAttribute('data-active', '');
+      io.unobserve(wrap);
+    });
+  }
+
+  const resizeObserver = new ResizeObserver(() => {
+    items.forEach(i => i.removeAttribute('data-active'));
+    items.forEach(i => io.observe(i));
+  });
+
+  items.forEach(i => { io.observe(i); resizeObserver.observe(i); });
+})();
+</script>

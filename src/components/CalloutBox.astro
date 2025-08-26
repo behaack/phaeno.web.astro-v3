@@ -1,0 +1,72 @@
+---
+import LearnMoreButton from './LearnMoreButton.astro'
+
+interface Props {
+  bgColor?: string
+  title?: string
+  content?: string
+  link?: string
+}
+
+const { title, content, link, bgColor } = Astro.props as Props
+---
+
+<!-- ① give the delay a unit -->
+<div class="callout-box" style={`background-color:${bgColor}; --delay:0s;`}>
+  <div class="callout-box-content">
+    {title  && <h3 class="text-white">{title}</h3>}
+    {content && <h4 class="text-white">{content}</h4>}
+    <slot />
+  </div>
+
+  {link &&  <LearnMoreButton link={link} label="Learn more" /> }
+</div>
+
+<style>
+/* ---------- visual styles ---------- */
+.callout-box                { 
+  border-radius:10px; 
+  color:white; 
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.5); /* Drop shadow */
+  border-radius: 0.5rem; /* Optional: rounded corners */  
+}
+.callout-box-content        { padding:2rem; font-size:1.5rem; }
+
+/* ---------- animation ---------- */
+:global(.callout-box)       { transform:translateY(1rem); }
+
+:global(@keyframes nudgeUp) {
+  0%   { transform:translateY(1rem); }
+  60%  { transform:translateY(-0.5rem); }
+  100% { transform:translateY(0); }
+}
+
+:global(.callout-box.slide-in) {
+  animation: nudgeUp 0.6s cubic-bezier(.25,.8,.25,1)
+             var(--delay,0s) forwards;
+}
+</style>
+
+<!-- ---------- IntersectionObserver (only observes “this” card) ---------- -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.callout-box');
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          if (el.dataset.animated) return;   // skip if already done
+          el.classList.add('slide-in');
+          el.dataset.animated = 'done';      // mark it
+          io.unobserve(el);                  // stop watching this one
+        }
+      });
+    }, {
+      threshold: 0.5,               // 60 % of the card visible is “enough”
+      rootMargin: '0px 0px -10px 0px'   // wait until it’s ~10 px clear
+    });
+
+    cards.forEach(el => io.observe(el));
+  });
+</script>

@@ -1,0 +1,59 @@
+---
+interface IProps {
+  title: string
+}
+
+const { title } = Astro.props as IProps
+---
+<div class="image-div">
+  <div class="background-layer">
+    <div class="dark-overlay"></div>
+    <div class="title-holder">
+      <div class="w-full pt-2" >
+        <h1 class="text-white">{ title }</h1>
+      </div>
+    </div>
+  </div>  
+</div>
+<style>
+
+.image-div {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ⬅️ Add this */
+}
+
+.background-layer {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/banner-3.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+.dark-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(17, 17, 17, 0.596); /* Adjust alpha for more/less darkness */
+  z-index: 1;
+}
+
+.title-holder {
+  z-index: 1;
+	max-width: 80rem;
+	width: 100%;
+	padding: 1rem .5rem;	
+	height: fit-content;  
+  display: flex;
+  justify-content: center;
+}
+</style>

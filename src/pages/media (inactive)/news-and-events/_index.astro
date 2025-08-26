@@ -1,0 +1,74 @@
+---
+import { FaCaretRight } from 'react-icons/fa6';
+import { getCollection } from 'astro:content'
+import Layout from '@/layouts/Layout.astro'
+import MediaCard from '@/components/MediaCard.astro'
+import MediaCardCollection from '@/components/MediaCardCollection.astro'
+
+const events = await getCollection('events')
+const news = await getCollection('news')
+---
+
+<title>News & Events | Phaeno</title>
+<meta name="description" content="Stay up to date with Events we are attending and catch the latest news about Phaeno." />
+
+<Layout>
+  <main>
+    <section>
+      <h1>News & Events</h1>
+      <h2>Upcoming events</h2>
+      {(events.length)
+        ? (
+          <ul class="ml-0">
+            {events.map(item => (
+              <li 
+                data-title={item.data.name.toLowerCase()}
+                data-location={item.data.location}
+              > 
+                <dir class="flex items-center gap-2">
+                  <div style="color: #7F943A;"><FaCaretRight size={30}/></div>
+                  <a target="_blank" href={item.data.path}>{item.data.name}</a> | {item.data.dates} | {item.data.location}
+                  </dir>       
+              </li>
+            ))}
+          </ul>          
+        ) : <div>No events</div>
+      }
+      <br />
+      <h2>Phaeno in the news</h2>
+
+      <input
+        id="mediaSearch"
+        class="mb-6"
+        type="text"
+        placeholder="Search title"
+        class="w-full"
+      />
+      
+      <MediaCardCollection>
+        {news.map(item => (
+          <MediaCard 
+            searchString={`${item.data.title}`.toLowerCase()}
+            title={item.data.title} 
+            image={item.data.image} 
+            link={`/media/news-and-events/${item.slug}`}
+          >
+            <div>{new Date(item.data.date).toLocaleDateString('en-US')}</div>
+          </MediaCard>
+        ))}      
+      </MediaCardCollection>
+      <br/>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  ul {
+    list-style: none;
+  }
+
+  a {
+    color:rgb(179, 93, 12);
+    font-weight: 600;
+  }
+</style>

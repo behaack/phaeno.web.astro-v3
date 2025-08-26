@@ -1,0 +1,35 @@
+---
+import SEOMeta from "@/components/meta-data-helpers/SEOMeta.astro";
+import TopPageBanner2 from "@/components/TopPageBanner-2.astro";
+import Layout from "@/layouts/Layout.astro";
+---
+<Layout>
+  <SEOMeta 
+    slot="head"
+    title="PSeq RUO Service | Phaeno"
+    description="Discover the details of our bespoke research use only (RUO) PSeq service and how it may be right for you."
+  />    
+  <main>
+    <TopPageBanner2 title="PSeq RUO Service" />
+    <section>
+      <p class="p-0 m-0"><a href="/home/#why-pseq">Home</a>Why PSeq?</p>
+      <div id="ruo-service">
+        <h2>PSeq Research Use Only (RUO) Service</h2>
+      </div>
+      <div class="flex gap-5 items-center">
+        <div class="text-sm min-w-[50%]">
+          <div>SOMETHING HERE</div>
+        </div>
+        <!-- <CalloutBox link="/ruo-service">
+          <ul>
+            <li>Tissue or RNA samples accepted.</li>
+            <li>Includes all library prep and sequencing steps.</li>
+            <li>10-day turn-around time.</li>
+            <li>Molecule-specific CDNA clones available on request.</li>
+            <li>Custom data formats and analysis available.</li>
+          </ul>
+        </CalloutBox> -->
+      </div>
+    </section>
+  </main>
+</Layout>

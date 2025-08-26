@@ -1,0 +1,126 @@
+---
+import Section from '@/components/Section.astro';
+import PSeqApplication from '../PSeq-Application.astro';
+---
+
+<Section shade="var(--home-section-light-bg)">
+  <div id="applications">
+    <h2>PSeq Applications</h2>
+  </div>
+
+  <h3 class="">Life science domains impacted by PSeq</h3>
+  <div class="applications-container">
+    <PSeqApplication 
+      image="/images/icons/human_health.webp"
+      imgAlt="Human health icon"
+    >
+      <div slot="title">Human Health</div>
+    </PSeqApplication>
+    <PSeqApplication 
+      image="/images/icons/animal_health.webp"
+      imgAlt="Animal health icon"
+    >
+      <div slot="title">Animal Health</div>
+    </PSeqApplication>    
+    <PSeqApplication 
+      image="/images/icons/agriculture.webp"
+      imgAlt="Agriculture icon"
+    >
+      <div slot="title">Agriculture</div>
+    </PSeqApplication>
+    <PSeqApplication 
+      image="/images/icons/biofuels.webp"
+      imgAlt="Biofuels icon"
+    >
+      <div slot="title">Biofuels</div>
+    </PSeqApplication>        
+    <PSeqApplication 
+      image="/images/icons/ecology.webp"
+      imgAlt="Ecology icon"
+    >
+      <div slot="title">Ecology</div>
+    </PSeqApplication>   
+  </div>
+
+  <h3 class="mt-5">Stakeholders benefited by PSeq</h3>
+  <div class="stakeholders-container">
+    <PSeqApplication 
+      image="/images/icons/public-health.webp"
+      imgAlt="Drug development Icon"
+    >
+      <div slot="title">Public Health<br/>Professionals</div>
+      <li>Surveil infectious disease variants in real-time.</li>
+      <li>Improved ability to develop vaccines.</li>
+    </PSeqApplication>
+    <PSeqApplication 
+      image="/images/icons/microscope.webp"
+      imgAlt="Public health icon"
+    >
+      <div slot="title">Academic<br />Researchers</div>
+      <li>Fine-grained understanding of disease etiology and drivers of phenotype.</li>
+      <li>Unmatched ability to identify potential drug targets.</li>
+    </PSeqApplication>
+    <PSeqApplication 
+      image="/images/icons/drug-dev.webp"
+      imgAlt="Drug development icon"
+    >
+      <div slot="title">Drug Developers<br /> & Bioengineers</div>
+      <li>More effective drug target discovery.</li>
+      <li>
+        Drugs with higher response rates, better safety profiles,
+        and smaller and shorter clinical studies.
+      </li>
+    </PSeqApplication>
+    <PSeqApplication 
+      image="/images/icons/patient.webp"
+      imgAlt="Clinician and patient icon"
+    >
+      <div slot="title">Clinicians <br/>& Patients</div>
+      <li>Precision medicine at the true phenotype-level of disease.</li>
+      <li>Improved ability to diagnose disease and select treatments.</li>
+    </PSeqApplication>
+    <PSeqApplication 
+      image="/images/icons/insurance.webp"
+      imgAlt="Health insurance icon"
+    >
+      <div slot="title">Private & <br />Public Insurers</div>
+      <li>More value for the healthcare spend.</li>
+      <li>Higher treatment response rates.</li>
+      <li>Fewer adverse events.</li>
+    </PSeqApplication>    
+  </div>
+</Section>
+
+<style>
+  .applications-container {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .stakeholders-container {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  @media (max-width:  1200px) {
+    .applications-container {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .stakeholders-container {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }    
+  }
+
+  @media (max-width:  750px) {
+    .applications-container {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stakeholders-container {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }    
+  }  
+</style>

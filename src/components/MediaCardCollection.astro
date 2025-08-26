@@ -1,0 +1,44 @@
+---
+
+---
+
+<ul id="mediaList" class="media-card-list">
+  <slot />
+</ul>
+
+<style>
+.media-card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+/* Optional: lock to an exact track count at wider widths */
+@media (min-width: 768px)   { .media-card-list { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1280px)  { .media-card-list { grid-template-columns: repeat(4, 1fr); } }
+</style>
+
+<script is:inline type="module">
+  const searchInput = document.getElementById('mediaSearch');
+  const list = document.getElementById('mediaList');
+
+  if (searchInput && list) {
+    const filter = (value = '') => {
+      console.log(value)
+      const q = value.trim().toLowerCase();
+
+      for (const item of list.children) {
+        const haystack = (item.dataset.search ?? '').toLowerCase();
+        item.hidden = q && !haystack.includes(q);
+      }
+    };
+
+    // initial state (in case the field is autofilled)
+    filter(searchInput.value);
+
+    searchInput.addEventListener('input', e => filter(e.target.value));
+  }
+</script>

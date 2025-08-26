@@ -1,0 +1,64 @@
+---
+import CalloutBox from '@/components/CalloutBox.astro'
+import Section from '@/components/Section.astro'
+import LearnMoreButton from '../LearnMoreButton.astro'
+import { Quote } from 'lucide-react'
+import BlockQuote from '../BlockQuote.astro'
+import HorizonalList from '../HorizontalList.astro'
+import HorizonalListItem from '../HorizontalListItem.astro'
+---
+
+<Section>
+  <div id="why-rna">
+    <h2>RNA is critically important</h2>
+  </div>
+
+  <p>Messenger RNAs are effectively the functional genes – and this information is only created in a particular cell, in a particular state of differentiation or disease – during gene expression.</p>
+  
+  <BlockQuote
+    text="RNA - long overlooked as the passive servant of DNA - sits at the center of biology's greatest mysteries: How did life begin? What makes us human? Why do we get sick and grow old?"
+    imageUrl="/images/cech.webp"
+    imageAlt="Head shot of Thomas R. Cech"
+  >
+    <b>Thomas R. Cech, Nobel Laureate</b><br/>University of Colorado Boulder<br /><i>The Catalyst: RNA and the Quest to Unlock Life's Deepest Secrets</i>, 2024
+  </BlockQuote>
+
+  <HorizonalList
+    columns={[2, 2, 2, 4]}
+  >
+    <HorizonalListItem>The codes of proteins that determine phenotype are found in RNAs, not genomic DNA.</HorizonalListItem>
+    <HorizonalListItem>Computational and analytical tools for charactering full transcriptomes are largely in hand, lacking only detailed data.</HorizonalListItem>
+    <HorizonalListItem>Multi-omics information largely converges to define the transcriptome and proteome, which can be read directly.</HorizonalListItem>
+    <HorizonalListItem>While the proteome is the goal, proteomic technology is not yet able to visualize all of the proteins comprehensively.</HorizonalListItem>
+  </HorizonalList>
+  <br />
+  <LearnMoreButton 
+    link="/what-went-wrong/why-rna" 
+    ariaLabel="Learn more about why RNA is the key to unlocking the our understanding of biology and the causes of disease."
+  />
+</Section>
+
+<style>
+  .section-container {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 1100px) {
+    .section-container {
+      grid-template-columns: 1fr;
+    }
+  }  
+    
+  ul {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    list-style-type: disc;
+    font-size: 1rem;
+    gap: 1.2rem;    
+  }  
+</style>

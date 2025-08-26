@@ -1,0 +1,65 @@
+---
+type columnCnt = 1 | 2 | 3 | 4 | 5;
+interface IProps {
+  columns: [columnCnt, columnCnt, columnCnt, columnCnt];
+}
+
+const { columns } = Astro.props as IProps;
+
+function colClass(prefix: string, count: columnCnt) {
+  return `${prefix}-col-${count}`;
+}
+
+const sm = colClass("sm", columns[0]);
+const md = colClass("md", columns[1]);
+const lg = colClass("lg", columns[2]);
+const xl = colClass("xl", columns[3]);
+---
+
+<div class={`horizonal-list ${sm} ${md} ${lg} ${xl}`}>
+  <slot />
+</div>
+
+<style>
+/* Base (default = sm-col-1) */
+.horizonal-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* SM */
+.sm-col-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.sm-col-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sm-col-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sm-col-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sm-col-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+/* MD */
+@media (min-width: 40rem) {
+  .md-col-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  .md-col-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md-col-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md-col-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .md-col-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+/* LG */
+@media (min-width: 48rem) {
+  .lg-col-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  .lg-col-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lg-col-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lg-col-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .lg-col-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+/* XL */
+@media (min-width: 64rem) {
+  .xl-col-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  .xl-col-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .xl-col-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .xl-col-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .xl-col-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+</style>

@@ -1,0 +1,64 @@
+---
+import Section from '@/components/Section.astro';
+import LearnMoreButton from '../LearnMoreButton.astro';
+import BlockQuote from '../BlockQuote.astro';
+---
+
+<Section shade="var(--home-section-light-bg)">
+  <div id="problem">
+    <h2>Until now, we have lacked the tools necessary to map phenotypic drivers</h2>
+  </div>
+  <p class="mt-2">
+    Every species is made up of tens of thousands of unique proteins. For example, humans are made up of at least 400,000 different unique proteins. 
+    These proteins are the ultimate drivers of phenotypic variabilitity between the cells of a species and across species. To gain a fuller 
+    understanding of biology and disease, what is needed is a <i>comprehensive</i> understanding of the drivers of protein variability.
+  </p>
+  <h3>Current analytical methods fall short.</h3>
+  <p>While multi-omics is a steep in the right direction, current analytic methods fall fer short of being able to generate a comprehensive understanding of biological variabilitlty.</p>
+  <br />
+  <!-- <BlockQuote 
+    text="It’s an astounding thing that we have cracked open the human genome and can look at the entire complement of common genetic variants, and what do we find? Almost nothing. That is absolutely beyond belief."
+    imageUrl="/images/goldstein.webp"
+    imageAlt="Headshot of David Goldstein"
+  >
+    <b>David Goldstein</b>, Nobel Laureate<br />Duke University, 2012
+  </BlockQuote>  
+  <br />
+  <BlockQuote 
+    text="The $138 million [International] HapMap (haplotype mapping) Project has been a magnificent failure."
+    imageUrl="/images/botstein.webp"
+    imageAlt="Headshot of David Botstein"
+  >
+    <b>David Botstein</b><br />Princeton University, 2010
+  </BlockQuote>    
+  <br /> -->
+  <LearnMoreButton 
+    link="/problem" 
+    ariaLabel="Learn more about why the genomic revolution has stalled and how current anaytic methods are inadequate." 
+  />  
+</Section>
+
+<style>
+  .section-container {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 1100px) {
+    .section-container {
+      grid-template-columns: 1fr;
+    }
+  }  
+    
+  ul {
+    font-size: 1.25rem;
+    list-style-type: circle;
+    padding-left: 1rem;
+    color: text-white;
+    list-style-type: disc;
+    font-size: 1.1rem;
+  }
+</style>

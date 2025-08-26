@@ -1,0 +1,329 @@
+---
+import TopPageBanner1 from "@/components/TopPageBanner-3.astro";
+import Layout from "@/layouts/Layout.astro";
+import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
+import BlockQuote from '@/components/BlockQuote.astro';
+import HorizonalList from '@/components/HorizontalList.astro';
+import HorizonalListItem from '@/components/HorizontalListItem.astro';
+import {
+  responseRates,
+  safetyStats,
+  drugStageFailures,
+  diseaseTreatments
+} from '@/assets/problems'
+---
+<Layout>
+  <SEOMeta 
+    slot="head"
+    title="Stalled genomic revolution | Phaeno"
+    description="Find our more about the shortcomings of the genomic revolution."
+    documentType="Web Page"
+  />    
+  <main>
+    <TopPageBanner1 title="Stalled genomic revolution" />
+    <section>
+      <p class="m-0 p-0">
+        <a href="/#problem-statement">Home</a>&nbsp;&gt;&nbsp;Stalled genomic revolution
+      </p>
+      <h2>Twenty-two years after the completion of the human genome project, many of the problems plaguing human health remain unsolved.</h2>  
+      <BlockQuote 
+        text="Faulty genes rarely cause, or even mildly predispose us, to disease, and as a consequence the science of human genetics is in deep crisis."
+        imageUrl="/images/lathem.webp"
+        imageAlt="Headshot of Johnathan Latham"
+      >
+        <b>Johnathan Latham</b><br />The Guardian, <i>The failure of the Genome</i>, 2011
+      </BlockQuote>             
+      <h3>The statistics testify to the lack of progress made.</h3>
+      <HorizonalList columns={[1, 2, 2, 2]}>
+        <HorizonalListItem>
+          <h4><a href="#uncured-diseases">Most common diseases remain uncured.</a></h4>
+          <p>
+            Despite significant medical advances, we still lack definitive cures for many of the most common and debilitating diseases. Current treatments 
+            primarily manage symptoms, slow disease progression, or extend life, but rarely offer permanent solutions.        
+          </p>              
+        </HorizonalListItem>
+        <HorizonalListItem>
+          <h4><a href="#drug-response-rates">Drug response rates remain low.</a></h4>     
+          <p>
+            Even cancer, where we have made the best progress at identifying genomic markers to help physicians select the best therapy 
+            for their patients, only about 15% of tumors have a druggable biomarker.
+          </p>
+        </HorizonalListItem>
+        <HorizonalListItem>
+          <h4><a href="#adverse-events">Side effects and adverse events remain high.</a></h4>
+          <p>
+            Side effects and adverse events remain a major challenge in modern medicine, with common side effects 
+            affecting up to 30% of patients and serious adverse drug reactions leading to an estimated 100,000 deaths and 5% of hospital 
+            admissions annually in the U.S.
+          </p>       
+        </HorizonalListItem>
+        <HorizonalListItem>
+          <h4><a href="#new-drug-failure-rates">New drugs failure rates remain very high.</a></h4>
+          <p>
+            The vast majority of new drug candidates fail during development, with approximately 88% to 90% never reaching FDA approval. 
+            These high failure rates, combined with increasingly complex science and regulatory demands, have driven the average cost of bringing a new drug 
+            to market to over $2 billion.
+          </p>
+        </HorizonalListItem>                        
+      </HorizonalList>      
+      <h3 id="uncured-diseases">Uncured diseases:</h3>       
+      <ul>
+        <li>
+          <div class="data-item dt-disease">Disease</div>
+          <div class="data-item dt-description">Description</div>
+          <div class="data-item dt-treatments">Treatments Available</div>
+        </li>
+        {diseaseTreatments.map(item => (
+          <li>
+            <div class="data-item dt-disease"><div>{item.disease}</div></div>
+            <div class="data-item dt-description"><div>{item.description}</div></div>
+            <div class="data-item dt-treatments"><div class="data-label">Treatments</div><div>{item.treatmentsAvailable}</div></div>
+          </li>          
+        ))}
+      </ul>
+      <h3 id="drug-response-rates">Drug response rates:</h3>     
+      <ul class="data-table">
+        <li>
+          <div class="data-item rr-disease">Disease Area</div>
+          <div class="data-item rr-rates">Avg. Rate</div>
+          <div class="data-item rr-notes">Notes</div>
+        </li>
+        {responseRates.map(item => (
+          <li>
+            <div class="data-item rr-disease">{item.diseaseArea}</div>
+            <div class="data-item rr-rates"><div class="data-label">Avg. Rate</div>{item.avgResponseRate}</div>
+            <div class="data-item rr-notes"><div class="data-label">Notes</div>{item.notes}</div>
+          </li>          
+        ))}
+      </ul>
+
+      <h3 id="adverse-events">Side effect & adverse events rates:</h3>
+      <ul class="data-table">
+        <li>
+          <div class="data-item se-category">Category</div>
+          <div class="data-item se-summary">Summary</div>
+        </li>
+        {safetyStats.map(item => (
+          <li>
+            <div class="data-item se-category">{item.category}</div>
+            <div class="data-item se-summary">{item.summary}</div>
+          </li>          
+        ))}
+      </ul>    
+
+      <h3 id="new-drug-failure-rates">New drugs failure rates:</h3>
+      <ul class="data-table">
+        <li>
+          <div class="data-item nd-stage">Stage</div>
+          <div class="data-item nd-rate">Avg. Rate</div>
+        </li>
+        {drugStageFailures.map(item => (
+          <li>
+            <div class="data-item nd-stage">{item.stage}</div>
+            <div class="data-item nd-rate"><div class="data-label">Avg. Rate</div>{item.failureRate}</div>
+          </li>          
+        ))}
+      </ul>   
+      <br />
+
+      <div><b>Footnotes:</b></div>
+
+      <div class="text-xs mt-2"><b>Alzheimer’s Disease Treatments:</b></div>
+      <p class="text-xs mt-2">Cummings, J., et al. (2022). <i>Alzheimer's disease drug development pipeline: 2022. Alzheimer's & Dementia.</i></p>
+      <p class="text-xs mt-2">FDA. (2023). Leqembi (lecanemab) approval.</p>
+
+      <div class="text-xs mt-2"><b>ALS Treatments:</b></div>
+      <p class="text-xs mt-2">Miller, R.G., et al. (2012). Practice parameter update: The care of the patient with amyotrophic lateral sclerosis. Neurology.</i></p>
+      <p class="text-xs mt-2">FDA. (2017). Radicava (edaravone) approval.</p>
+
+      <div class="text-xs mt-2"><b>Stage IV Cancer:</b></div>
+      <p class="text-xs mt-2">American Cancer Society. (2024). <i>Treating Advanced Cancer.</i></p>
+      <p class="text-xs mt-2">National Cancer Institute. (2023). <i>SEER Cancer Statistics.</i></p>
+
+      <div class="text-xs mt-2"><b>Chronic Kidney Disease:</b></div>
+      <p class="text-xs mt-2">National Kidney Foundation. (2023). <i>About Chronic Kidney Disease.</i></p>
+      <p class="text-xs mt-2">KDIGO. (2020). <i>Clinical Practice Guideline for the Evaluation and Management of CKD.</i></p>
+
+      <div class="text-xs mt-2"><b>Crohn's Disease / Ulcerative Colitis:</b></div>
+      <p class="text-xs mt-2">Rubin, D.T., et al. (2019). <i>ACG Clinical Guideline: Ulcerative Colitis in Adults.</i></p>
+      <p class="text-xs mt-2">Sands, B.E., et al. (2008). <i>Infliximab maintenance therapy for Crohn's disease.</i></p>
+
+      <div class="text-xs mt-2"><b>Cystic Fibrosis:</b></div>
+      <p class="text-xs mt-2">FDA. (2019). Trikafta approval.</p>
+      <p class="text-xs mt-2">Cystic Fibrosis Foundation. (2024). <i>About CFTR Modulators.</i></p>
+
+      <div class="text-xs mt-2"><b>Type 1 Diabetes:</b></div>
+      <p class="text-xs mt-2">ADA. (2024). <i>Standards of Medical Care in Diabetes.</i></p>
+      <p class="text-xs mt-2">Harlan, D.M., et al. (2009). <i>Pancreas and Islet Transplantation for Type 1 Diabetes Mellitus.</i></p>
+
+      <div class="text-xs mt-2"><b>Type 2 Diabetes:</b></div>
+      <p class="text-xs mt-2">ADA. (2024). <i>Treatment for Type 2 Diabetes.</i></p>
+      <p class="text-xs mt-2">Davies, M.J., et al. (2018). <i>Management of Hyperglycemia in Type 2 Diabetes.</i></p>
+
+      <div class="text-xs mt-2"><b>Drug Response Rates:</b></div>
+      <p class="text-xs mt-2">Schork, N.J. (2015). <i>Personalized medicine: Time for one-person trials.</i> Nature.</p>
+      <p class="text-xs mt-2">Spear, B.B., et al. (2001). <i>Clinical application of pharmacogenetics.</i> Trends Mol Med.</p>
+      <p class="text-xs mt-2">Hamburg, M.A., Collins, F.S. (2010). <i>The path to personalized medicine.</i> NEJM.</p>
+
+      <div class="text-xs mt-2"><b>Cancer Biomarker Stats:</b></div>
+      <p class="text-xs mt-2">Marquart, J., et al. (2018). <i>Estimated population-level impact of genomics-based cancer therapy.</i> JAMA Oncol.</p>
+      <p class="text-xs mt-2">U.S. National Cancer Institute. (2024). <i>Biomarker Research in Cancer.</i></p>
+
+      <div class="text-xs mt-2"><b>Adverse Drug Events:</b></div>
+      <p class="text-xs mt-2">CDC. (2020). Adverse Drug Events in Adults.</p>
+      <p class="text-xs mt-2">Lazarou, J., et al. (1998). <i>Incidence of adverse drug reactions in hospitalized patients.</i> JAMA.</p>
+      <p class="text-xs mt-2">FDA. (2023). <i>Postmarket Drug Safety Information for Patients and Providers.</i></p>
+
+      <div class="text-xs mt-2"><b>Drug Development Failure Rates and Costs:</b></div>
+      <p class="text-xs mt-2">Hay, M., et al. (2014). <i>Clinical development success rates for investigational drugs.</i> Nature Biotech.</p>
+      <p class="text-xs mt-2">DiMasi, J.A., et al. (2016). <i>Innovation in the pharmaceutical industry: New estimates of R&D costs.</i> J Health Econ.</p>
+      <p class="text-xs mt-2">BIO, Informa, QLS. (2021). <i>Clinical Development Success Rates and Contributing Factors 2011–2020.</i></p>
+
+
+    </section>
+  </main>
+</Layout>
+
+<style lang="scss">
+ul {
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  li {
+    display: flex;
+    font-size: .75rem;
+    
+    div.data-item {
+      border-right: 1px solid rgb(179, 179, 179);
+    }
+    div.data-item:last-of-type {
+      border-right: none;
+    }    
+
+    &:nth-child(even) {
+      background-color: rgba(183, 204, 183, 0.589);
+    }  
+    &:nth-child(odd) {
+      background-color: rgb(241, 241, 226);
+    }    
+    &:first-child {
+      font-size: .9rem;
+      font-weight: bold;
+      background-color: rgb(201, 201, 201);
+      border-bottom: 1px solid rgb(202, 202, 202);
+    }
+  }
+
+  .data-item {
+    display: flex;
+    padding: 5px;
+  }
+
+  .label {
+    display: none;
+  }
+
+  @media (max-width:  725px) {
+    li {
+      display: block;
+      padding: 7px;
+
+      div.data-item {
+        border-right: none;
+        padding: 0;
+      }          
+
+      &:first-child {
+        display: none;
+      }
+
+      > div:first-of-type {
+        font-weight: bold;
+        font-size: .925rem;
+      }
+
+    }
+  }
+}
+
+.data-item {
+  display: flex;
+  padding: 0 7px;
+}
+
+.data-label {
+  display: none;
+  font-weight: bolder;
+}
+
+.dt-disease {
+  width: 15rem;
+}
+
+.dt-description {
+  width: calc((100% - 15rem) / 2);
+}
+
+.dt-treatments {
+  width: calc((100% - 15rem) / 2);
+}
+
+.rr-disease {
+  width: 15rem;
+}
+
+.rr-rates {
+  width: calc((100% - 15rem) / 2);
+}
+
+.rr-notes {
+  width: calc((100% - 15rem) / 2);
+}
+
+.se-category {
+  width: 15rem;
+}
+
+.se-summary {
+  width: calc(100% - 15rem);
+}
+
+.nd-stage {
+  width: 15rem;
+}
+
+.nd-rate {
+  width: 15rem;
+}
+
+@media (max-width: 725px) {  
+  .rr-disease,
+  .rr-notes, 
+  .rr-rates,
+  .se-category,
+  .se-summary,
+  .nd-stage,
+  .nd-rate,
+  .dt-disease,
+  .dt-description,
+  .data-item {
+    width: 100%;
+    display: block;
+  }
+
+  .dt-treatments {
+    margin-top: 5px;
+  }
+
+  .data-label {
+    display: block;
+    font-style: italic;
+  }
+
+  .data-label::after {
+    content: ": ";
+    white-space: pre; /* or pre-line */
+  }  
+
+}
+</style>

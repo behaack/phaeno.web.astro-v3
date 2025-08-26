@@ -1,0 +1,54 @@
+---
+import Team from '@/components/Team.astro'
+import team, { ETeamMemberType } from '@/assets/team'
+import Layout from '@/layouts/Layout.astro'
+import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
+import TopPageBanner from '@/components/TopPageBanner-1.astro'
+
+const management = team.filter(item => item.type === ETeamMemberType.management)
+const advisors = team.filter(item => item.type === ETeamMemberType.advisor)
+---
+<Layout>
+  <SEOMeta 
+    slot="head"
+    title="About Us | Phaeno"
+    description="Learn about Phaeno's mission to transform molecular diagnostics through innovative RNA sequencing technology and expert leadership."
+    documentType="Web Page"
+  />  
+  <main id="main" tabindex="-1">
+    <TopPageBanner title="About us" />
+    <section>
+      <h2 style="margin-top: 5px">Our Mission</h2>
+      <p>
+        Phaeno's mission is to develop technology that empowers scientists to map the functional human genome and gain a
+        comprehensive understanding of the underlying drivers of phenotypes.
+      </p>
+      <h2 style="margin-top: 5px">Our Origin Story</h2>
+      <p>
+        Phaeno cofounders noted fundamental conflicts with the Central Dogma of Molecular Biology evident in molecular
+        neurobiological studies as early as 1988 (Nature Reference). These conflicts became more explicit in a series of
+        seminal studies 25 years ago (references) and were largely ignored (references).
+      </p>
+      <p>
+        We recognized that demonstrating that disparities with the Central Dogma were universal would require new
+        technology. This would require profiling, simultaneously, every RNA arising from every gene in a cell or tissue,
+        comprehensively, accurately, economically and easily. Only in this way could such a fundamental tenet be
+        objectively tested.
+      </p>
+      <p>
+        The failure of genome sequencing to provide a direct map between genotype and phenotype is now not in dispute
+        (references).
+      </p>
+      <p>
+        Phaeno technology is now capable of detecting the thousands of quanta of genetic information created in
+        messenger and functional RNAs, by complex steps in RNA processing. Phaeno NGS phased RNA sequencing (PSeq) can
+        now be used to mine the full transcriptome, with applications in both fundamental biology and genomic medicine.
+      </p>
+      <h2 style="margin-top: 5px">Our Team</h2>
+      <Team members={management} />
+      <h2 style="margin-top: 5px">Our Advisors</h2>
+      <Team members={advisors} />
+      <br />
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,320 @@
+---
+import { biomarkers } from '@/assets/biomarkers'
+import BlockQuote from "@/components/BlockQuote.astro";
+import SEOMeta from "@/components/meta-data-helpers/SEOMeta.astro";
+import TopPageBanner from "@/components/TopPageBanner-1.astro";
+import Layout from "@/layouts/Layout.astro";
+import HorizonalList from '@/components/HorizontalList.astro';
+import HorizonalListItem from '@/components/HorizontalListItem.astro';
+---
+<Layout>
+  <SEOMeta 
+    slot="head"
+    title="Why RNA | Phaeno"
+    description="RNA hold the keys to more fully understanding biology. Sequencing RNA is how we understand functional genes."
+    documentType="Web Page"
+  />  
+  <main>
+    <TopPageBanner title="Why RNA?" />
+    <section>
+      <p class="p-0 m-0">
+        <a href="/#why-rna">Home</a>
+        <span>&nbsp;&gt;&nbsp;</span>
+        <a href="/what-went-wrong/#why-rna">What Went Wrong</a>
+        <span>&nbsp;&gt;&nbsp;Why RNA?</span> 
+      </p>
+      <h2>Protein codes are found in the transcriptome, not genomic DNA.</h2>
+      <p>
+        The great conceptual leap required for precision medicine was recognizing that the full phenotypic potential of 
+        the human genome is realized only after complex steps in RNA processing.  For each DNA gene, alternative RNA splicing, 
+        RNA editing and other processes – create multiple products from every gene – most often with different molecular functions.        
+      </p>
+      <p>
+        Messenger RNAs more closely correspond to our intuitive notion of a gene than the source DNA gene. mRNAs code
+        individual protein isoforms, often with sophisticated variations in function – along with regulatory information
+        governing the sites, timing and levels of expression.
+      </p>
+         
+      <!-- <p>
+        RNAs have multiple functionalities, including trafficking codes that specify where a protein will be made,
+        ribozymes that can activate or inactivate the protein synthesis, 'riboswitches' that can regulate gene
+        expression signaled by fluctuating levels of metabolites, cofactors, or inorganic ions, and RNA-specific
+        activation and subsequent gene specific inactivation and RNA degradation.
+      </p> -->
+
+      <p>
+        Almost unbelievably, variations in splicing of mRNAs of the subunites of macromolecular protein complexes 
+        are developmentally regulated in concert – simultaneously, across all genes active in a cell and tissue.
+      </p>
+
+      <p>Only after RNA processing:</p>
+      <HorizonalList columns={[1, 1, 2, 2]}>
+        <HorizonalListItem>
+          Does the structure emerge in which genetic mutations exert their effects.
+        </HorizonalListItem>
+        <HorizonalListItem>
+          Can disease-causing isoforms the detected that result from abnormal RNA processing - in effect, mutations
+          invisible in genome sequencing.
+        </HorizonalListItem>
+      </HorizonalList>
+
+      <p>
+        Only from whole-transcriptome sequencing can the full array of 2,500 -3,000 protein complexes of the normal or disease phenotype of each cell be glimpsed.
+      </p>
+
+      <BlockQuote
+        text="What makes you and me individual human beings is not a unique set of DNA but instead a unique organization of cells and their activities."
+        imageUrl="/images/arias.webp"
+        imageAlt="Head shot of Alfonso Martinez Arias"
+      >
+        <b>Alfonso Martinez Arias</b><br/>Cambridge University<br /><i>The Master Builder: How the New Science of the Cell Is Rewriting the Story of Life</i>, 2023
+      </BlockQuote>
+
+      <h3>
+        The tools needed to analyze the transcriptomes have arrived.
+      </h3>
+      <p>The computational, analytical tools, including machine learning and hardware, for charactering full transcriptomes are largely
+        in hand. <b>Releasing their full power only awaits reliable transcriptome deep sequencing</b>.
+      </p>
+      <p>
+        The full transcriptome has all of the information that determines both which proteins are expressed, and how all
+        gene expression in the cell is regulated.
+      </p>
+      <p>
+        While this information may be challenging to unravel, AI will almost certainly be able to discern diagnostic
+        signatures for cancer and other complex diseases with high precision. It will also help identify optimal targets
+        for small molecule drugs or advanced immune therapies.
+      </p>
+      <h3>
+        Multi-omic information is largely captured in the transcriptome.
+      </h3>
+      <p>
+        Multi-omics information, emerging from rapidly evolving technologies, largely converges to define the
+        transcriptome and proteome.</p>
+      <p>
+        Essentially all the complex cellular processes, from epigenetic gene regulation, spatial genomics, 
+        metabolomics – are both regulated by - and regulate - the expression of proteins. 
+      </p>
+      <h3>RNA facilitating proteomics for actionable information.</h3>
+      <p>
+        While the proteome is the goal, proteomic technology is not yet up to the challenge of visualizing global 
+        expression throughout the cell and for all proteins.
+      </p>
+      <p>
+        Only the full transcriptome surveys all potentially expressed protein isoforms, for all genes that are active in the cell.         
+      </p>
+      <p>
+        This information can help focus proteomic technology in confirming the expression and post-transcriptional modifications of target 
+        proteins important in explaining the molecular cause of disease or as targets for drugs or immune therapies.
+      </p>
+      <h2>Protein Isoform Examples from Oncology</h2>
+      <p>
+        Oncologists have been aware of the disconnect between genes and phenotype for a long time. 
+        For example, there is a 10% to 25% discordance rate between 
+        protein-based versus gene-based tests for HER2.
+      </p>      
+      <BlockQuote
+        text="Discordance between protein expression and gene status is not uncommon and has significant therapeutic implications. A HER2 IHC score of 2+, for example, can either lead to targeted therapy or not, depending on a confirmatory FISH test. These discrepancies underscore the importance of using orthogonal testing strategies to accurately guide treatment."
+        imageUrl="/images/reis-filho.webp"
+        imageAlt="Head shot of Dr. Reis-Filho"
+      >
+        <b>Jorge S. Reis-Filho</b><br/>
+        <span>Memorial Sloan Kettering Cancer Center</span><br/>
+        <span><i>Breast Cancer Res</i>, 2005</span>
+      </BlockQuote>
+      
+      <p>
+        These discordances cannot be fully explained by inter-laboratory variability or methodological differences. In many cases, they reflect underlying biological 
+        factors - for example, the expression of alternative HER2 protein isoforms such as p95HER2, which lack the extracellular domain targeted by standard IHC 
+        antibodies and may therefore escape detection, despite underlying gene amplification.
+      </p>
+
+      <BlockQuote
+        text="A subgroup of HER2‑overexpressing tumors also express p95HER2, an amino-terminally truncated receptor that lacks the extracellular domain but retains a highly functional HER2 kinase domain."
+        imageUrl="/images/scaltriti.webp"
+        imageAlt="Head shot of Dr. Scaltriti"
+      >
+        <b>Maurizio Scaltriti</b><br/>
+        <span>Vall d'Hebron University Hospital and Research Institute, Barcelon, Spain</span><br/>
+        <span><i>J. Natl Cancer Inst</i>, 2007</span>
+      </BlockQuote>
+      
+      <p>What is true for HER2 is also true across virtually all cancer biomarkers.</p>
+      <h4>Examples of protein isoform variances in other cancer biomarkers:</h3>
+      <ul class="data-table">
+        <li>
+          <div class="data-item biomarker">Biomarker</div>
+          <div class="data-item gene-test">Gene Test</div>
+          <div class="data-item protein-test">Protein Test</div>
+          <div class="data-item discordance">Isoform / Modification Discordance</div>
+        </li>
+        {biomarkers.map(item => (
+          <li>
+            <div class="data-item biomarker">{item.Biomarker}</div>
+            <div class="data-item gene-test"><div class="data-label">Gene Test</div>{item.GeneTest}</div>
+            <div class="data-item protein-test"><div class="data-label">Protein Test</div>{item.ProteinTest}</div>
+            <div class="data-item discordance"><div class="data-label">Discordance</div>{item.Discordance}</div>
+          </li>          
+        ))}
+      </ul>            
+      <br/><br/>
+      <div class="text-sm mt-2"><b>References for HER2:</b></div>
+      
+      <div class="text-xs mt-2"><b>HER2 Isoform Issue</b></div>
+      <p class="text-xs mt-2">Scaltriti M, Rojo F, Ocana A, et al. <i>Expression of p95HER2, a truncated form of the HER2 receptor, and response to anti-HER2 therapies in breast cancer.</i> J Natl Cancer Inst. 2007;99(8):628-638. doi:10.1093/jnci/djk134</p>
+      <p class="text-xs mt-2">Arribas J, Baselga J, Pedersen K, <i>Parra-Palau JL. p95HER2 and breast cancer.</i> Cancer Res. 2011;71(5):1515–1519. doi:10.1158/0008-5472.CAN-10-3795</p>
+      
+      <div class="text-xs mt-2"><b>Breast Cancer:</b></div>
+      <p class="text-xs mt-2">Yin L, Zhang H, Liang X, et al. <i>Clinicopathological characteristics and biological markers of primary and recurrent or metastatic breast cancer: a meta-analysis.</i> Oncology Advances. 2024;4(1):e00027. doi:10.20801/ona.2024.00027</i></p>
+      <p class="text-xs mt-2">Press MF, Sauter G, Bernstein L, et al. <i>Diagnostic evaluation of HER2 as a molecular target: an assessment of accuracy and reproducibility of laboratory testing in large prospective clinical trials.</i> Breast Cancer Res Treat. 2005;86(1):1-13. doi:10.1007/s10549-004-4561-3</p>
+
+      <div class="text-xs mt-2"><b>Gastric/Gastroesophageal Cancer:</b></div>
+      <p class="text-xs mt-2">Park SR, Park YS, Ryu MH, et al. <i>Extra-gastric metastases of HER2-positive gastric carcinoma: discordance of HER2 status between primary tumors and metastatic lesions.</i> Sci Rep. 2017;7:13023. doi:10.1038/s41598-017-03304-9</p>
+      <p class="text-xs mt-2">Kim MA, Jung EJ, Lee HS, et al. <i>Prognostic significance of HER2 gene amplification and protein overexpression in gastric carcinoma: a study of 587 patients.</i> Int J Cancer. 2008;122(4):967-975. doi:10.1002/ijc.23187</p>
+      <p class="text-xs mt-2">Lee HE, Park KU, Yoo SB, et al. <i>Clinical significance of intratumoral HER2 heterogeneity in gastric cancer.</i> Eur J Cancer. 2013;49(6):1448-1457. doi:10.1016/j.ejca.2012.10.019</p>
+  
+      <div class="text-xs mt-2"><b>Other Solid Tumors / Pan-Cancer Studies:</b></div>
+      <p class="text-xs mt-2">Sahin IH, Lee C, Svrcek M, et al. <i>Discordance of HER2 expression and/or amplification between primary tumors and metastases in gastrointestinal malignancies.</i> Mol Cancer Ther. 2023;22(8):976–985. doi:10.1158/1535-7163.MCT-22-0966</p>
+
+      <div class="text-sm mt-2"><b>References for Other Biomarkers:</b></div>
+      <div class="text-xs mt-2"><b>EGFR:</b></div>
+      <p class="text-xs mt-2">Sharma SV, Bell DW, Settleman J, Haber DA. <i>Epidermal growth factor receptor mutations in lung cancer.</i> Nat Rev Cancer. 2007;7(3):169–181.</p>
+      <p class="text-xs mt-2">Wei J, et al. <i>Discordance between EGFR mutation status and EGFR protein expression in non-small cell lung cancer.</i> Oncology Letters. 2019;17(6): 5047–5052.</p>
+
+      <div class="text-xs mt-2"><b>PD-L1:</b></div>
+      <p class="text-xs mt-2">Ilie M, Long-Mira E, Bence C, et al. <i>Comparative study of the PD-L1 status between surgically resected specimens and matched biopsies of NSCLC patients.</i> Ann Oncol. 2016;27(1):147–153.</p>
+      <p class="text-xs mt-2">Wang Y, et al. <i>PD-L1 expression variability in lung cancer: causes and consequences.</i> Cancer Commun. 2020;40(2):87–98.</p>
+
+      <div class="text-xs mt-2"><b>ER/PR:</b></div>
+      <p class="text-xs mt-2">van de Vijver MJ, et al. <i>A gene-expression signature as a predictor of survival in breast cancer.</i> N Engl J Med. 2002;347(25):1999–2009.</p>
+      <p class="text-xs mt-2">Shibata A, et al. <i>Discordance in ER, PR, and HER2 between primary breast cancer and brain metastases.</i> J Clin Oncol. 2018;36(suppl):1016.</p>
+
+      <div class="text-xs mt-2"><b>ALK / ROS1 / NTRK:</b></div>
+      <p class="text-xs mt-2">Camidge DR, Doebele RC. <i>Treating ALK-positive lung cancer — early successes and future challenges.</i> Nat Rev Clin Oncol. 2012;9(5):268–277.</p>
+      <p class="text-xs mt-2">Solomon JP, Linkov I, Rosado A, et al. <i>NTRK fusion detection across multiple assays and 33,997 cases: diagnostic implications and pitfalls.</i> Mod Pathol. 2020;33:38–46.</p>
+
+      <div class="text-xs mt-2"><b>TP53:</b></div>
+      <p class="text-xs mt-2">Soussi T, Wiman KG. <i>TP53: an oncogene in disguise.</i> Cell Death Differ. 2015;22(8):1239–1249.</p>
+      <p class="text-xs mt-2">Bártová E, et al. <i>p53-dependent mechanisms of gene regulation and chromatin remodeling.</i> Cell Mol Life Sci. 2019;76:2249–2261.</p>
+
+      <div class="text-xs mt-2"><b>CD20:</b></div>
+      <p class="text-xs mt-2">Tedder TF, Engel P. <i>CD20: a regulator of cell-cycle progression of B lymphocytes.</i> Immunol Today. 1994;15(9):450–454.</p>
+      <p class="text-xs mt-2">Johnson NA, Boyle M, Bashashati A, et al. <i>Diffuse large B-cell lymphoma: reduced CD20 expression is associated with an inferior survival.</i> Blood. 2009;113(16):3773–3780.</p>
+    </section>
+  </main>
+</Layout>
+
+<style lang="scss">
+ul {
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  li {
+    display: flex;
+    font-size: .75rem;
+    
+    div.data-item {
+      border-right: 1px solid rgb(179, 179, 179);
+    }
+    div.data-item:last-of-type {
+      border-right: none;
+    }    
+
+    &:nth-child(even) {
+      background-color: rgba(183, 204, 183, 0.589);
+    }  
+    &:nth-child(odd) {
+      background-color: rgb(241, 241, 226);
+    }    
+    &:first-child {
+      font-size: .9rem;
+      font-weight: bold;
+      background-color: rgb(201, 201, 201);
+      border-bottom: 1px solid rgb(202, 202, 202);
+    }
+  }
+
+  .data-item {
+    display: flex;
+    padding: 5px;
+  }
+  
+  .label {
+    display: none;
+   }
+
+  @media (max-width: 725px) {
+    li {
+      display: block;
+      padding: 7px;
+
+      div.data-item {
+        border-right: none;
+        padding: 0;
+      }  
+      
+      &:first-child {
+        display: none;
+      }
+
+      > div:first-of-type {
+        font-weight: bold;
+        font-size: .925rem;
+      }
+
+    }
+  }
+}
+
+.data-item {
+  display: flex;
+  padding: 0 7px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.data-label {
+  display: none;
+  font-weight: bolder;
+}
+
+.biomarker {
+  width: 10rem;
+}
+
+.gene-test {
+  width: calc((100% - 10rem) / 3);
+}
+
+.protein-test {
+  width: calc((100% - 10rem) / 3);
+}
+
+.discordance {
+  width: calc((100% - 10rem) / 3);
+}
+
+@media (max-width: 725px) {  
+  .gene-test,
+  .biomarker, 
+  .protein-test,
+  .discordance,
+  .data-item {
+    width: 100%;
+    display: block;
+  }
+
+  .data-label {
+    display: block;
+    font-style: italic;
+    width: 6rem;
+    flex-shrink: 0;
+  }
+
+  .data-label::after {
+    content: ": ";
+    white-space: pre; /* or pre-line */
+  }  
+
+}
+</style>

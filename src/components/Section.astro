@@ -1,0 +1,21 @@
+---
+interface Props {
+  shade?: string
+}
+
+const { shade } = Astro.props as Props
+---
+<div class="`py-5" style={`background-color: ${(shade) ? shade : 'white'};`}>
+  <section>
+    <slot />
+  </section>
+</div>
+
+<style>
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;;
+  }
+</style>

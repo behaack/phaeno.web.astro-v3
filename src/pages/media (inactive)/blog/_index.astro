@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '@/layouts/Layout.astro'
+import MediaCard from '@/components/MediaCard.astro'
+import MediaCardCollection from '@/components/MediaCardCollection.astro'
+import RSSFeed from '@/components/RSSFeed.astro'
+
+const papers = await getCollection('blog')
+---
+
+<title>Blog | Phaeno</title>
+<meta name="description" content="Stay up to date with the latest news, breakthroughs, and company updates from the team at Phaeno." />
+
+<Layout>
+  <main>
+    <section>
+    <h1>Phaeno Blog</h1>
+
+    <div class="mb-2 flex justify-end">
+      <RSSFeed feedName="blog.xml"/>
+    </div>
+    <input
+      id="mediaSearch"
+      class="mb-6"
+      type="text"
+      placeholder="Search title or author"
+      class="w-full"
+    />
+    <MediaCardCollection>
+      {papers.map(paper => (
+        <MediaCard
+          searchString={`${paper.data.title} ${paper.data.authors.join(' ')}`.toLowerCase()}        
+          title={paper.data.title} 
+          image={paper.data.image} 
+          link={`/media/blog/${paper.slug}`}
+        >
+          <div>{paper.data.authors.join(', ')}</div>
+          <div>{new Date(paper.data.date).toLocaleDateString('en-US')}</div>
+        </MediaCard>
+      ))}      
+    </MediaCardCollection>     
+    </section>
+  </main>
+</Layout>

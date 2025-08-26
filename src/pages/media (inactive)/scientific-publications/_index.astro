@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '@/layouts/Layout.astro'
+import MediaCard from '@/components/MediaCard.astro'
+import MediaCardCollection from '@/components/MediaCardCollection.astro'
+
+const papers = await getCollection('scientific_papers')
+---
+
+<title>Scientific Pubs | Phaeno</title>
+<meta name="description" content="Browse throught and read Phaeno's scientific publications." />
+
+<Layout>
+  <main>
+    <section>
+      <h1>Scientific Publications</h1>
+
+      <input
+        id="mediaSearch"
+        class="mb-6"
+        type="text"
+        placeholder="Search title, author or journal"
+        class="w-full"
+      />
+
+      <MediaCardCollection>
+        {papers.map(paper => (
+          <MediaCard
+            searchString={`${paper.data.title} ${paper.data.journal} ${paper.data.authors.join(' ')}`.toLowerCase()}
+            title={paper.data.title} 
+            image={paper.data.image} 
+            link={`/media/scientific-publications/${paper.slug}`}
+          >
+            <div>{paper.data.authors.join(', ')}</div>
+            <div><i>{paper.data.journal}</i></div>
+            <div><i>{new Date(paper.data.date).toLocaleDateString('en-US')}</i></div>
+          </MediaCard>
+        ))}      
+      </MediaCardCollection> 
+    </section>
+  </main>
+</Layout>

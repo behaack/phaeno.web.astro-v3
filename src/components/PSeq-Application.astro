@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+
+interface IProps {
+  image: string
+  imgAlt: string
+  imgWidth?: number
+  imgHeight?: number
+}
+
+const {image, imgAlt, imgWidth=40, imgHeight=40} = Astro.props as IProps
+---
+<div>
+  <div>
+    <div class="text-center">
+      <Image class="mx-auto aspect-square" height={imgHeight} width={imgWidth}  src={image} alt={imgAlt} />
+      <div class="text-lg mt-1 font-bold leading-snug">
+        <slot name="title" />
+      </div>
+    </div>
+    <ul class="flex flex-col gap-1 text-xs mt-1">
+      <slot />
+    </ul>
+  </div>
+</div>  

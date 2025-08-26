@@ -1,0 +1,51 @@
+---
+import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
+import TopPageBanner from '@/components/TopPageBanner-3.astro';
+import Layout from '@/layouts/Layout.astro';
+---
+<Layout>
+  <SEOMeta 
+    slot="head"
+    title="Investors | Phaeno"
+    description="Learn why you may want to consider an investment in Phaeno's mission to sequence the functional genome."
+    documentType="Web Page"
+  />    
+  <main id="main" tabindex="-1">
+    <TopPageBanner title="Investors" />
+    <section>
+      <h2>Welcome to our investor page!</h2>
+      <p>
+        Phaeno has raised $1.4M in funding to date toward our mission to empower scientists to map the "functional" human genome. 
+        We strongly believe that our technology will help lead to cures for common disease and improve the effectivenes and efficiency 
+        of heathcare system around the globe. We are looking for qualified investors to help us in our mission.
+      </p>
+      <div class="flex justify-start items-center gap-3">
+        <p><span>If you are a qualifies investor and would like to participate in our mission,</span>
+        <a 
+          target="_blank" 
+          aria-label="Email us to make an investment inquiry, opens a new window using your default email client."
+          href="mailto:investors@phaenobiotech.com?subject=Investor Inquiry" 
+          rel="noopener noreferrer nofollow"
+        >
+          <span>please email</span>.
+        </a>
+      </p>
+      </div>
+      <!-- <div class="flex justify-start items-center gap-1">
+        <p>
+          <span>You can also view</span>  
+          <a
+            target="_blank" 
+            title="Download one-page PDF"
+            aria-label="Open a one-page pdf of investment information about Phaeno. Opens in a new tab."
+            href="/ExecOnePager-bridge.pdf" 
+            rel="noopener noreferrer nofollow"
+          >
+            <span>this Investor one-pager</span>
+          </a>                
+          <span>to learn more about the company.</span>
+        </p>
+      </div>  -->
+    </section>
+  </main>
+</Layout>
