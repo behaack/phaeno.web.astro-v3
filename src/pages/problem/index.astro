@@ -4,7 +4,8 @@ import Layout from "@/layouts/Layout.astro";
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 import WhyRna from '@/components/home-page-sections/Why-Rna.astro';
 import BlockQuote from '@/components/BlockQuote.astro';
-
+import HorizonalList from '@/components/HorizontalList.astro';
+import HorizonalListItem from '@/components/HorizontalListItem.astro';
 ---
 <Layout>
   <SEOMeta 
@@ -19,7 +20,7 @@ import BlockQuote from '@/components/BlockQuote.astro';
       <p class="m-0 p-0">
         <a href="/#problem">Home</a>&nbsp;&gt;&nbsp;Problem
       </p>
-      <h2>We lack the tools required to map genome to phenotype</h2>
+      <h2>We lack the tools required to map genome to phenotype (functional genome)</h2>
       <p>                
         The genome encodes proteins – and information flows from DNA to RNA to Protein in a defined manner. The
         discoveries that information can flow backward, that is from RNA to DNA (reverse transcriptions), and that some
@@ -53,8 +54,15 @@ import BlockQuote from '@/components/BlockQuote.astro';
         genetic disease. This has powerful consequences for how to think about health and disease, and even fundamental
         concepts about the evolution of complex phenotypes.
       </p>
-
-      <p>Thus,</p>
+     
+      <h3>Current analytical methods are inadequate</h3>
+    <h4 class="my-3">Existing sequencing tools are cumbersome to use, costly and provide only a fraction of the information PSeq provides.</h4>
+    <HorizonalList columns={[1, 1, 2, 3]}>
+      <HorizonalListItem>Illumina's RNA-Seq results are only a stocastic approximation of the RNA present.</HorizonalListItem>
+      <HorizonalListItem>Combined third-generation long sequencing and NGS short-read data polishing is time consuming, redundant and inefficient.</HorizonalListItem>
+      <HorizonalListItem>Other RNA sequencing solutions are prohibitively expensive, plagued with complex workflows, or have high rates of errors.</HorizonalListItem>
+    </HorizonalList>      
+      <!-- <p>Thus,</p>
       <ul>
         <li>
           Genetic diseases can emerge without any structural changes in the locatable DNA gene. For example, a healthy
@@ -68,7 +76,7 @@ import BlockQuote from '@/components/BlockQuote.astro';
           disease – rendering disease-linked candidate gene variants inconclusive biomarkers.
         </li>
         <li>Drugs effective with a causal protein isoform may disrupt normal physiology in off-target tissues.</li>
-      </ul> 
+      </ul>  -->
 
       <WhyRna />
     </section>
