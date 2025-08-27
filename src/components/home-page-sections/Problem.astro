@@ -6,7 +6,7 @@ import BlockQuote from '../BlockQuote.astro';
 
 <Section shade="var(--home-section-light-bg)">
   <div id="problem">
-    <h2>Available sequencing tools are inadequate for understanding complex diseases.</h2>
+    <h2>Available sequencing tools limit our ability to understand biology</h2>
   </div>
   <p>
     To date, most sequencing efforts have been optimized for understanding and treating Mendelian diseases and rare genetic disorders. 
@@ -20,17 +20,24 @@ import BlockQuote from '../BlockQuote.astro';
     by each gene within the context of each cell. Equally underexplored are post-translational modifications (PTMs), which add another critical layer
     of functional diversity to the proteome.
   </p>
-  <h3 class="py-7 text-3xl font-bold leading-snug">Better tools are needed to map the <i>functional</i> genome. We’re building those tools.</h3>
-  <br />
+  <BlockQuote 
+    text="The vast majority of [common gene] variants have shed no light on the biology of diseases."
+    imageUrl="/images/bodmer.webp"
+    imageAlt="Headshot of Sir Walter Bodmer"
+  >
+    <b>Sir Walter Bodmer</b><br />Cambridge University, 2010
+  </BlockQuote>  
   <!-- <BlockQuote 
     text="It’s an astounding thing that we have cracked open the human genome and can look at the entire complement of common genetic variants, and what do we find? Almost nothing. That is absolutely beyond belief."
     imageUrl="/images/goldstein.webp"
     imageAlt="Headshot of David Goldstein"
   >
     <b>David Goldstein</b>, Nobel Laureate<br />Duke University, 2012
-  </BlockQuote>  
+  </BlockQuote>   -->
+  <h3 class="py-7 text-3xl font-bold leading-snug">Better tools are needed to map the <i>functional</i> genome. We’re building those tools.</h3>
   <br />
-  <BlockQuote 
+  <br />
+  <!-- <BlockQuote 
     text="The $138 million [International] HapMap (haplotype mapping) Project has been a magnificent failure."
     imageUrl="/images/botstein.webp"
     imageAlt="Headshot of David Botstein"
