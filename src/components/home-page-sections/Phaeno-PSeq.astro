@@ -16,19 +16,23 @@ import HorizonalListItem from '../HorizontalListItem.astro'
   </p>
 
   <h3>PSeq can neutralize major multi-omics pain points.</h3>
-  <p>While PSeq does not a) replace proteomics for PTMs, localization, or absolute copy numbers, b) eliminate the value of chromatin assays, or c) make multi-omics optional, it:</p>
   <HorizonalList columns={[1, 1, 2, 3]}>
-    <HorizonalListItem>Attacks the biggest source of transcript → protein mismatch: isoforms & untranslated regions (UTRs).</HorizonalListItem>
+    <HorizonalListItem><b>Is the most efficient “first-line” discovery layer.</b></HorizonalListItem>
+    <HorizonalListItem>Addresses the biggest sources of transcript → protein mismatch.</HorizonalListItem>
     <HorizonalListItem>Materially improves proteomic discovery and inference.</HorizonalListItem>
     <HorizonalListItem>Captures regulatory chemistry that shapes translation - without adding new assays.</HorizonalListItem>
     <HorizonalListItem>Collapses multiple biological questions into one sample prep.</HorizonalListItem>
     <HorizonalListItem>Reduces error compounding and analytical fragility.</HorizonalListItem>
-    <HorizonalListItem>Is the most efficient “first-line” discovery layer.</HorizonalListItem>
   </HorizonalList>
-  <br />  
+  <p>PSeq does not:</p>
+  <ul class="gap-1">
+    <li><i>fully replace</i> proteomics for PTMs, localization, or absolute copy numbers;</li>
+    <li>eliminate the value of chromatin assays;</li>
+    <li>make multi-omics optional.</li>
+  </ul>
 
   <h3 class="py-7 text-3xl font-bold leading-snug">
-    PSeq makes the transcriptome mechanistically informative - resolving isoforms, UTRs, alternative polyadenylation (APA), alleles, and fusions in one assay - so 
+    PSeq makes the transcriptome mechanistically informative - resolving isoforms, UTRs, alternative polyadenylation (APA), many PTMs, alleles, and fusions in one assay - so 
     we get proteome-relevant insight without the cost and fragility of a full multi-omics stack.
   </h3>
 
@@ -57,7 +61,7 @@ import HorizonalListItem from '../HorizontalListItem.astro'
         <p class="mt-2 text-sm"><sup>*</sup><i>RUO - Research use only</i></p>
       </h3>
       <div class="text-black font-bold text-lg mb-1">Service Includes:</div>
-      <ul class="service-includes">
+      <ul class="service-includes gap-2">
         <li>Samples (tissue or RNA samples) are prepared using our PSeq patiented chemistry.</li>
         <li>Samples are sequenced, and data assembled using our proprietary software.</li>
         <li>Data files and analysis are prepared and delivered per <b>your specifications.</b></li>
@@ -107,7 +111,6 @@ import HorizonalListItem from '../HorizontalListItem.astro'
     width: 100%;
     margin: 0;
     padding: 0;
-    gap: 1rem;
   }
   
   .button-container {
@@ -142,11 +145,10 @@ import HorizonalListItem from '../HorizontalListItem.astro'
     padding-left: 1.25rem;
     list-style-type: disc;
     font-size: 1.1rem;
-    gap: 1.2rem;    
   }  
 
   ul.service-includes {
     color: black;
-    gap: 12px;
+    gap: 1.2rem;    
   }   
 </style>
