@@ -1,10 +1,4 @@
 ---
-interface Props {
-  tagline: string
-  subline: string
-}
-
-const { tagline, subline } = Astro.props as Props
 const bannerUrl = '/images/home-page-banner.webp'
 ---
 <Fragment set:head>
@@ -47,8 +41,8 @@ const bannerUrl = '/images/home-page-banner.webp'
   </div>
   
   <div class="tag-holder">
-    <h1>{tagline}</h1>
-    <h2>{subline}</h2>
+    <h1>PSeq<sup class="text-[0.6em] relative -top-4 ml-0.5">™</sup>: Full-length whole transcriptomes on NGS</h1>
+    <h2>Helping to reboot the genomic revolution</h2>
   </div>
 </div>
 
