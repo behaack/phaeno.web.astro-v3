@@ -16,8 +16,35 @@ import CalloutBox from '../CalloutBox.astro';
   >
     <h2 class="text-white text-[1.75rem] text-center">PSeq simplifies and improves your multi-omics stack.</h2>
   </CalloutBox>  
-  
-  <h3 class="mt-3">Problems with Multi-omics</h3>
+
+  <h3 class="mt-3">Advantaged of PSeq over other RNA sequencing solutions</h3>
+  <HorizonalList columns={[2, 2, 3, 3]}>
+    <HorizonalListItem>
+      <h4 class="font-bold">Full-length coverage</h4>
+      <p>Captures entire RNA molecules end-to-end, resolving isoforms, splice variants, and UTRs that short-read RNA-Seq fragments miss.</p>
+    </HorizonalListItem>
+    <HorizonalListItem>
+      <h4 class="font-bold">Compatibility with standard NGS</h4>
+      <p>Runs on widely deployed short-read sequencers (Illumina, Element, etc.), avoiding reliance on expensive, low-throughput long-read platforms.</p>
+    </HorizonalListItem>
+    <HorizonalListItem>
+      <h4 class="font-bold">Higher accuracy & reproducibility</h4>
+      <p>Leverages the base-calling accuracy and depth of short-read instruments while retaining full-length information.</p>
+    </HorizonalListItem>
+    <HorizonalListItem>
+      <h4 class="font-bold">Scalable & automated workflow</h4>
+      <p>No need for proprietary hardware or complex manual bioinformatics pipelines.</p>
+    </HorizonalListItem>
+    <HorizonalListItem>
+      <h4 class="font-bold">Multi-omics bridge</h4>
+      <p>By mapping the true isoform landscape, PSeq provides a clearer link between RNA expression, protein isoforms, and functional outcomes.</p>
+    </HorizonalListItem>
+    <HorizonalListItem>
+      <h4 class="font-bold">Lower cost per sample</h4>
+      <p>Efficient chemistry and use of existing sequencing infrastructure reduce cost compared to long-read RNA sequencing.</p>
+    </HorizonalListItem>
+  </HorizonalList>     
+  <h3 class="mt-3">How PSeq improved multi-omics</h3>
   <p>
     Multi-omics promises a “holistic” view of biology, but in practice it is fragile, error-prone, and prohibitively complex.
     Measurement errors compound across layers, integration methods rely on shaky assumptions, and costs escalate beyond practicality. 
@@ -33,7 +60,7 @@ import CalloutBox from '../CalloutBox.astro';
     <HorizonalListItem>Diminishing Returns</HorizonalListItem>
   </HorizonalList>     
   
-  <h3>PSeq neutralizes the major multi-omics pain points.</h3>
+  <h4>PSeq neutralizes the major multi-omics pain points</h4>
   <HorizonalList columns={[3, 3, 5, 5]}>
     <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Addresses the biggest sources of transcript → protein mismatch.</div></HorizonalListItem>
     <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Materially improves proteomic discovery and inference.</div></HorizonalListItem>

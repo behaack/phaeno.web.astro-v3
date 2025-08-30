@@ -10,9 +10,10 @@ import HorizonalListItem from '../HorizontalListItem.astro'
     <CalloutBox 
       bgColor="#545458" 
     >
-    <h2 class="text-white text-[1.75rem] text-center">Phaeno's PSeq Service provides full-length whole transcriptome sequencing on NGS.</h2>
+    <h2 class="text-white text-[1.75rem] text-center">Phaneo is developing a full-length, whole transcriptome sequencing service<sup class="text-[0.6em] relative -top-3">*</sup>, called PSeq.</h2>
   </CalloutBox>
-  </div>
+</div>
+<p class="text-[0.8em]"><s class="text-[0.6em] relative -top-1">*</s> Available soon as a research-use only (RUO) service</p>
 
   <LearnMoreButton 
     link="/technology"
@@ -37,11 +38,14 @@ import HorizonalListItem from '../HorizontalListItem.astro'
     and fusions in one assay - so we get proteome-relevant insight without the cost and fragility of a full multi-omics stack.
   </p> -->
   <h2>PSeq-ML<sup class="text-[0.6em] relative -top-3">™</sup> Service</h2>
-
-  <h3>Our PSeq + PSeq-ML service reveals biomarkers and pathways hidden from standard RNA-seq.</h3>
-  <HorizonalList columns={[1, 1, 1, 1]}>
-    <HorizonalListItem><div class="text-[1.25rem] text-center">When paired with Phaeno's advanced machine learning service (PSeq-ML), PSeq unlocks insights far beyond conventional RNA-seq.l</div></HorizonalListItem>
-  </HorizonalList>    
+  <div id="why-pseq" class="flex justify-center w-full mt-3 mb-4">
+    <CalloutBox 
+      bgColor="#545458" 
+    >
+     <h3 class="text-white text-[1.75rem] text-center">Our PSeq-ML service<sup class="text-[0.6em] relative -top-3">*</sup> is a perfect complement to PSeq for revealing biomarkers and pathways.</h3>
+  </CalloutBox>
+</div>  
+<p class="text-[0.8em]"><s class="text-[0.6em] relative -top-1">*</s> Available soon as a research-use only (RUO) service</p>  
   <LearnMoreButton 
     link="/technology"
     ariaLabel="Learn more about Phaeno's technology and how it addess the shortcoming of genomic analysis" 
