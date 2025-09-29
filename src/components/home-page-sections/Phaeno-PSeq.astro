@@ -8,9 +8,9 @@ import Workflow from '../workflow/Workflow.astro'
   <Workflow />
   <div id="why-pseq" class="flex justify-center w-full mt-3 mb-4">
     <CalloutBox 
-    bgColor="#545458" 
+      bgColor="#545458" 
     >
-    <h2 class="text-white text-[1.75rem] text-center">Phaneo is developing a full-length, whole transcriptome sequencing service<sup class="text-[0.6em] relative -top-3">*</sup>, called PSeq.</h2>
+      <h3 class="text-white text-center">Phaneo is developing a full-length, whole transcriptome sequencing service<sup class="text-[0.6em] relative -top-3">*</sup>, called PSeq.</h3>
     </CalloutBox>
   </div>
   <p class="text-[0.8em]"><s class="text-[0.6em] relative -top-1">*</s> Available soon as a research-use only (RUO) service</p>
@@ -41,7 +41,7 @@ import Workflow from '../workflow/Workflow.astro'
     <CalloutBox 
       bgColor="#545458" 
     >
-     <h3 class="text-white text-[1.75rem] text-center">Our PSeq-ML service<sup class="text-[0.6em] relative -top-3">*</sup> is a perfect complement to PSeq for revealing biomarkers and pathways.</h3>
+     <h3 class="text-white text-center">Our PSeq-ML service<sup class="text-[0.6em] relative -top-3">*</sup> is a perfect complement to PSeq for revealing biomarkers and pathways.</h3>
   </CalloutBox>
 </div>  
 <p class="text-[0.8em]"><s class="text-[0.6em] relative -top-1">*</s> Available soon as a research-use only (RUO) service</p>  
@@ -117,6 +117,10 @@ import Workflow from '../workflow/Workflow.astro'
     max-width: 20rem;
   }
 
+  h3 {
+    font-size: 1.75rem;
+  }
+
   @media (max-width: 1100px) {
     .section-container {
       grid-template-columns: 1fr;
@@ -124,6 +128,10 @@ import Workflow from '../workflow/Workflow.astro'
   }  
 
   @media (max-width: 420px) {
+    h3 {
+      font-size: 1.25rem;
+    }
+
     .buttons-container {
       display: flex;
       flex-direction: column;
