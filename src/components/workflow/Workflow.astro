@@ -1,0 +1,161 @@
+---
+import WorkflowItem from "./WorkflowItem.astro";
+---
+<div class="workflow-container">
+  <WorkflowItem 
+    verb="collect"
+    image="/images/workflow/sample.png"
+  >
+    <div>RNA<br />Sample</div>
+  </WorkflowItem>
+
+  <div class="arrow">
+    <img src="/images/workflow/next.png" />
+  </div>
+  
+  <WorkflowItem 
+    verb="apply"
+    image="/images/workflow/chemistry.png"
+    bgColor="#D6E3C3"
+    borderColor="#789946"
+  >
+    <div>PSeq<br />Chemistry</div>
+  </WorkflowItem>
+
+  <div class="arrow">
+    <img src="/images/workflow/next.png" />
+  </div>
+
+  <WorkflowItem 
+    verb="sequence"
+    image="/images/workflow/ngs.png"
+  >
+    <div>NGS<br />System</div>
+  </WorkflowItem>
+
+  <div class="arrow">
+    <img src="/images/workflow/next.png" />
+  </div>
+
+  <WorkflowItem 
+    verb="execute"
+    image="/images/workflow/computer.png"
+    bgColor="#C1D4DD"
+    borderColor="#156082"
+  >
+    <div>PSeq<br />Software<br/>Stack</div>
+  </WorkflowItem>
+
+  <div class="arrow">
+    <img src="/images/workflow/next.png" />
+  </div>
+
+  <WorkflowItem 
+    verb="deliver"
+    image="/images/workflow/results.png"
+  >
+    <div>Isoform<br />Resolved<br />Insights</div>
+  </WorkflowItem>
+</div>
+
+<style lang="scss">
+img {
+  height: 50px;
+  margin-top: 2rem;
+}
+
+.workflow-container {
+  display: grid;
+  /* 5 items (1fr each) + 4 arrows (2rem each) = 9 columns */
+  grid-template-columns: 1fr 6rem 1fr 6rem 1fr 6rem 1fr 6rem 1fr;
+  align-items: start;
+}
+
+.workflow-container > .workflow-item {
+  width: 100%;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center; /* centers the arrow horizontally */
+  align-items: flex-start;   /* align top vertically */
+}
+
+.arrow img {
+  height: 50px;
+  max-width: 100%;
+}
+
+@media (max-width:  1200px) {
+  .workflow-container {
+    grid-template-columns: 1fr 6rem 1fr 6rem 1fr 6rem 1fr 6rem 1fr;
+  }
+  .arrow img {
+    height: 50px;
+    max-width: 100%;
+  }  
+}
+
+@media (max-width:  1000px) {
+  img {
+    margin-top: 1.7rem;
+  }
+
+  .workflow-container {
+    grid-template-columns: 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr;
+  }
+
+  .arrow img {
+    height: 40px;
+    max-width: 100%;
+  }  
+}  
+
+@media (max-width:  750px) {
+  img {
+    margin-top: 1.6rem;
+  }
+
+  .workflow-container {
+    grid-template-columns: 1fr 2rem 1fr 2rem 1fr 2rem 1fr 2rem 1fr;
+  }
+
+  .arrow img {
+    height: 25px;
+    max-width: 100%;
+  }  
+}  
+
+@media (max-width:  500px) {
+  img {
+    margin-top: 1.7rem;
+  }
+
+  .workflow-container {
+    grid-template-columns: 1fr 1rem 1fr 1rem 1fr 1rem 1fr 1rem 1fr;
+  }
+
+  .arrow img {
+    height: 20px;
+    max-width: 100%;
+  }  
+}  
+
+@media (max-width:  400px) {
+  img {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    transform: rotate(90deg);    
+  }
+
+  .workflow-container {
+    grid-template-columns: 1fr;
+    place-items: center; /* centers horizontally AND vertically */
+  }
+
+  .arrow img {
+    height: 40px;
+    max-width: 100%;
+  }  
+}  
+</style>

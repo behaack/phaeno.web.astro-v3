@@ -5,6 +5,7 @@ import TopPageBanner from '@/components/TopPageBanner-2.astro';
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 import HorizonalList from '@/components/HorizontalList.astro';
 import HorizonalListItem from '@/components/HorizontalListItem.astro';
+import Workflow from '@/components/workflow/Workflow.astro';
 ---
 <Layout>
   <SEOMeta 
@@ -148,7 +149,7 @@ import HorizonalListItem from '@/components/HorizontalListItem.astro';
         Phaeno PSeq phased long-read technology is easy to use and easily fits into existing workflows.
       </p>
       <br />
-      <div class="flex justify-center py-4">
+      <!-- <div class="flex justify-center py-4">
         <Image        
           height={20} 
           width={100}
@@ -157,8 +158,8 @@ import HorizonalListItem from '@/components/HorizontalListItem.astro';
           alt="psew workflow diagram" 
         />
       </div>
-      <br />
-
+      <br /> -->
+      <Workflow /> 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
         <div style="background-color: #D6E3C3" class="work-flow-description">
           <h4><i>apply</i>: <span class="uppercase font-bold">PSEQ Chemistry</span></h4>
