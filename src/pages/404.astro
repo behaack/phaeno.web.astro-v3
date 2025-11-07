@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro'
 import Layout from '@/layouts/Layout.astro'
 ---
@@ -20,9 +21,17 @@ import Layout from '@/layouts/Layout.astro'
         <div class="circle medium"></div>
         <div class="container">
           <h1 id="title">404</h1>
-          <h2>Page not found</h2>
-          <p>Oops! The sequence you&apos;re looking for doesn&apos;t exist on this genome. Maybe try heading back to the homepage?</p>
-          <a href="/" class="button" role="button">Go Home</a>
+          <h2 class="flex justify-center items-center gap-5">
+            <div>Page not found</div>
+            <Image 
+              width={50} 
+              height={50} 
+              alt="broken dna" 
+              src="/images/404.webp" 
+            />
+          </h2>
+          <p>Oops! The sequence you&apos;re looking for doesn&apos;t exist on this genome.</p>
+          <a href="/" class="button" role="button">Home</a>
         </div>
       </div>
     </section>

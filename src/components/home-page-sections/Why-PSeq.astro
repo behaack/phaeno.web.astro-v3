@@ -4,19 +4,19 @@ import LearnMoreButton from '../LearnMoreButton.astro';
 import HorizonalList from '../HorizontalList.astro'
 import HorizonalListItem from '../HorizontalListItem.astro'
 import CalloutBox from '../CalloutBox.astro';
+import { FaArrowRight } from 'react-icons/fa6';
 ---
 
 <Section shade="var(--home-section-light-bg)">
   <div id="problem">
     <h2>Why PSeq</h2>
   </div>
-  
+
   <CalloutBox 
     bgColor="#545458" 
   >
     <h3 class="text-white text-center">
-      PSeq is the most comprehensive RNA sequencing platform<br />and can simplify & improve
-      your multi-omics stack.
+      PSeq is the most comprehensive RNA sequencing platform available.
     </h3>
   </CalloutBox>  
 
@@ -25,6 +25,14 @@ import CalloutBox from '../CalloutBox.astro';
     <HorizonalListItem>
       <h4 class="font-bold">Full-length coverage</h4>
       <p>Captures entire RNA molecules end-to-end, resolving isoforms, splice variants, and UTRs that short-read RNA-Seq fragments miss.</p>
+      <div class="flex justify-end">
+        <button class="max-w-40 text-sm py-2 px-4">
+          <div class="flex justify-between items-center w-full">
+            <div>Learn more<span class="sr-only">Learn more about PSeq's ability to provide full-length isoform-resolved transcripts</span></div>
+            <div class="pl-3"><FaArrowRight size={12}/></div>
+          </div>        
+        </button>
+      </div>
     </HorizonalListItem>
     <HorizonalListItem>
       <h4 class="font-bold">Compatibility with standard NGS</h4>
@@ -41,6 +49,14 @@ import CalloutBox from '../CalloutBox.astro';
     <HorizonalListItem>
       <h4 class="font-bold">Multi-omics bridge</h4>
       <p>By mapping the true isoform landscape, PSeq provides a clearer link between RNA expression, protein isoforms, and functional outcomes.</p>
+      <div class="flex justify-end">
+        <button class="max-w-40 text-sm py-2 px-4">
+          <div class="flex justify-between items-center w-full">
+            <div>Learn more<span class="sr-only">Learn more about PSeq's ability to provide full-length isoform-resolved transcripts</span></div>
+            <div class="pl-3"><FaArrowRight size={12}/></div>
+          </div>        
+        </button>
+      </div>      
     </HorizonalListItem>
     <HorizonalListItem>
       <h4 class="font-bold">Lower cost per sample</h4>
@@ -48,37 +64,6 @@ import CalloutBox from '../CalloutBox.astro';
     </HorizonalListItem>
   </HorizonalList>     
   <h4>While PSeq doesn’t directly detect RNA modifications, it provides the isoform-resolved framework that makes studying modifications in context possible — something conventional short-read RNA sequencing lacks.</h4>  
-  <h3 class="mt-3">How PSeq improves multi-omics</h3>
-  <p>
-    Multi-omics promises a “holistic” view of biology, but in practice it is fragile, error-prone, and prohibitively complex.
-    Measurement errors compound across layers, integration methods rely on shaky assumptions, and costs escalate beyond practicality. 
-    Instead of yielding clarity, multi-omics often produces an overfit, expensive, and irreproducible data swamp — where the signal 
-    is easily drowned out by noise.
-  </p>  
-  <HorizonalList columns={[2, 2, 3, 3]}>
-    <HorizonalListItem>Error Propagation Across Layers</HorizonalListItem>
-    <HorizonalListItem>Analytical and Computational Complexity</HorizonalListItem>
-    <HorizonalListItem>Biological Non-Correspondence</HorizonalListItem>
-    <HorizonalListItem>Cost, Scale, and Workflow Burden</HorizonalListItem>
-    <HorizonalListItem>Reproducibility and Standardization Issues</HorizonalListItem>
-    <HorizonalListItem>Diminishing Returns</HorizonalListItem>
-  </HorizonalList>     
-  
-  <h4>PSeq neutralizes the major multi-omics pain points</h4>
-  <HorizonalList columns={[3, 3, 5, 5]}>
-    <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Addresses the biggest sources of transcript → protein mismatch.</div></HorizonalListItem>
-    <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Materially improves proteomic discovery and inference.</div></HorizonalListItem>
-    <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Captures regulatory chemistry that shapes translation - without adding new assays.</div></HorizonalListItem>
-    <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Collapses multiple biological questions into one sample prep.</div></HorizonalListItem>
-    <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Reduces error compounding and analytical fragility.</div></HorizonalListItem>
-  </HorizonalList>
-  <CalloutBox 
-    bgColor="#545458" 
-  >
-    <h3 class="text-white text-center">
-      PSeq is the most efficient "first-line" discovery layer<br />for your multi-omics stack.
-    </h3>
-  </CalloutBox>       
   <!-- <p>
     To date, most sequencing efforts have been optimized for understanding and treating Mendelian diseases and rare genetic disorders. 
     By contrast, our progress in unraveling the biology of complex diseases has been far more limited. What we urgently need are tools 
@@ -115,11 +100,11 @@ import CalloutBox from '../CalloutBox.astro';
     <b>David Botstein</b><br />Princeton University, 2010
   </BlockQuote>    
   <br /> -->
-  <LearnMoreButton 
+  <!-- <LearnMoreButton 
     link="/problem" 
     ariaLabel="Learn more about why the genomic revolution has stalled and how current anaytic methods are inadequate." 
   />  
-</Section>
+</Section> -->
 
 <style>
   h3 {

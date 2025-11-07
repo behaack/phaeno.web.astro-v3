@@ -1,0 +1,124 @@
+---
+import Section from '@/components/Section.astro';
+import Layout from '@/layouts/Layout.astro';
+import TopPageBanner from '@/components/TopPageBanner-2.astro';
+import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
+import HorizonalList from '@/components/HorizontalList.astro';
+import HorizonalListItem from '@/components/HorizontalListItem.astro';
+import Workflow from '@/components/workflow/Workflow.astro';
+import LearnMoreButton from '@/components/LearnMoreButton.astro';
+import CalloutBox from '@/components/CalloutBox.astro';
+---
+<Layout>
+  <SEOMeta 
+    slot="head"
+    title="Multi-omics | Phaeno"
+    description="Explore Phaeno's technology and how we are usng chemistry and software to change transcriptome sequencing."
+    documentType="Web Page"
+  />  
+  <main id="main" tabindex="-1">
+    <TopPageBanner title="PSeq & Multi-omics" />
+    <section>
+      <h2>
+        PSeq - the "first-line" discovery layer for your multi-omics stack.
+      </h2>
+      <p>
+        Multi-omics promises a “holistic” view of biology, but in practice it is fragile, error-prone, and prohibitively complex.
+        Measurement errors compound across layers, integration methods rely on shaky assumptions, and costs escalate beyond practicality. 
+        Instead of yielding clarity, multi-omics often produces an overfit, expensive, and irreproducible data swamp — where the signal 
+        is easily drowned out by noise.
+      </p>  
+      <HorizonalList columns={[2, 2, 3, 3]}>
+        <HorizonalListItem>Error Propagation Across Layers</HorizonalListItem>
+        <HorizonalListItem>Analytical and Computational Complexity</HorizonalListItem>
+        <HorizonalListItem>Biological Non-Correspondence</HorizonalListItem>
+        <HorizonalListItem>Cost, Scale, and Workflow Burden</HorizonalListItem>
+        <HorizonalListItem>Reproducibility and Standardization Issues</HorizonalListItem>
+        <HorizonalListItem>Diminishing Returns</HorizonalListItem>
+      </HorizonalList>     
+      
+      <h4>PSeq neutralizes the major multi-omics pain points</h4>
+      <HorizonalList columns={[3, 3, 5, 5]}>
+        <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Addresses the biggest sources of transcript → protein mismatch.</div></HorizonalListItem>
+        <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Materially improves proteomic discovery and inference.</div></HorizonalListItem>
+        <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Captures regulatory chemistry that shapes translation - without adding new assays.</div></HorizonalListItem>
+        <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Collapses multiple biological questions into one sample prep.</div></HorizonalListItem>
+        <HorizonalListItem><div class="text-[.75rem] md:text-[.85rem]">Reduces error compounding and analytical fragility.</div></HorizonalListItem>
+      </HorizonalList>
+      
+      <h3>Current analytical methods are inadequate</h3>
+      <h4 class="my-3">Existing sequencing tools are cumbersome to use, costly, and provide only a fraction of the available information.</h4>
+      <p>To help overcome these shortcomings, multiple analytical methods - <b>multi-omics</b> - are increasingly being employed to gain a more complete picture of biology.</p>
+      <h4 class="font-bold">Multi-omic Methods</h4>
+      <HorizonalList columns={[1, 2, 3, 3]}>
+        <HorizonalListItem>
+          <div class="mb-2"><b>Genomics</b></div>
+          <ul class="text-sm gap-0.5">
+            <li>Whole-genome sequencing (WGS) – captures the complete DNA sequence.</li>
+            <li>Whole-exome sequencing (WES) – focuses on protein-coding regions.</li>
+            <li>Targeted sequencing panels – enrich for specific genes of interest.</li>
+            <li>SNP arrays / genotyping – profile common variants at scale.</li>          
+          </ul>
+        </HorizonalListItem>
+        <HorizonalListItem>        
+          <div class="mb-2"><b>Transcriptomics</b></div>
+          <ul class="text-sm gap-1">
+            <li>RNA-seq – quantifies gene and isoform expression, detects splicing.</li>
+            <li>Single-cell RNA-seq (scRNA-seq) – measures transcriptomes at single-cell resolution.</li>
+            <li>Spatial transcriptomics – maps RNA expression to tissue context.</li>
+            <li>Long-read RNA sequencing (PacBio, Oxford Nanopore) – captures full-length isoforms.</li>
+          </ul>        
+        </HorizonalListItem>
+        <HorizonalListItem>
+          <div class="mb-2"><b>Epigenomics</b></div>
+          <ul class="text-sm gap-1">
+            <li>DNA methylation sequencing (WGBS, RRBS, arrays) – maps methylation patterns.</li>
+            <li>ChIP-seq / CUT&RUN – identifies protein–DNA interactions (e.g., histone marks, transcription factors).</li>
+            <li>ATAC-seq – measures chromatin accessibility.</li>
+            <li>Hi-C / 3D genome mapping – captures chromatin architecture.</li>
+          </ul>           
+        </HorizonalListItem>
+        <HorizonalListItem>
+          <div class="mb-2"><b>Proteomics</b></div>
+          <ul class="text-sm gap-1">
+            <li>Mass spectrometry (LC–MS/MS, DIA, TMT/iTRAQ labeling) – quantifies proteins and post-translational modifications (PTMs).</li>
+            <li>Protein microarrays – high-throughput antibody or antigen profiling.</li>
+            <li>Single-cell proteomics – emerging methods for quantifying proteins in individual cells.</li>       
+          </ul>           
+        </HorizonalListItem>
+        <HorizonalListItem>
+          <div class="mb-2"><b>Metabolomics & Lipidomics</b></div>
+          <ul class="text-sm gap-1">
+            <li>Mass spectrometry (GC–MS, LC–MS) – profiles metabolites and lipids.</li>
+            <li>NMR spectroscopy – non-destructive metabolite analysis.</li>
+            <li>Targeted vs. untargeted metabolomics – either hypothesis-driven or discovery-based profiling.</li>      
+          </ul>           
+        </HorizonalListItem>
+        <HorizonalListItem>
+          <div class="mb-2"><b>Other modalities</b></div>
+          <ul class="text-sm gap-1">
+            <li>Microbiomics (16S rRNA sequencing, metagenomics, metatranscriptomics) – captures host–microbe interactions.</li>
+            <li>Phosphoproteomics / Glycoproteomics – zooms in on key protein modifications.</li>
+            <li>Single-cell multi-omics – joint profiling (e.g., scRNA + ATAC, CITE-seq combining RNA + surface proteins).</li>      
+          </ul>           
+        </HorizonalListItem>
+      </HorizonalList>       
+      
+      <p>
+        Multi-omics promises a “holistic” view of biology, but in practice it is fragile, error-prone, and prohibitively complex.
+        Measurement errors compound across layers, integration methods rely on shaky assumptions, and costs escalate beyond practicality. 
+        Instead of yielding clarity, multi-omics often produces an overfit, expensive, and irreproducible data swamp — where the signal 
+        is easily drowned out by noise.
+      </p>
+      
+      <HorizonalList columns={[2, 2, 3, 3]}>
+        <HorizonalListItem>Error Propagation Across Layers</HorizonalListItem>
+        <HorizonalListItem>Analytical and Computational Complexity</HorizonalListItem>
+        <HorizonalListItem>Biological Non-Correspondence</HorizonalListItem>
+        <HorizonalListItem>Cost, Scale, and Workflow Burden</HorizonalListItem>
+        <HorizonalListItem>Reproducibility and Standardization Issues</HorizonalListItem>
+        <HorizonalListItem>Diminishing Returns</HorizonalListItem>
+      </HorizonalList>      
+    </section>
+  </main>
+</Layout>
