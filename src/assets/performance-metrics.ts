@@ -24,8 +24,8 @@ export const metrics = [
     Metric: "Base-calling accuracy (Phred Q)",
     PSeq: "Q ≥ 35 across read",
     ShortRead: "Q ≥ 30",
-    LongRead: "Q ≥ 20 (consensus)",
-    Notes: "Illumina chemistry unchanged."
+    LongRead: "Q ≥ 20",
+    Notes: "Illumina chemistry unchanged. Long read is consensus."
   },
   {
     Metric: "Cost per sample (reagents + sequencing)",
