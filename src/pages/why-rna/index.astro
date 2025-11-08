@@ -2,7 +2,7 @@
 import { biomarkers } from '@/assets/biomarkers'
 import BlockQuote from "@/components/BlockQuote.astro";
 import SEOMeta from "@/components/meta-data-helpers/SEOMeta.astro";
-import TopPageBanner from "@/components/TopPageBanner-1.astro";
+import TopPageBanner from "@/components/TopPageBanner-3.astro";
 import Layout from "@/layouts/Layout.astro";
 import HorizonalList from '@/components/HorizontalList.astro';
 import HorizonalListItem from '@/components/HorizontalListItem.astro';
@@ -16,11 +16,9 @@ import HorizonalListItem from '@/components/HorizontalListItem.astro';
   />  
   <main>
     <TopPageBanner title="Why RNA?" />
-    <section>
+    <section>      
       <p class="p-0 m-0">
         <a href="/#why-rna">Home</a>
-        <span>&nbsp;&gt;&nbsp;</span>
-        <a href="/problem">Problem</a>
         <span>&nbsp;&gt;&nbsp;Why RNA?</span> 
       </p>
       <h2>Protein codes are found in the transcriptome, not genomic DNA.</h2>
@@ -107,7 +105,8 @@ import HorizonalListItem from '@/components/HorizontalListItem.astro';
         This information can help focus proteomic technology in confirming the expression and post-transcriptional modifications of target 
         proteins important in explaining the molecular cause of disease or as targets for drugs or immune therapies.
       </p>
-      <h2>Protein Isoforms: Examples from Oncology</h2>
+      <h2>Protein Isoforms: Real-world Examples</h2>
+      <h3>From Oncology</h3>
       <p>
         Oncologists have been aware of the disconnect between genes and phenotype for a long time. 
         For example, there is a 10% to 25% discordance rate between 
@@ -157,25 +156,27 @@ kn        <span><i>Breast Cancer Res</i>, 2005</span>
           </li>          
         ))}
       </ul>            
-      <h2>Protein Isoforms: Examples from ASO Therapies</h2>
-      <h3>Clinical Proofs</h3>
-      <ul>
-        <li>Nusinersen / Spinraza: Targets alternative splicing of SMN2 exon 7. Improves motor function & survival in Spinal Muscular Atrophy.</li>
-        <li>Eteplirsen, et al: Induce exon-skipping (e.g. exon 51) to restore dystrophin in Duchenne Muscular Dystrophy.</li>
-        <li>Landing deeper variants via ASO rescue.</li>
-      </ul>
-      <h3>Methods</h3>
-      <ul>
-        <li>Tools like JunctionSeq, IsoDOT, BIISQ discover and quantification of novel or low-abundance isoforms.</li>
-        <li>Isoform-level quantification improves cancer classification (ovarian, breast, lung) in TCGA cohorts.</li>
-      </ul>
-      <h3>Pipeline</h3>
-      <ul>
-        <li>As of early 2025, 11 ASO drugs have received regulatory approval.</li>
-        <li>High specificity and modularity of ASO allow precise targeting of disease-relevant isoforms.</li>
-        <li>Mila case: New ASO developed for single patient (Batten disease).</li>
-      </ul>
-      <br />
+      <h3>From Antisense Oligonucleotide (ASO) Therapies</h3>
+      <p>
+        Protein isoforms, created through alternative splicing, are key to disease pathology and therapeutic targets. ASO therapies 
+        modulate splicing to address dysfunctional isoforms, such as nusinersen (Spinraza) enhancing SMN2 exon 7 inclusion for SMA, 
+        or eteplirsen inducing exon 51 skipping for DMD, restoring functional proteins where genomic methods fall short.
+      </p>
+      
+      <h4>ASO Advancements in Isoform Detection and Clinical Applications</h4>
+      <p>
+        Tools like JunctionSeq and BIISQ enable discovery and quantification of novel isoforms, improving cancer classification in 
+        TCGA cohorts and supporting ASO development. By early 2025, 11 ASO drugs are approved, with cases like Mila’s custom ASO for 
+        Batten disease highlighting personalized RNA interventions.
+      </p>
+
+      <h3>Conclusion: Why PSeq is Essential in RNA Analysis</h3>      
+      <p>
+        PSeq provides full-length, isoform-resolved sequencing, addressing limitations in current methods across diverse applications. 
+        By accurately assembling complex isoform profiles—crucial for cancer diagnostics and ASO therapies—it enables precise identification 
+        of disease-related variants and therapeutic targets. Researchers can leverage this capability via our development platform, integrating 
+        PSeq into workflows to advance understanding of genotype-phenotype relationships in various fields.
+      </p> 
       <br />
       <hr />      
       <div class="text-sm mt-2"><b>References for HER2</b></div>

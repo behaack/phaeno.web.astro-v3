@@ -7,7 +7,7 @@ import HorizonalListItem from '@/components/HorizontalListItem.astro';
 import PerformanceMetrics from '../PerformanceMetrics.astro';
 ---
 <section class="mt-3 mb-5">
-  <h3>Introducing Phaeno's PSeq<sup class="text-[0.6em] relative -top-3">™</sup> Service<sup class="text-[0.5em] relative -top-3">*</sup></h3>
+  <h3>Introducing Phaeno's PSeq<sup class="text-[0.6em] relative -top-3">™</sup> RUO Service</h3>
   <div id="why-pseq">
     <CalloutBox 
       bgColor="#545458" 
@@ -78,62 +78,8 @@ import PerformanceMetrics from '../PerformanceMetrics.astro';
   link="/technology"
   ariaLabel="Learn more about Phaeno's technology and how it addess the shortcoming of genomic analysis" 
   />    
-  <p class="text-[0.8em]"><sup class="text-[.8em] relative -top-2">*</sup>&nbsp;<i>Available soon for research-use only (RUO)</i></p>
-
 
   <PerformanceMetrics />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- <h3>Phaeno RNA sequencing - PSeq - captures the full profile of all expressed protein-coding RNAs.</h3>  
-  <p>
-    Phaeno delivers fully automated, full-length whole transcriptome sequencing using standard next-generation sequencing (NGS) 
-    instruments - no proprietary hardware required. This uniquely enables researchers to capture complete RNA molecules across the entire 
-    transcriptome while eliminating the need for specialized equipment or complex manual bioinformatics.
-  </p>
-
-  <p>PSeq does not:</p>
-  <ul class="gap-1">
-    <li><i>fully replace</i> proteomics for PTMs, localization, or absolute copy numbers;</li>
-    <li>eliminate the value of chromatin assays;</li>
-    <li>make multi-omics optional.</li>
-  </ul>
-
-  <p>
-    PSeq makes the transcriptome mechanistically informative - resolving isoforms, UTRs, alternative polyadenylation (APA), many PTMs, alleles, 
-    and fusions in one assay - so we get proteome-relevant insight without the cost and fragility of a full multi-omics stack.
-  </p> -->
-  <!-- <h3>PSeq-ML<sup class="text-[0.6em] relative -top-3">™</sup> Service</h3>
-  <div id="why-pseq" class="flex justify-center w-full mt-3 mb-4">
-    <CalloutBox 
-      bgColor="#545458" 
-    >
-     <h3 class="text-white text-center">Our PSeq-ML service<sup class="text-[0.6em] relative -top-3">*</sup> is a perfect complement to PSeq<br />for revealing biomarkers and pathways.</h3>
-    </CalloutBox>
-  </div>   -->
-  <!-- <p class="text-[0.8em]"><s class="text-[0.6em] relative -top-1">*</s> Available soon as a research-use only (RUO) service</p>  
-  <LearnMoreButton 
-    link="/technology"
-    ariaLabel="Learn more about Phaeno's technology and how it addess the shortcoming of genomic analysis" 
-  />       -->
-  <!-- <h4>Phaeno and PSeq are ready for the <span class="font-extrabold italic">AI revolution</span>.</h4>
-  <p>PSeq's complete capture of every RNA molecule within a sample results in enormous amounts of information. Analyzing that volume of information is challenging. 
-  <b>Phaeno has already thought of that.</b></p> -->
 
   {(import.meta.env.PUBLIC_HIDE_PSEQ_AVAIL_NOW === "false") && (
     <br />

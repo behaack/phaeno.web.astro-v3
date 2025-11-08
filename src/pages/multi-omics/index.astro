@@ -1,13 +1,9 @@
 ---
-import Section from '@/components/Section.astro';
-import Layout from '@/layouts/Layout.astro';
+import Layout from "@/layouts/Layout.astro";
 import TopPageBanner from '@/components/TopPageBanner-2.astro';
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 import HorizonalList from '@/components/HorizontalList.astro';
 import HorizonalListItem from '@/components/HorizontalListItem.astro';
-import Workflow from '@/components/workflow/Workflow.astro';
-import LearnMoreButton from '@/components/LearnMoreButton.astro';
-import CalloutBox from '@/components/CalloutBox.astro';
 ---
 <Layout>
   <SEOMeta 
@@ -19,6 +15,10 @@ import CalloutBox from '@/components/CalloutBox.astro';
   <main id="main" tabindex="-1">
     <TopPageBanner title="PSeq & Multi-omics" />
     <section>
+      <p class="p-0 m-0">
+        <a href="/#why-rna">Home</a>
+        <span>&nbsp;&gt;&nbsp;Multi-omics</span> 
+      </p>      
       <h2>
         PSeq - the "first-line" discovery layer for your multi-omics stack.
       </h2>
