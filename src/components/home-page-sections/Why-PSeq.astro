@@ -1,15 +1,14 @@
 ---
 import Section from '@/components/Section.astro';
-import LearnMoreButton from '../LearnMoreButton.astro';
 import HorizonalList from '../HorizontalList.astro'
 import HorizonalListItem from '../HorizontalListItem.astro'
 import CalloutBox from '../CalloutBox.astro';
-import { FaArrowRight } from 'react-icons/fa6';
 import HorizontalListItemBtn from '../HorizontalListItemBtn.astro';
+import PerformanceMetrics from '../PerformanceMetrics.astro';
 ---
 
 <Section shade="var(--home-section-light-bg)">
-  <div id="problem">
+  <div id="why-pseq">
     <h2>Why PSeq</h2>
   </div>
 
@@ -63,6 +62,8 @@ import HorizontalListItemBtn from '../HorizontalListItemBtn.astro';
     </HorizonalListItem>
   </HorizonalList>     
   <h4>While PSeq doesn’t directly detect RNA modifications, it provides the isoform-resolved framework that makes studying modifications in context possible — something conventional short-read RNA sequencing lacks.</h4>  
+  
+  <PerformanceMetrics />
 </Section>
 
 <style>

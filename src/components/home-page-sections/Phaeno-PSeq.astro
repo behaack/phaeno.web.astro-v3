@@ -4,11 +4,10 @@ import CalloutBox from '@/components/CalloutBox.astro'
 import LearnMoreButton from '../LearnMoreButton.astro'
 import HorizonalList from '@/components/HorizontalList.astro';
 import HorizonalListItem from '@/components/HorizontalListItem.astro';
-import PerformanceMetrics from '../PerformanceMetrics.astro';
 ---
 <section class="mt-3 mb-5">
   <h3>Introducing Phaeno's PSeq<sup class="text-[0.6em] relative -top-3">™</sup> RUO Service</h3>
-  <div id="why-pseq">
+  <div>
     <CalloutBox 
       bgColor="#545458" 
     >
@@ -78,8 +77,6 @@ import PerformanceMetrics from '../PerformanceMetrics.astro';
   link="/technology"
   ariaLabel="Learn more about Phaeno's technology and how it addess the shortcoming of genomic analysis" 
   />    
-
-  <PerformanceMetrics />
 
   {(import.meta.env.PUBLIC_HIDE_PSEQ_AVAIL_NOW === "false") && (
     <br />
