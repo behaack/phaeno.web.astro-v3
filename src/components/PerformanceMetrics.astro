@@ -4,10 +4,11 @@ import { metrics } from '@/assets/performance-metrics'
 
 <div>
   <h3>PSeq™ Performance Metrics (RUO)</h3>
-  <p class="text-muted mb-5">
+  <!-- <p class="text-muted mb-5">
     All figures are derived from internal benchmarking on human cell-line RNA (HEK293T, 1 µg total RNA) using an 
     Illumina NovaSeq 6000 (2 x 150 bp). Independent validation is in progress.
-  </p>
+  </p> -->
+  <br />
 
   <ul class="data-table">
     <li>
@@ -17,7 +18,8 @@ import { metrics } from '@/assets/performance-metrics'
       <div class="data-item long-read">Long Read&nbsp;<sup class="text-[8px]">2</sup></div>
       <div class="data-item notes">Notes</div>
     </li>
-    {metrics.map(item => (
+    <h4>Coming soon...</h4>
+    <!-- {metrics.map(item => (
       <li>
         <div class="data-item metric">{item.Metric}</div>
         <div class="data-item pseq"><div class="data-label">PSeq</div>{item.PSeq}</div>
@@ -26,12 +28,13 @@ import { metrics } from '@/assets/performance-metrics'
         <div class="data-item notes"><div class="data-label">Notes</div>{item.Notes}</div>
       </li>     
     ))}
-  </ul> 
+  </ul>    -->
+  <br />
   <div class="text-xs text-muted mt-2 flex flex-col gap-2">
     <div><sup>1</sup> Illumina TruSeq Stranded mRNA, STAR + RSEM quantification (v2.7).</div>
     <div><sup>2</sup> PacBio Iso-Seq3, SMRT-Link v11, consensus polishing.<br></div>
     <div><em>All data are for research use only (RUO). Not validated for clinical diagnostics.</em></div>
-  </div>  
+  </div>
 </div> 
 
 <style lang="scss">
