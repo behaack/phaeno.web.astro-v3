@@ -2,7 +2,8 @@
 import Layout from '@/layouts/Layout.astro';
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 import ContactForm from '@/components/ContactForm';
-import SocialMedia from '@/components/SocialMedia.astro';
+import OrderForm from '@/components/OrderForm'
+// import SocialMedia from '@/components/SocialMedia.astro';
 // import ScheduleMeeting from '@/components/ScheduleMeeting.astro';
 import TopPageBanner from '@/components/TopPageBanner-3.astro';
 ---
@@ -39,10 +40,15 @@ import TopPageBanner from '@/components/TopPageBanner-3.astro';
       <div id="sign-up">
         <h2 class="mt-5">Sign-up for updates</h2>
         <p>Sign-up to receive period updates on the company. You can unsubscribe at any time.</p>
-        <div class="island-placeholder">
-          <ContactForm client:load />
-        </div>
+        <ContactForm client:load />
       </div>
+      {(import.meta.env.PUBLIC_HIDE_PSEQ_AVAIL_NOW === "false") && (
+        <div id="place-order">
+          <h2 class="mt-5">Place Order Inquiry</h2>
+          <p>A Phaeno scientist will be in contact with you to discuss your sequencing needs.</p>
+          <OrderForm client:load />
+        </div>
+      )}
       <br />
     </section>
   </main>

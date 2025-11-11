@@ -33,6 +33,9 @@ const schema = z.object({
     .nonempty("Please enter your email")
     .email("Please enter a valid email address")
     .max(256, "Length may not exceed 256 characters."),
+  description: z
+    .string()
+    .nonempty("Please enter a brief description of your needs.")
 });
 
 export type FormValues = z.infer<typeof schema>;
@@ -107,7 +110,7 @@ function ContactFormInner() {
       }
 
       /* --------------------------- success feedback --------------------------- */
-      setMessage("Thank you. You will now receive periodic updates!");
+      setMessage("Thank you, order received! A Phaeno scientist will be in touch with you within three business days.");
       setIsSuccess(true);
       reset();
     } catch (err: unknown) {
@@ -184,6 +187,22 @@ function ContactFormInner() {
           )}
         </div>
 
+        {/* DESCRIPTION ------------------------------------------------------------ */}
+        <div>
+          <label htmlFor="description" className="block pb-1">
+            Description (brief)
+          </label>
+          <textarea
+            id="description"
+            rows={4}
+            className="bg-white w-full"
+            {...register("description")}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm pt-1 m-0 mt-[-7px]">{errors.description.message}</p>
+          )}
+        </div>        
+
         {/* MESSAGE AREA ------------------------------------------------------ */}
         {message && (
           <p
@@ -201,7 +220,7 @@ function ContactFormInner() {
             disabled={isSubmitting}
             aria-busy={isSubmitting}
           >
-            {isSubmitting ? <Spinner size={21} /> : "Send"}
+            {isSubmitting ? <Spinner size={21} /> : "Place Order"}
           </button>
 
         </div>
