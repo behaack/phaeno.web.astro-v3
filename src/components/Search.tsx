@@ -11,7 +11,7 @@ export interface ISearchResult {
   documentType: webtypes | articletypes;
   snippet: string;
   count: number;
-  score: number
+  score: number;
 }
 
 export default function Search() {
@@ -40,32 +40,48 @@ export default function Search() {
     setOpen((prev) => !prev);
   };
 
-useEffect(() => {
-  if (isFirstRender.current) {
-    isFirstRender.current = false;
-    return; // skip on first render
-  }
+  // Handle backdrop click to close modal
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === modalRef.current) {
+      setOpen(false);
+    }
+  };
 
-  if (!open && triggerRef.current) {
-    triggerRef.current.focus();
-  }
-}, [open]);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    if (!open && triggerRef.current) {
+      triggerRef.current.focus();
+    }
+  }, [open]);
 
   useEffect(() => {
     const html = document.documentElement;
     const originalOverflow = html.style.overflow;
     html.style.overflow = open ? 'hidden' : originalOverflow;
-    return () => { html.style.overflow = originalOverflow; };
+    return () => {
+      html.style.overflow = originalOverflow;
+    };
   }, [open]);
 
   useEffect(() => {
     const focusableSelectors = [
-      'a[href]', 'button', 'input', 'textarea', 'select', '[tabindex]:not([tabindex="-1"])',
+      'a[href]',
+      'button',
+      'input',
+      'textarea',
+      'select',
+      '[tabindex]:not([tabindex="-1"])',
     ];
 
     const trapFocus = (e: KeyboardEvent) => {
       if (!modalRef.current || e.key !== 'Tab') return;
-      const focusables = Array.from(modalRef.current.querySelectorAll<HTMLElement>(focusableSelectors.join(',')));
+      const focusables = Array.from(
+        modalRef.current.querySelectorAll<HTMLElement>(focusableSelectors.join(',')),
+      );
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
       if (e.shiftKey && document.activeElement === first) {
@@ -118,13 +134,11 @@ useEffect(() => {
     if (container && target) {
       const containerRect = container.getBoundingClientRect();
       const targetRect = target.getBoundingClientRect();
-      const extraOffset = 8; // pixels of padding
+      const extraOffset = 8;
 
       if (targetRect.top < containerRect.top) {
-        // Scroll up
         container.scrollTop -= containerRect.top - targetRect.top + extraOffset;
       } else if (targetRect.bottom > containerRect.bottom) {
-        // Scroll down
         container.scrollTop += targetRect.bottom - containerRect.bottom + extraOffset;
       }
     }
@@ -144,7 +158,7 @@ useEffect(() => {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
             signal: controller.signal,
-          }
+          },
         );
         if (!res.ok) {
           let message = `Request failed (${res.status}).`;
@@ -152,7 +166,8 @@ useEffect(() => {
             const detail = await res.json();
             if (detail?.message) message = detail.message;
           } catch {}
-          if (res.status === 500) message = 'Whoops – something went wrong on our side. Please try again.';
+          if (res.status === 500)
+            message = 'Whoops – something went wrong on our side. Please try again.';
           throw new Error(message);
         }
         const data = await res.json();
@@ -194,6 +209,7 @@ useEffect(() => {
           aria-modal="true"
           aria-labelledby="search-title"
           className="fixed inset-0 z-[9999] h-dvh w-dvw flex justify-center items-start bg-black/20 backdrop-blur-sm"
+          onClick={handleBackdropClick} // Add click handler here
         >
           <div className="bg-white w-[calc(100vw-2rem)] md:w-1/2 mt-10 rounded-md max-h-[calc(100vh-5rem)] flex flex-col overflow-hidden">
             <h2 id="search-title" className="sr-only">Search site</h2>
@@ -221,7 +237,9 @@ useEffect(() => {
               </button>
             </div>
             <div className="px-1 overflow-y-auto">
-              <div id="search-status" className="sr-only" aria-live="polite">{ariaMessage}</div>
+              <div id="search-status" className="sr-only" aria-live="polite">
+                {ariaMessage}
+              </div>
               <ul role="listbox" className="list-none divide-y divide-gray-200 p-0 m-0 gap-0">
                 {searchList.map((item, i) => (
                   <li
@@ -238,22 +256,24 @@ useEffect(() => {
                       }}
                     >
                       <h3 className="p-0 m-0 text-sm font-semibold inline-flex items-center gap-2">
-                        <span className="text-[8px] bg-gray-100 py-1 px-2 rounded-lg font-bold">{item.documentType}</span>
-                        <span>{itemTitle(item)}</span>                        
+                        <span className="text-[8px] bg-gray-100 py-1 px-2 rounded-lg font-bold">
+                          {item.documentType}
+                        </span>
+                        <span>{itemTitle(item)}</span>
                       </h3>
                       <div className="text-xs text-gray-400 mt-1 flex items-center gap-2">
                         <HighlightedSnippet snippet={item.snippet} searchStr={searchStr} />
                       </div>
-                      <div className="mt-1 text-[8px] bg-gray-100 max-w-fit py-1 px-2 rounded-lg font-bold">Matches: {item.count}</div>
+                      <div className="mt-1 text-[8px] bg-gray-100 max-w-fit py-1 px-2 rounded-lg font-bold">
+                        Matches: {item.count}
+                      </div>
                     </a>
                   </li>
                 ))}
-              </ul>              
+              </ul>
               {!searchList.length && (
                 <div className="text-center p-5 text-gray-700">
-                  {searchStr.length === 0 && (
-                    <span>Nothing here yet. Let’s find something!</span>
-                  )}
+                  {searchStr.length === 0 && <span>Nothing here yet. Let’s find something!</span>}
 
                   {searchStr.length > 0 && searchStr.length <= 3 && (
                     <span>Keep typing... we’ll match full words after 3 characters.</span>
