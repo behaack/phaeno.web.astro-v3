@@ -78,7 +78,7 @@ function ContactFormInner() {
 
     /* ------------------------------ call backend ------------------------------ */
     try {
-      const res = await fetch(`${BASE_URL}website/contact`, {
+      const res = await fetch(`${BASE_URL}website/order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

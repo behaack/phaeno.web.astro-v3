@@ -1,5 +1,6 @@
 ---
 const copyYear = new Date().getFullYear()
+import { FaExternalLinkAlt } from "react-icons/fa";
 ---
 
 <footer id="site-footer">
@@ -11,8 +12,18 @@ const copyYear = new Date().getFullYear()
         <div class="text-sm"><a href="email:info@phenobiotech.com">info@phaenobiotech.com</a></div>
       </div>
       <div class="top-container-item">
-        <div class="column-header">Investors</div>
+        <div class="column-header">Resources</div>
         <div><a href="/investors">Investors</a></div>        
+        <div>
+          <a 
+            class="flex gap-2 justify-center items-center"
+            target="_blank" 
+            href="https://portal.cadexgenomics.com/"
+          >
+            <FaExternalLinkAlt size={12} />
+            <span>Customer Portal</span> 
+          </a>
+        </div>
       </div>
       <div class="top-container-item">
         <div class="column-header">Site Map</div>
