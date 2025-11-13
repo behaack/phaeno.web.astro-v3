@@ -1,5 +1,4 @@
 ---
-import { metrics } from '@/assets/performance-metrics'
 ---
 
 <div>
@@ -12,19 +11,59 @@ import { metrics } from '@/assets/performance-metrics'
     <li>
       <div class="data-item metric">Metric</div>
       <div class="data-item pseq">PSeq</div>
-      <div class="data-item short-read">Std Short Read&nbsp;<sup class="text-[7px]">1</sup></div>
+      <div class="data-item short-read">Short Read&nbsp;<sup class="text-[7px]">1</sup></div>
       <div class="data-item long-read">Long Read&nbsp;<sup class="text-[8px]">2</sup></div>
       <div class="data-item notes">Notes</div>
     </li>
-    {metrics.map(item => (
-      <li>
-        <div class="data-item metric">{item.Metric}</div>
-        <div class="data-item pseq"><div class="data-label">PSeq</div>{item.PSeq}</div>
-        <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>{item.ShortRead}</div>
-        <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>{item.LongRead}</div>
-        <div class="data-item notes"><div class="data-label">Notes</div>{item.Notes}</div>
-      </li>     
-    ))}
+    <li>
+      <div class="data-item metric">Full-length isoform recovery</div>
+      <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
+      <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>≈72%</div>
+      <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>≥88%</div>
+      <div class="data-item notes"><div class="data-label">Notes</div></div>
+    </li>
+    <li>
+      <div class="data-item metric">Sensitivity for rare isoforms <span class="text-[10px]">(≤0.01% abundance)</span></div>
+      <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
+      <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>&lt;5%</div>
+      <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>≈45%</div>
+      <div class="data-item notes"><div class="data-label">Notes</div></div>
+    </li>    
+    <li>
+      <div class="data-item metric">Median transcript length resolved</div>
+      <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
+      <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>1.1 kb</div>
+      <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>2.8 kb</div>
+      <div class="data-item notes"><div class="data-label">Notes</div>Short read - fragmented</div>
+    </li>    
+    <li>
+      <div class="data-item metric">Adjusted base-calling accuracy <span class="text-[10px]">(Phred Q)</span></div>
+      <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
+      <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>≥30</div>
+      <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>≥20</div>
+      <div class="data-item notes"><div class="data-label">Notes</div>Illumina chemistry unchanged. Long read is consensus.</div>
+    </li>    
+    <li>
+      <div class="data-item metric">Cost per sample  <span class="text-[10px]">(reagents + sequencing)</span></div>
+      <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
+      <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>$210</div>
+      <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>$650</div>
+      <div class="data-item notes"><div class="data-label">Notes</div>Uses existing NGS infrastructure; no proprietary hardware.</div>
+    </li>    
+    <li>
+      <div class="data-item metric">Hands-on time</div>
+      <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
+      <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>≈3 hours</div>
+      <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>≈6 hours</div>
+      <div class="data-item notes"><div class="data-label">Notes</div>Isothermal tagging + single-tube workflow.</div>
+    </li>
+    <li>
+      <div class="data-item metric">Turn-around time <span class="text-[10px]">(library → FASTA)</span></div>
+      <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
+      <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>≈36 hours</div>
+      <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>≈72 hours</div>
+      <div class="data-item notes"><div class="data-label">Notes</div>Cloud pipeline; parallelizable.</div>
+    </li>                    
   </ul>   
   <div class="text-xs text-muted flex flex-col gap-2 mt-3">
     <div><sup>1</sup> Illumina TruSeq Stranded mRNA, STAR + RSEM quantification (v2.7).</div>
@@ -38,16 +77,12 @@ ul.data-table {
   margin: 0;
   padding: 0;
   gap: 0;
-  // sub: {
-  //   margin-top: -4em;
-  // }
   li {
     display: flex;
     font-size: .75rem;
-    
+
     div.data-item {
       border-right: 1px solid rgb(179, 179, 179);
-      // display: flex;
       padding: 5px;
       overflow-wrap: break-word;
       word-break: break-word;          
@@ -55,178 +90,87 @@ ul.data-table {
 
     div.data-item:last-of-type {
       border-right: none;
-    }    
+    }
 
     div.data-label {
       display: none;
       font-weight: bolder;
     }    
+    
+    .metric {
+      width: 17rem;
+    }
+
+    .pseq,
+    .short-read,
+    .long-read {
+      width: 6rem;
+      text-align: right;
+    }
+
+    .notes {
+      width: calc(100% - (17rem + 6rem + 6rem + 6rem));
+    }    
 
     &:nth-child(even) {
       background-color: rgba(183, 204, 183, 0.589);
-    }  
+    }
+
     &:nth-child(odd) {
-      background-color: rgb(241, 241, 226);
-    }    
-    &:first-child {
-      font-size: .9rem;
+      background-color: white;
+    }   
+    
+    &:first-child {      
+      display: flex;
+      font-size: .85rem;
       font-weight: bold;
       background-color: rgb(201, 201, 201);
-      border-bottom: 1px solid rgb(202, 202, 202);
-    }
+      border-bottom: 1px solid rgb(202, 202, 202);      
+    }    
   }
+}
 
-  .label {
-    display: none;
-   }
-
-  @media (max-width: 725px) {
+@media (max-width: 950px) {
+  ul.data-table {
+    display: block;
     li {
+      padding: 10px;
       display: block;
-      padding: 7px;
-
-      div.data-item {
-        border-right: none;
-        padding: 0;
-      }  
-      
-      &:first-child {
+      &:first-child {      
         display: none;
+      }      
+      div.data-item {
+        border: none;
+        padding: 0;
+        display: flex;
+      } 
+      div.data-label {
+        display: block;
+        width: 5.75rem;
+        &::after {
+          content: ":";
+        }
       }
 
-      > div:first-of-type {
-        font-weight: bold;
-        font-size: .925rem;
+      .metric {
+        font-weight: 900;
+        font-size: larger;
+        margin-bottom: 5px;
+        display: flex;
+        gap: 5px;
+        align-items: center;
       }
 
+      .metric,
+      .pseq, 
+      .short-read,
+      .long-read,
+      .notes {
+        width: 100%;
+        display: block;
+        text-align: left;
+      }               
     }
   }
-}
-
-.metric {
-  width: 20rem;
-}
-
-.pseq {
-  width: calc((100% - 20rem) * 3/16);
-}
-
-.short-read {
-  width: calc((100% - 20rem) * 3/16);
-}
-
-.long-read {
-  width: calc((100% - 20rem) * 2/16);
-}
-
-.notes {
-  width: calc((100% - 20rem) * 8/16);
-}
-
-@media (max-width: 725px) {  
-  .metric,
-  .pseq, 
-  .short-read,
-  .long-read,
-  .notes,
-  .data-item {
-    width: 100%;
-    display: block;
-  }
-
-  .data-label {
-    display: block;
-    font-style: italic;
-    width: 6rem;
-    flex-shrink: 0;
-  }
-
-  .data-label::after {
-    content: ": ";
-    white-space: pre; /* or pre-line */
-  }  
-
-}
+}  
 </style>
-
-
-  <!-- <div class="table-responsive">
-    <table class="table table-bordered table-hover align-middle">
-      <thead class="table-success text-dark">
-        <tr>
-          <th scope="col">Metric</th>
-          <th scope="col">PSeq™</th>
-          <th scope="col">Standard Short-Read RNA-Seq <sup>1</sup></th>
-          <th scope="col">Long-Read Iso-Seq (PacBio) <sup>2</sup></th>
-          <th scope="col">Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Full-length isoform recovery</strong></td>
-          <td>≥ 94 % <em>(known GENCODE v44)</em></td>
-          <td>≈ 72 %</td>
-          <td>≥ 88 %</td>
-          <td>End-to-end molecule coverage; no assembly gaps.</td>
-        </tr>
-        <tr>
-          <td><strong>Sensitivity for rare isoforms (≤ 0.01 % abundance)</strong></td>
-          <td>≥ 87 % detection</td>
-          <td>&lt; 5 %</td>
-          <td>≈ 45 %</td>
-          <td>Unique molecular barcode (4.3 × 10¹²) eliminates PCR duplicates.</td>
-        </tr>
-        <tr>
-          <td><strong>Median transcript length resolved</strong></td>
-          <td>3.2 kb (up to 12 kb)</td>
-          <td>1.1 kb (fragmented)</td>
-          <td>2.8 kb</td>
-          <td>No size-selection bias; compatible with standard paired-end kits.</td>
-        </tr>
-        <tr>
-          <td><strong>Base-calling accuracy (Phred Q)</strong></td>
-          <td>Q ≥ 35 across read</td>
-          <td>Q ≥ 30</td>
-          <td>Q ≥ 20 (consensus)</td>
-          <td>Illumina chemistry unchanged.</td>
-        </tr>
-        <tr>
-          <td><strong>Cost per sample (reagents + sequencing)</strong></td>
-          <td>≈ $180 <em>(1 µg RNA, 30 M reads)</em></td>
-          <td>≈ $210</td>
-          <td>≈ $650</td>
-          <td>Uses existing NGS infrastructure; no proprietary hardware.</td>
-        </tr>
-        <tr>
-          <td><strong>Hands-on time</strong></td>
-          <td>&lt; 2 h</td>
-          <td>≈ 3 h</td>
-          <td>≈ 6 h</td>
-          <td>Isothermal tagging + single-tube workflow.</td>
-        </tr>
-        <tr>
-          <td><strong>Turn-around time (library → FASTA)</strong></td>
-          <td>&lt; 24 h</td>
-          <td>≈ 36 h</td>
-          <td>≈ 72 h</td>
-          <td>Cloud pipeline; parallelizable.</td>
-        </tr>
-      </tbody>
-      <tfoot class="table-light">
-        <tr>
-          <td colspan="5" class="small text-muted">
-            <strong>Footnotes</strong><br>
-            <sup>1</sup> Illumina TruSeq Stranded mRNA, STAR + RSEM quantification (v2.7).<br>
-            <sup>2</sup> PacBio Iso-Seq3, SMRT-Link v11, consensus polishing.<br>
-            <br />
-            <em>All data are for research use only (RUO). Not validated for clinical diagnostics.</em>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-  <p class="text-center mt-4">
-    <a href="mailto:info@phaeno-test-v3.cadexgenomics.com" class="btn btn-outline-success">
-      Request Full Benchmark Report (PDF)
-    </a>
-  </p> -->
