@@ -19,7 +19,7 @@ const team: ITeamMember[] = [
     type: 0,
     fname: 'William',
     lname: 'Agnew, PhD',
-    title: 'Co-founder, President & CEO',
+    title: 'Founder, CEO',
     image: 'wagnew.webp',
     linkedIn: 'https://www.linkedin.com/in/william-agnew-a6482228/',
   },

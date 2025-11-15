@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+
+---
+<h4 class="mb-3">PSeq versus RNA-Seq</h4>
+<div class="flex items-center justify-between">
+  <div class="w-32 font-bold">Gene</div>
+  <div class="w-full h-8 mx-10 flex border border-emerald-600">
+    <div class="h-full min-w-1 bg-emerald-600"></div>
+    <div class="h-full w-2/12 bg-white"></div>
+    <div class="h-full w-6 bg-emerald-600"></div>
+    <div class="h-full w-1/12 bg-white"></div>
+    <div class="h-full w-6 bg-emerald-600"></div>
+    <div class="h-full w-1 bg-white"></div>
+    <div class="h-full w-1 bg-emerald-600"></div>
+    <div class="h-full w-5 bg-white"></div>
+    <div class="h-full w-2 bg-emerald-600"></div>
+    <div class="h-full w-4/12 bg-white"></div>
+    <div class="h-full w-3 bg-emerald-600"></div>    
+    <div class="h-full w-4/12 bg-white"></div>
+    <div class="h-full w-3 bg-emerald-600"></div>
+  </div>
+</div>
+<br />
+<div class="flex items-center justify-between">
+  <div class="w-32 font-bold">
+    <div>Transcripts</div>
+    <div class="font-thin text-sm italic">splice variants</div>
+  </div>
+  <div class="w-full flex justify-center gap-28 items-center">
+    <div class="w-14"><Image src="/images/rna-1.png" height={50} width={50} alt="RNA" /></div>
+    <div class="w-14"><Image src="/images/rna-2.png" height={50} width={50} alt="RNA" /></div>
+  </div>
+</div>
+<br />
+<div class="flex items-center justify-between">
+  <div class="w-32 font-bold">Sequencing<br/>Technology</div>
+  <div class="flex justify-around w-full">
+    <div class="border-r-2 min-w-1/2 border-b border-b-gray-200 border-b-dashed">
+      <div class="text-center font-bold text-xl">RNA Seq</div>
+      <div class="p-5"> 
+        <ul>
+          <li>Missing data (words).</li>
+          <li>Data are unassembled. A biostatistician is required to make educated guesses on the assembly (sentences).</li>
+          <li>Unclear how many RNA splice variants (sentences) there are.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="min-w-1/2 border-b border-b-gray-200 border-b-dashed">
+      <div class="text-center font-bold text-xl">PSeq</div>
+      <div class="p-5">
+        <ul>
+          <li>No missing data (words).</li>
+          <li>Data are definitively and accurately assembled into isoform-resolved RNAs (sentences).</li>
+        </ul>
+        <div class="mt-5 text-center font-bold">-- Full-length isoform-resolved --</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="flex items-center justify-between">  
+  <div class="w-32 font-bold">Results</div>
+  <div class="flex justify-around w-full">
+    <div class="border-r-2 min-w-1/2">
+      <div class="p-5"> 
+        <div class="mb-3 p-1 text-center bg-black text-white text-sm">50 bp to 300 bp unassembled fragments</div>
+        <div class="container mx-auto p-7">
+          <div class="flex flex-wrap justify-center gap-6 font-mono">
+            <div class="bg-gray-100 p-2 rounded">quick</div>
+            <div class="bg-gray-100 p-2 rounded">fox</div>
+            <div class="bg-gray-100 p-2 rounded">lazy</div>
+            <div class="bg-gray-100 p-2 rounded">rabbit</div>
+            <div class="bg-gray-100 p-2 rounded">the</div>
+            <div class="bg-gray-100 p-2 rounded">black</div>
+            <div class="bg-gray-100 p-2 rounded">hopped</div>
+            <div class="bg-gray-100 text-gray-400 line-through p-2 rounded">dog</div>
+            <div class="bg-gray-100 p-2 rounded">over</div>
+            <div class="bg-gray-100 p-2 rounded">jumps</div>
+            <div class="bg-gray-100 p-2 rounded">brown</div>
+          </div>
+        </div>        
+      </div>
+    </div>
+    <div class="min-w-1/2">
+      <div class="p-5">
+        <div class="p-1 text-center bg-black text-white text-sm">Fully assembled individual RNAs</div>
+        <div class="font-mono gap-8 flex flex-col mt-3">
+          <div class="flex items-center justify-start mt-6">
+            <div class="w-14"><Image src="/images/rna-1.png" height={22} width={22} alt="RNA" /></div>
+            <div class="text-left">The quick brown fox jumps over the lazy dog.</div>
+          </div>
+          <div class="flex items-center justify-start">
+            <div class="w-14"><Image src="/images/rna-2.png" height={22} width={22} alt="RNA" /></div>
+            <div class="text-left">The brown rabbit hopped over the black dog.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+<style>
+
+</style>
