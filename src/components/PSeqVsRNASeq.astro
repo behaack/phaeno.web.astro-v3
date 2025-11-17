@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-
+const rnaSeq = "AGACTTCCCGGCTTCTCCCCAGAGAAGAAATACTGCGTCACAAGAAGACAAAGATGACAGTGTAGTTTTACCTCTCATCACACCTTCTTCGAGATGCTGGGCTCTTGGTCTTTTGGAGATTACTTTAAGGAATTGGCATGTAAGATGGCTCAGACTTCCCGGCTTCTCCCCAGAGAAGAAATACTGCGTCACAAGAAGACAAAGATGACAGTGTAGTTTTACCTCTCATCACACCTTCTTCGAGATGCTGGGCTCTTGGTCTTTTGGAGATTACTTTAAGGAATTGGCATGTAAGATGGCTC";
 ---
 <h4 class="mb-3">PSeq versus RNA-Seq</h4>
 <div class="section-container">
@@ -27,14 +27,15 @@ import { Image } from "astro:assets";
     <div>Transcripts</div>
     <div class="font-thin text-sm italic">splice variants</div>
   </div>
-  <div class="w-full flex justify-center gap-28 items-center">
+  <div class="w-full flex justify-start gap-15 items-center">
+    <div class="w-14 ml-10"><Image src="/images/rna-1.png" height={50} width={50} alt="RNA" /></div>
     <div class="w-14"><Image src="/images/rna-1.png" height={50} width={50} alt="RNA" /></div>
     <div class="w-14"><Image src="/images/rna-2.png" height={50} width={50} alt="RNA" /></div>
   </div>
 </div>
 <br />
 <div class="section-container">
-  <div class="section-title">Sequencing Technology</div>
+  <div class="section-title">Sequencing Technologies</div>
   <div class="flex justify-around w-full">
     <div class="border-r-2 min-w-1/2 border-b border-b-gray-200 border-b-dashed">
       <div class="text-center font-bold text-xl">RNA Seq</div>
@@ -69,17 +70,12 @@ import { Image } from "astro:assets";
         <div class="results-title">50 to 300bp unassembled fragments</div>
         <div class="container mx-auto p-5">
           <div class="rna-seq-results-container">
-            <div class="rna-seq-result">quick</div>
-            <div class="rna-seq-result">fox</div>
-            <div class="rna-seq-result">lazy</div>
-            <div class="rna-seq-result">rabbit</div>
-            <div class="rna-seq-result">the</div>
-            <div class="rna-seq-result">black</div>
-            <div class="rna-seq-result">hopped</div>
-            <div class="rna-seq-result line-through">dog</div>
-            <div class="rna-seq-result">over</div>
-            <div class="rna-seq-result">jumps</div>
-            <div class="rna-seq-result">brown</div>
+            {Array.from({ length: 20 }, (_, i) => (            
+              <div class="rna-seq-result flex flex-col items-center gap-0.5">
+                <div>{rnaSeq.substring(1*i, 1*i + 5)}</div>
+                <Image src={`/images/rna-frag-${i + 1}.png`} height={15} width={15} alt="RNA splice variant 1" />
+              </div>
+            ))}
           </div>
         </div>        
       </div>
@@ -91,12 +87,16 @@ import { Image } from "astro:assets";
           <div class="bg-white border-2 border-black rounded-full px-1 ml-[-20px] text-center">vs</div>
           <div class="font-mono gap-8 flex flex-col pl-5">
             <div class="flex items-center justify-start mt-6">
-              <div class="flex-shrink-0 mr-3"><Image src="/images/rna-1.png" height={22} width={22} alt="RNA splice variant 1" /></div>
-              <div class="text-left">The quick brown fox jumps over the lazy dog.</div>
+              <div class="flex-shrink-0 mr-3"><Image src="/images/rna-1.png" height={30} width={30} alt="RNA splice variant 1" /></div>
+              <div class="text-left wrap-anywhere">AGACTTCCCGGCTTCTCCCCAGAGAAGAAATACTGCGTCACAAGAAGACAAAGATGACAGTGTAGTTTTACCTCT...</div>
             </div>
             <div class="flex items-center justify-start">
-              <div class="flex-shrink-0 mr-3"><Image src="/images/rna-2.png" height={22} width={22} alt="RNA splice variant 2" /></div>
-              <div class="text-left">The brown rabbit hopped over the black dog.</div>
+              <div class="flex-shrink-0 mr-3"><Image src="/images/rna-1.png" height={30} width={30} alt="RNA splice variant 1" /></div>
+              <div class="text-left wrap-anywhere">AGACTTCCCGGCTTCTCCCCAGAGAAGAAATACTGCGTCACAAGAAGACAAAGATGACAGTGTAGTTTTACCTCT...</div>
+            </div>            
+            <div class="flex items-center justify-start">
+              <div class="flex-shrink-0 mr-3"><Image src="/images/rna-2.png" height={30} width={30} alt="RNA splice variant 2" /></div>
+              <div class="text-left wrap-anywhere">CATCACACCTTCTTCGAGATGCTGGGCTCTTGGTCTTTTGGAGATTACTTTAAGGAATTGGCATGTAAGATGGCTC...</div>
             </div>
           </div>
         </div>
@@ -132,13 +132,13 @@ import { Image } from "astro:assets";
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
 }
 
 .rna-seq-result {
   background-color: #f3f4f6;
-  padding: .5rem;
+  padding: .2rem;
   border-radius: 0.25rem;
 }
 
@@ -187,7 +187,7 @@ import { Image } from "astro:assets";
 
   .rna-seq-result {
     background-color: #f3f4f6;
-    padding: .3rem;
+    padding: .15rem;
     font-size: smaller;
   }  
 }  
