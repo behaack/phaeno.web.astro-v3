@@ -27,7 +27,7 @@ const rnaSeq = "AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCTCATCACACCTTCT
     <div>Transcripts</div>
     <div class="font-thin text-sm italic">splice variants</div>
   </div>
-  <div class="w-full flex justify-start gap-15 items-center">
+  <div class="w-full flex justify-center gap-15 items-center">
     <div class="w-14 ml-10"><Image src="/images/rna-1.png" height={50} width={50} alt="RNA" /></div>
     <div class="w-14"><Image src="/images/rna-1.png" height={50} width={50} alt="RNA" /></div>
     <div class="w-14"><Image src="/images/rna-2.png" height={50} width={50} alt="RNA" /></div>
@@ -42,8 +42,9 @@ const rnaSeq = "AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCTCATCACACCTTCT
       <div class="p-5"> 
         <ul>
           <li>Data gaps</li>
-          <li>Data left unassembled</li>
-          <li>Isoforms left unresolved</li>
+          <li>Data unassembled</li>
+          <li>Isoforms unresolved</li>
+          <li>Semi-quantitative</li>
         </ul>
       </div>
     </div>
@@ -54,8 +55,9 @@ const rnaSeq = "AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCTCATCACACCTTCT
         <div class="p-5">
           <ul>
             <li>No data gaps</li>
-            <li>Data are definitively and accurately assembled</li>
-            <li>Isoforms are resolved</li>
+            <li>Data assembled</li>
+            <li>Isoforms resolved</li>
+            <li>Quantitative</li>
           </ul>
         </div>
       </div>
@@ -67,7 +69,7 @@ const rnaSeq = "AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCTCATCACACCTTCT
   <div class="flex justify-around w-full">
     <div class="border-r-2 min-w-1/2">
       <div class="pr-1 pt-2"> 
-        <div class="results-title">50 to 300bp unassembled fragments</div>
+        <div class="results-title"><div>50-300 bp unassembled fragments</div></div>
         <div class="container mx-auto p-5">
           <div class="rna-seq-results-container">
             {Array.from({ length: 20 }, (_, i) => (            
@@ -82,21 +84,21 @@ const rnaSeq = "AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCTCATCACACCTTCT
     </div>
     <div class="min-w-1/2">
       <div class="pl-1 pt-2">
-        <div class="results-title">Fully assembled individual RNAs</div>
+        <div class="results-title"><div>Fully assembled individual RNAs</div></div>
         <div class="flex items-center">
           <div class="bg-white border-2 border-black rounded-full px-1 ml-[-20px] text-center">vs</div>
           <div class="font-mono gap-8 flex flex-col pl-5">
             <div class="flex items-center justify-start mt-6">
               <div class="flex-shrink-0 mr-3"><Image src="/images/rna-1.png" height={30} width={30} alt="RNA splice variant 1" /></div>
-              <div class="text-left wrap-anywhere">AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCT...</div>
+              <div class="text-left wrap-anywhere">AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCT</div>
             </div>
             <div class="flex items-center justify-start">
               <div class="flex-shrink-0 mr-3"><Image src="/images/rna-1.png" height={30} width={30} alt="RNA splice variant 1" /></div>
-              <div class="text-left wrap-anywhere">AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCT...</div>
+              <div class="text-left wrap-anywhere">AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCT</div>
             </div>            
             <div class="flex items-center justify-start">
               <div class="flex-shrink-0 mr-3"><Image src="/images/rna-2.png" height={30} width={30} alt="RNA splice variant 2" /></div>
-              <div class="text-left wrap-anywhere">CATCACACCTTCTTCGAGATGCTCTTGGTCTTTTGGCATGTAAGATGGCTC...</div>
+              <div class="text-left wrap-anywhere">CATCACACCTTCTTCGAGATGCTCTTGGTCTTTTGGCATGTAAGATGGCTC</div>
             </div>
           </div>
         </div>
@@ -177,8 +179,12 @@ const rnaSeq = "AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCTCATCACACCTTCT
   }     
   
   .results-title {
-    font-size: .7rem;
+    font-size: .85rem;
     padding: .15rem;
+    min-height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }  
 
   .rna-seq-results-container {
