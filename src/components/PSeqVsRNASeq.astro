@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-const rnaSeq = "AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCTCATCACACCTTCTTCGAGATGCTCTTGGTCTTTTGGCATGTAAGATGGCTCAGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCTCATCACACCTTCTTCGAGATGCTCTTGGTCTTTTGGCATGTAAGATGGCTC";
+const rnaSeq1 = "AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCTAGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCT";
+const rnaSeq2 = "CATCACACCTTCTTCGAGATGCTCTTGGTCTTTTGGCATGTAAGATGGCTCCATCACACCTTCTTCGAGATGCTCTTGGTCTTTTGGCATGTAAGATGGCTC";
 ---
 <h4 class="mb-3">PSeq versus RNA-Seq</h4>
 <div class="section-container">
@@ -74,8 +75,11 @@ const rnaSeq = "AGACTTCCCGGCTTCTCCCCAAGAAATACTGCGTCACAAGGTTTTACCTCTCATCACACCTTCT
           <div class="rna-seq-results-container">
             {Array.from({ length: 20 }, (_, i) => (            
               <div class="rna-seq-result flex flex-col items-center gap-0.5">
-                <div>{rnaSeq.substring(1*i, 1*i + 5)}</div>
-                <Image src={`/images/rna-frag-${i + 1}.png`} height={15} width={15} alt="RNA splice variant 1" />
+                {(i % 2 === 0)
+                  ? <div>{rnaSeq1.substring(1*i, 1*i + 8)}</div>
+                  : <div>{rnaSeq2.substring(1*(i-1), 1*(i-1) + 8)}</div>
+                }
+                {/* <Image src={`/images/rna-frag-${i + 1}.png`} height={15} width={15} alt="RNA splice variant 1" /> */}
               </div>
             ))}
           </div>
