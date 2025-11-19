@@ -77,7 +77,7 @@ const rnaSeq2 = "CATCACACCTTCTTCGAGATGCTCTTGGTCTTTTGGCATGTAAGATGGCTCCATCACACCTTC
               <div class="rna-seq-result flex flex-col items-center gap-0.5">
                 {(i % 2 === 0)
                   ? <div>{rnaSeq1.substring(8*i, 8*i + 8)}</div>
-                  : <div>{rnaSeq2.substring(8*i, 8*i + 8)}</div>
+                  : <div>{rnaSeq2.substring(8*(i-1), 8*(i-1) + 8)}</div>
                 }
                 {/* <Image src={`/images/rna-frag-${i + 1}.png`} height={15} width={15} alt="RNA splice variant 1" /> */}
               </div>
