@@ -99,7 +99,7 @@ We may use the information we have collected from you to enable us to display ad
 
 Phaeno will retain Your Data in accordance with applicable legislation and your instructions when applicable, including any applicable terms in any Agreements concluded between us, our Terms of service, this Privacy policy and as required by applicable law. Phaeno may retain information pertaining to you for as long as necessary for the purposes described in this Privacy Policy. This may include keeping your information after you have deactivated your account for the period of time needed for Phaeno to pursue legitimate business interests, conduct audits, comply with (and demonstrate compliance with) legal obligations, resolve disputes and enforce our agreements.
 
-**How we share and disclose Your Information**
+**How We Share and Disclose Your Information**
 
 This section describes how Phaeno may share and disclose Information. We may disclose aggregated information about our users, and information that does not identify any individual, without restriction. We may share or disclose personal or other usage information that we collect or you provide as described in this privacy policy:
 
