@@ -1,0 +1,19 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Content } from '@/content/data.md';
+import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
+---
+<Layout>   
+  <SEOMeta 
+    slot="head"
+    title="Data Security, Retention, and Backup Policy | Phaeno"
+    description="Read Phaeno's data policies."
+    documentType="Web Page"
+  />    
+  <main>
+    <section>
+      <h1>Data Security, Retention, and Backup Policies </h1>
+      <Content />
+    </section>
+  </main>
+</Layout>
