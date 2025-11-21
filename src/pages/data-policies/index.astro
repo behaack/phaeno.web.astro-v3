@@ -1,6 +1,7 @@
 ---
-import Layout from '@/layouts/Layout.astro';
 import { Content } from '@/content/data.md';
+import TopPageBanner from '@/components/TopPageBanner-2.astro';
+import Layout from '@/layouts/Layout.astro';
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 ---
 <Layout>   
@@ -11,8 +12,8 @@ import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
     documentType="Web Page"
   />    
   <main>
+    <TopPageBanner title="Phaeno Data Security, Retention, and Backup Policies" />    
     <section>
-      <h1>Data Security, Retention, and Backup Policies </h1>
       <Content />
     </section>
   </main>
