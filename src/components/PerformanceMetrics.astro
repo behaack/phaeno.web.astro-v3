@@ -2,7 +2,7 @@
 ---
 
 <div>
-  <h3>PSeq™ Performance Metrics (RUO) - Coming soon</h3>
+  <h3>PSeq™ Performance Metrics (RUO)</h3>
   <!-- <p class="text-muted mb-5">
     All figures are derived from internal benchmarking on human cell-line RNA (HEK293T, 1 µg total RNA) using an 
     Illumina NovaSeq 6000 (2 x 150 bp). Independent validation is in progress.
@@ -37,12 +37,26 @@
       <div class="data-item notes"><div class="data-label">Notes</div>Short read - fragmented</div>
     </li>    
     <li>
+      <div class="data-item metric">Maximum resolvable transcript length</div>
+      <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
+      <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>? kb</div>
+      <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>10 kb</div>
+      <div class="data-item notes"><div class="data-label">Notes</div>Some short-read kits can extend this to 5 kb.</div>
+    </li>        
+    <li>
       <div class="data-item metric">Adjusted base-calling accuracy <span class="text-[10px]">(Phred Q)</span></div>
       <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
       <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>≥30</div>
       <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>≥20</div>
       <div class="data-item notes"><div class="data-label">Notes</div>Illumina chemistry unchanged. Long read is consensus.</div>
-    </li>    
+    </li>   
+    <li>
+      <div class="data-item metric">Quantitative</span></div>
+      <div class="data-item pseq"><div class="data-label">PSeq</div>Yes</div>
+      <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>No</div>
+      <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>No</div>
+      <div class="data-item notes"><div class="data-label">Notes</div></div>
+    </li>        
     <!-- <li>
       <div class="data-item metric">Cost per sample  <span class="text-[10px]">(reagents + sequencing)</span></div>
       <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
@@ -57,13 +71,13 @@
       <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>≈6 hours</div>
       <div class="data-item notes"><div class="data-label">Notes</div>Isothermal tagging + single-tube workflow.</div>
     </li> -->
-    <li>
+    <!-- <li>
       <div class="data-item metric">Turn-around time <span class="text-[10px]">(library → FASTA)</span></div>
-      <div class="data-item pseq"><div class="data-label">PSeq</div>TBD</div>
+      <div class="data-item pseq"><div class="data-label">PSeq</div>≈36 hours</div>
       <div class="data-item short-read"><div class="data-label">Short Read <sup>1</sup></div>≈36 hours</div>
       <div class="data-item long-read"><div class="data-label">Long Read <sup>2</sup></div>≈72 hours</div>
       <div class="data-item notes"><div class="data-label">Notes</div>Cloud pipeline; parallelizable.</div>
-    </li>                    
+    </li>                         -->
   </ul>   
   <div class="text-xs text-muted flex flex-col gap-2 mt-3">
     <div><sup>1</sup> Illumina TruSeq Stranded mRNA, STAR + RSEM quantification (v2.7).</div>
