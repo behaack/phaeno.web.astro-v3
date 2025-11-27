@@ -7,20 +7,24 @@ import HorizonalListItem from '@/components/HorizontalListItem.astro';
 import PSeqVsRNASeq from '@/components/PSeqVsRNASeq.astro';
 ---
 <section class="mt-3 mb-5">
-  <h3>Introducing Phaeno's PSeq<sup class="text-[0.6em] relative -top-3">™</sup> research use only (RUO) Service</h3>
+  <h3 id="introducing-pseq" data-phaeno-search="Introducing PSeq RUO Service">
+    Introducing Phaeno's PSeq<sup class="text-[0.6em] relative -top-3">™</sup> research use only (RUO) Service
+  </h3>
   <br />
   <div>
     <CalloutBox 
       bgColor="#545458" 
     >
-      <h3 class="text-white text-center">Phaeno has developed a best-in-class RNA long-sequencing technology that resolves individual RNAs, called PSeq.</h3>            
+      <h3 class="text-white text-center">
+        Phaeno has developed a best-in-class RNA long-read sequencing technology that resolves individual RNAs, called PSeq.
+      </h3>            
     </CalloutBox>    
     <br />
     <p>Phaeno ‘phased RNA sequencing’ is shotgun sequencing Next Generation technology that bypasses Third Generation engineering to assemble full-length individual molecules accurately, on the scale of solution chemistry.</p>
     <br />
     <PSeqVsRNASeq />
     <br />
-    <h4>
+    <h4 id="trove-of-info-ml" data-phaeno-search="PSeq provides a trove of information for">
       Analysis by PSeq provides a trove of information available for machine learning, in four dimensions.
     </h4>      
     <HorizonalList columns={[1, 1, 2, 2]}>
@@ -66,7 +70,9 @@ import PSeqVsRNASeq from '@/components/PSeqVsRNASeq.astro';
         </div>          
       </HorizonalListItem>
     </HorizonalList>
-    <h4>Available information</h4>
+    <h4 id="available-information" data-phaeno-search="Pseq - available information">
+      Available information
+    </h4>
     <HorizonalList columns={[1, 2, 2, 4]}>
       <HorizonalListItem>ORF-constitutive and alternative protein-coding exons</HorizonalListItem>
       <HorizonalListItem>Alternative translation initiation sites</HorizonalListItem>
