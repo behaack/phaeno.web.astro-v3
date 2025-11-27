@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://phaeno-test-v2.cadexgenomics.com',
+  site: 'https://phaeno-test-v3.cadexgenomics.com',
   trailingSlash: 'ignore',
   output: 'static',
   redirects: {
