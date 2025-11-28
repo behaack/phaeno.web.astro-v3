@@ -264,6 +264,7 @@ export default function Search() {
                     active={activeIndex === index}
                     linkRef={(el) => { resultRefs.current[index] = el; }}
                     optionId={`result-${index}`}
+                    onSelect={() => setOpen(false)}
                   />
                 ))}
               </ul>

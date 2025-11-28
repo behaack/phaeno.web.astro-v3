@@ -24,9 +24,19 @@ export interface IProps {
   active: boolean;
   linkRef: (node: HTMLAnchorElement | null) => void;
   optionId: string;
+  onSelect: () => void;
 }
 
-export default function SearchItem({ list, index, item, searchStr, active, linkRef, optionId }: IProps) {
+export default function SearchItem({ 
+  list, 
+  index, 
+  item, 
+  searchStr, 
+  active, 
+  linkRef, 
+  optionId, 
+  onSelect 
+}: IProps ) {
   const isHeader = useMemo(() => {
     if (index === 0) return true;
     return list[index - 1].pageTitle !== list[index].pageTitle;
@@ -55,6 +65,11 @@ export default function SearchItem({ list, index, item, searchStr, active, linkR
         ref={linkRef}
         className="block"
         tabIndex={-1}
+        onClick={(e) => { 
+          e.preventDefault();
+          onSelect();
+          window.location.href = item.url;
+        }}
       >
         <div className="pl-7 flex items-center gap-2">
           <span>-</span>
