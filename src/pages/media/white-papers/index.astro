@@ -3,6 +3,9 @@ import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
 import MediaCardCollection from '@/components/MediaCardCollection.astro'
 import MediaCard from '@/components/MediaCard.astro'
+import TopPageBanner from '@/components/TopPageBanner-3.astro'
+import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
+
 const papers = await getCollection('white_papers')
 ---
 
@@ -10,10 +13,15 @@ const papers = await getCollection('white_papers')
 <meta name="description" content="Read technical White Papers published by Phaeno." />
 
 <Layout>
+  <SEOMeta 
+    slot="head"
+    title="White Papers | Phaeno"
+    description="Learn about Phaeno's mission to transform molecular diagnostics through innovative RNA sequencing technology and expert leadership."
+    documentType="List"
+  />    
   <main>
+    <TopPageBanner title="White Papers" />
     <section>
-      <h1>White Papers</h1>
-
       <input
         id="mediaSearch"
         class="mb-6"

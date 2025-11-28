@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
 import MediaCard from '@/components/MediaCard.astro'
 import MediaCardCollection from '@/components/MediaCardCollection.astro'
+import TopPageBanner from '@/components/TopPageBanner-1.astro'
+import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 
 const papers = await getCollection('scientific_papers')
 ---
@@ -11,10 +13,15 @@ const papers = await getCollection('scientific_papers')
 <meta name="description" content="Browse throught and read Phaeno's scientific publications." />
 
 <Layout>
+  <SEOMeta 
+    slot="head"
+    title="Scientific Publications"
+    description="Learn about Phaeno's mission to transform molecular diagnostics through innovative RNA sequencing technology and expert leadership."
+    documentType="List"
+  />    
   <main>
+    <TopPageBanner title="Scientific Publications" />
     <section>
-      <h1>Scientific Publications</h1>
-
       <input
         id="mediaSearch"
         class="mb-6"

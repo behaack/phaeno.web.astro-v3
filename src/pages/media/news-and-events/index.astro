@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
 import MediaCard from '@/components/MediaCard.astro'
 import MediaCardCollection from '@/components/MediaCardCollection.astro'
+import TopPageBanner from '@/components/TopPageBanner-3.astro'
+import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 
 const events = await getCollection('events')
 const news = await getCollection('news')
@@ -13,9 +15,15 @@ const news = await getCollection('news')
 <meta name="description" content="Stay up to date with Events we are attending and catch the latest news about Phaeno." />
 
 <Layout>
+  <SEOMeta 
+    slot="head"
+    title="News & Events | Phaeno"
+    description="Learn about Phaeno's mission to transform molecular diagnostics through innovative RNA sequencing technology and expert leadership."
+    documentType="List"
+  />    
   <main>
+    <TopPageBanner title="News & Events" />
     <section>
-      <h1>News & Events</h1>
       <h2>Upcoming events</h2>
       {(events.length)
         ? (

@@ -4,6 +4,8 @@ import Layout from '@/layouts/Layout.astro'
 import MediaCard from '@/components/MediaCard.astro'
 import MediaCardCollection from '@/components/MediaCardCollection.astro'
 import RSSFeed from '@/components/RSSFeed.astro'
+import TopPageBanner from '@/components/TopPageBanner-1.astro'
+import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro'
 
 const papers = await getCollection('blog')
 ---
@@ -12,10 +14,15 @@ const papers = await getCollection('blog')
 <meta name="description" content="Stay up to date with the latest news, breakthroughs, and company updates from the team at Phaeno." />
 
 <Layout>
+  <SEOMeta 
+    slot="head"
+    title="Our Blog | Phaeno"
+    description="Learn about Phaeno's mission to transform molecular diagnostics through innovative RNA sequencing technology and expert leadership."
+    documentType="List"
+  />  
   <main>
+    <TopPageBanner title="Phaeno Blog" />
     <section>
-    <h1>Phaeno Blog</h1>
-
     <div class="mb-2 flex justify-end">
       <RSSFeed feedName="blog.xml"/>
     </div>
