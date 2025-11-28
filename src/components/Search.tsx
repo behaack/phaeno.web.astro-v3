@@ -2,7 +2,7 @@ import type { articletypes, webtypes } from '@/assets/docTypes';
 import { useEffect, useRef, useState } from 'react';
 import { FaMagnifyingGlass, FaX } from 'react-icons/fa6';
 import { BsFiletypeHtml } from "react-icons/bs";
-import HighlightedSnippet from './SearchHighlightedSnippet';
+import SearchHighlightedSnippet from './SearchHighlightedSnippet';
 import SearchItem from './SearchItem';
 
 export interface ISearchResult {
@@ -244,7 +244,7 @@ export default function Search() {
               <div id="search-status" className="sr-only" aria-live="polite">
                 {ariaMessage}
               </div>
-              <ul role="listbox" className="list-none divide-y divide-gray-200 p-0 m-0 gap-0">
+              <ul role="listbox" className="list-none divide-y divide-gray-200 p-0 pb-2 m-0 gap-0">
                 {searchList.map((item, index) => (
                   <SearchItem
                     list={searchList} 

@@ -1,7 +1,7 @@
 import type { articletypes, webtypes } from '@/assets/docTypes';
 import { useMemo, useRef, useState } from 'react';
 import { BsFiletypeHtml } from "react-icons/bs";
-import HighlightedSnippet from './SearchHighlightedSnippet';
+import SearchHighlightedSnippet from './SearchHighlightedSnippet';
 
 export interface ISearchItem {
   id: string;
@@ -56,20 +56,25 @@ export default function SearchItem({ list, index, item, searchStr }: IProps) {
 
   const link = useMemo(() => {
     return (
-      <li className="pl-7">
-        <div className="flex items-center gap-2">
-          <span>-</span>
-          <a href={item.url}>
-            <div>
-              <h3 className="p-0 m-0 text-sm font-semibold inline-flex items-center gap-2">
-                <div>{ item.anchorTitle }</div>
-              </h3>
-              <div className="text-[10px]">
-                <HighlightedSnippet snippet={item.snippet} searchStr={searchStr} />
+      <li className="link-item py-1 hover:bg-amber-50">
+        <a href={item.url}>
+          <div className="pl-7 flex items-center gap-2">
+            <span>-</span>
+              <div>
+                <div className="flex items-center gap-2">
+                  <div className="p-0 m-0 text-sm font-semibold inline-flex items-center gap-2">
+                    <div>{ item.anchorTitle }</div>
+                  </div>
+                  <div className="text-[8px] bg-gray-100 max-w-fit py-1 px-2 rounded-lg font-bold">
+                    Matches: {item.count}
+                  </div>              
+                </div>
+                <div className="text-[10px]">
+                  <SearchHighlightedSnippet text={item.snippet} searchStr={searchStr} />
+                </div>
               </div>
-            </div>
-          </a>
-        </div>
+          </div>
+        </a>
       </li>
     )
   }, [index])

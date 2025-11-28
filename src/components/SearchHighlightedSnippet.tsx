@@ -1,20 +1,20 @@
 import type { JSX } from "react";
 
 export interface ISearchResult {
-  snippet: string;
+  text: string;
   searchStr: string; // this can be ignored or used to style matches
 }
 
-function HighlightedSnippet({ snippet }: ISearchResult) {
+function SearchHighlightedSnippet({ text }: ISearchResult) {
   const regex = /\{\{(.*?)\}\}/g;
   const parts: (string | JSX.Element)[] = [];
   let lastIndex = 0;
   let match;
 
-  while ((match = regex.exec(snippet)) !== null) {
+  while ((match = regex.exec(text)) !== null) {
     // Push text before match
     if (match.index > lastIndex) {
-      parts.push(snippet.slice(lastIndex, match.index));
+      parts.push(text.slice(lastIndex, match.index));
     }
 
     // Push highlighted match
@@ -28,11 +28,11 @@ function HighlightedSnippet({ snippet }: ISearchResult) {
   }
 
   // Push the remaining text
-  if (lastIndex < snippet.length) {
-    parts.push(snippet.slice(lastIndex));
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
   }
 
   return <span className="w-full">{parts}</span>;
 }
 
-export default HighlightedSnippet;
+export default SearchHighlightedSnippet;

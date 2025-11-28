@@ -100,10 +100,10 @@ Data may be transferred to and processed in the United States and other countrie
 ##### **Your Privacy Rights**
 Depending on your location, you may have the right to access, correct, delete, restrict, object to processing, or receive a portable copy of your personal information, and to withdraw consent.
 
-**U.S. Residents (California, Colorado, Virginia, Connecticut, etc.)**  
+##### **U.S. Residents (California, Colorado, Virginia, Connecticut, etc.)**  
 You have rights under CCPA/CPRA and similar state laws (right to know, delete, correct, opt-out of sale/sharing, limit sensitive PI use, non-discrimination). Exercise these rights by emailing privacy@phaenobiotech.com or using your account settings.
 
-**EEA, UK, and Switzerland Residents**  
+##### **EEA, UK, and Switzerland Residents**  
 You have the rights above under GDPR/UK GDPR and may lodge a complaint with your local supervisory authority.
 
 ##### **Choices About How We Use and Disclose Your Information**
