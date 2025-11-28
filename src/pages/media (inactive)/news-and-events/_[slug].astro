@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import ShareWithSocialMedia from '@/components/ShareWithSocialMedia.astro';
+import ArticleSEOMeta from '@/components/meta-data-helpers/ArticleSEOMeta.astro';
 
 
 export async function getStaticPaths() {
@@ -15,7 +16,7 @@ export async function getStaticPaths() {
 const path = decodeURIComponent(Astro.url.pathname).toLowerCase();
 const host = Astro.url.host;
 const { newsItem } = Astro.props as { newsItem: CollectionEntry<'news'> };
-const { title, date, summary } = newsItem.data;
+const { title, date, summary, image } = newsItem.data;
 const { Content } = await newsItem.render();   // returns an Astro component
 ---
 
@@ -23,10 +24,18 @@ const { Content } = await newsItem.render();   // returns an Astro component
 <meta name="description" content="Phaeno is revolutionizing RNA sequencing with full-length, high-fidelity reads. Discover our platform and team." />
 
 <Layout>
+  <ArticleSEOMeta 
+    slot="head"
+    title={title}
+    description={summary}
+    datePosted={date}
+    image={image}
+    documentType="Web Page"
+  />    
   <main>
     <section>
       <p>Media | <a href="/media/news-and-events">News & Events</a> | {newsItem.slug}</p>
-      <h1 class="alternative">{title}</h1>
+      <h1 id={`${title.replace(/\s+/g, '-').toLowerCase()}`} class="alternative">{title}</h1>
       <p class="text-sm text-gray-500">Posted {new Date(date).toLocaleDateString('en-US')}</p>
 
       <article>

@@ -2,7 +2,6 @@
 title: "Phaeno featured at RNA Leaders US"
 image: "https://7579-52288.el-alt.com/public/molecules.png"
 date: "2024-05-20"
-type: "news"
 summary: "Phaeno was featured at the RNA Leaders."
 ---
 

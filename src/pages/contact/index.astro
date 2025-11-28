@@ -41,11 +41,11 @@ import TopPageBanner from '@/components/TopPageBanner-3.astro';
       <p>Sign-up to receive period updates on the company. You can unsubscribe at any time.</p>
       <ContactForm client:load />
       {(import.meta.env.PUBLIC_HIDE_PSEQ_AVAIL_NOW === "false") && (
-        <div id="place-order">
-          <h2 class="mt-5">Place Order Inquiry</h2>
+        <>
+          <h2 id="place-order" data-phaeno-search="Place Order Inquiry" class="mt-5">Place Order Inquiry</h2>
           <p>A Phaeno scientist will be in contact with you to discuss your sequencing needs.</p>
           <OrderForm client:load />
-        </div>
+        </>
       )}
       <br />
     </section>

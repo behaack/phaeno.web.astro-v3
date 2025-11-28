@@ -39,7 +39,6 @@ export async function getStaticPaths() {
 ---
 
 <Layout>
-  <!-- ▾──────────────  PAGE-SPECIFIC HEAD  ──────────────▾ -->
   <JobSEOMeta 
     slot="head"
     title={metaTitle}
@@ -48,7 +47,6 @@ export async function getStaticPaths() {
     image={metaImage}
     schema={schema}    
   />
-  <!-- ▴──────────────  PAGE-SPECIFIC HEAD  ──────────────▴ -->
 
   <main id="main" tabindex="-1">
     <TopPageBanner title="Job Opening" />

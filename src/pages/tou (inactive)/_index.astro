@@ -2,16 +2,18 @@
 import Layout from '@/layouts/Layout.astro';
 import { Content } from '@/content/tou.md';
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
+import TopPageBanner from '@/components/TopPageBanner-1.astro';
 ---
 <Layout>
   <SEOMeta 
     slot="head"
     title="Terms of Use | Phaeno"
     description="See Phaeno's Terms of Use."
+    documentType="Web Page"    
   />    
   <main>
+    <TopPageBanner title="Terms of use" />    
     <section>
-      <h1 class="mb-6">Terms of use</h1>
       <Content />
     </section>
   </main>

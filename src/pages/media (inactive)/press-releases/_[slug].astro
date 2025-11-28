@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import ShareWithSocialMedia from '@/components/ShareWithSocialMedia.astro';
+import ArticleSEOMeta from '@/components/meta-data-helpers/ArticleSEOMeta.astro';
 
 
 export async function getStaticPaths() {
@@ -22,10 +23,17 @@ const { Content } = await job.render();   // returns an Astro component
 <meta name="description" content="Phaeno is revolutionizing RNA sequencing with full-length, high-fidelity reads. Discover our platform and team." />
 
 <Layout>
+  <ArticleSEOMeta 
+    slot="head"
+    title={title}
+    description={summary}
+    datePosted={date}
+    documentType="Web Page"
+  />      
   <main>
     <section>
       <p>Media | <a href="/media/press-eleases">Press Releases</a> | {job.slug}</p>
-      <h1 class="alternative">{title}</h1>
+      <h1 id={`${title.replace(/\s+/g, '-').toLowerCase()}`} class="alternative">{title}</h1>
       <p class="text-sm text-gray-500">Published {new Date(date).toLocaleDateString('en-US')}</p>
       <Content />      
       

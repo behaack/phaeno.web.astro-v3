@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import ShareWithSocialMedia from '@/components/ShareWithSocialMedia.astro'
 import ReadFullArticle from '@/components/ReadFullArticle.astro';
+import ArticleSEOMeta from '@/components/meta-data-helpers/ArticleSEOMeta.astro';
 
 export async function getStaticPaths() {
   const papers = await getCollection('scientific_papers');
@@ -13,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { paper } = Astro.props as { paper: CollectionEntry<'scientific_papers'> };
-const { title, authors, journal, date, summary } = paper.data;
+const { title, authors, journal, date, summary, image } = paper.data;
 const { Content } = await paper.render();   // returns an Astro component
 ---
 
@@ -21,10 +22,19 @@ const { Content } = await paper.render();   // returns an Astro component
 <meta name="description" content="Phaeno is revolutionizing RNA sequencing with full-length, high-fidelity reads. Discover our platform and team." />
 
 <Layout>
+  <ArticleSEOMeta 
+    slot="head"
+    title={title}
+    description={summary}
+    datePosted={date}
+    authors={authors}
+    image={image}
+    documentType="Web Page"
+  />      
   <main>
     <section>
       <p>Media | <a href="/media/scientific-publications">Scientific Publications</a> | {paper.slug}</p>
-      <h1 class="alternative">{title}</h1>
+      <h1 id={`${title.replace(/\s+/g, '-').toLowerCase()}`} class="alternative">{title}</h1>
       <p class="text-sm text-gray-600">{authors.join(', ')}</p>
       <p class="text-sm text-gray-600">{journal}</p>
       <p class="text-sm text-gray-500">Published {new Date(date).toLocaleDateString('en-US')}</p>
