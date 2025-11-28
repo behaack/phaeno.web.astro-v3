@@ -41,11 +41,11 @@ export default function SearchItem({ list, index, item, searchStr }: IProps) {
   
   const header = useMemo(() => {
     return (
-      <li className="bg-amber-200 p-2">
+      <li className="bg-[#789946] text-white p-2">
         <div className="flex gap-2 items-center">
           <BsFiletypeHtml size={16} /> 
           <h3 
-            className="p-0 m-0 text-sm font-semibold inline-flex items-center gap-2"
+            className="p-0 m-0 text-sm text-white font-semibold inline-flex items-center gap-2"
           >
             { item.pageTitle }
           </h3>
