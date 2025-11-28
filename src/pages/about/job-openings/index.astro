@@ -104,7 +104,11 @@ const isJobs = (jobs.length > 0)
             <div class="flex items-center gap-4 ml-[-1rem]">
               <div style="color: #7F943A;"><FaCaretRight size={50}/></div>
               <div>                
-                <a class="list-alternative" href={`/about/job-openings/${job.slug}`}>{job.data.id} - {job.data.title}</a>
+                <a class="list-alternative" href={`/about/job-openings/${job.slug}`}>
+                  <h2 id={`${job.data.id}-${job.data.title.replace(/\s+/g, '-').toLowerCase()}`}>
+                    {job.data.id} - {job.data.title}
+                  </h2>                
+                </a>
                 <p class="text-sm text-gray-600 p-0 m-0 mb-0.5">{job.data.employmentType} • {job.data.locationType} • {job.data.locationDescription}</p>
                 <p class="text-sm text-gray-600 p-0 m-0 mb-0.5">{job.data.summary}</p>
                 <p class="text-sm text-gray-600 p-0 m-0">Posted on {new Date(job.data.date).toLocaleDateString('en-US')}</p>
@@ -138,6 +142,16 @@ ul li:last-child {
 
 a {
   font-size: 1.5rem;
+}
+
+a > h2 {
+  color: inherit;              /* Inherit link color (e.g., blue for unvisited links) */
+  text-decoration: inherit;    /* Inherit underline if the <a> has it */
+  font-weight: inherit;        /* Match boldness */
+  font-size: inherit;          /* Match font size */
+  margin: 0;                   /* Reset default h2 margins to avoid extra spacing */
+  padding: 0;                  /* Reset padding if needed */
+  display: inline;             /* Make it behave like inline text, not a block */  
 }
 
 .sr-only {
