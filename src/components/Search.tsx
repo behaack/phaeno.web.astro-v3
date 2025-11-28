@@ -1,12 +1,16 @@
 import type { articletypes, webtypes } from '@/assets/docTypes';
 import { useEffect, useRef, useState } from 'react';
 import { FaMagnifyingGlass, FaX } from 'react-icons/fa6';
+import { BsFiletypeHtml } from "react-icons/bs";
 import HighlightedSnippet from './SearchHighlightedSnippet';
+import SearchItem from './SearchItem';
 
 export interface ISearchResult {
   id: string;
   url: string;
-  title: string;
+  pageTitle: string;
+  anchor: string;
+  anchorTitle: string;
   description: string;
   documentType: webtypes | articletypes;
   snippet: string;
@@ -183,8 +187,8 @@ export default function Search() {
     return () => controller.abort();
   }, [debouncedSearch]);
 
-  const itemTitle = (item: ISearchResult): string => {
-    return item.documentType === 'Web Page' ? item.title.split(' | ')[0] : item.title;
+  const itemPageTitle = (item: ISearchResult): string => {
+    return item.pageTitle.split(' | ')[0];
   };
 
   return (
@@ -241,34 +245,44 @@ export default function Search() {
                 {ariaMessage}
               </div>
               <ul role="listbox" className="list-none divide-y divide-gray-200 p-0 m-0 gap-0">
-                {searchList.map((item, i) => (
-                  <li
-                    key={item.id}
-                    role="option"
-                    aria-selected={activeIndex === i}
-                    className={`p-2 m-0 ${activeIndex === i ? 'bg-gray-100' : ''}`}
-                  >
-                    <a
-                      href={item.url}
-                      className="block hover:bg-gray-50 transition"
-                      ref={(el) => {
-                        if (el) resultRefs.current[i] = el;
-                      }}
-                    >
-                      <h3 className="p-0 m-0 text-sm font-semibold inline-flex items-center gap-2">
-                        <span className="text-[8px] bg-gray-100 py-1 px-2 rounded-lg font-bold">
-                          {item.documentType}
-                        </span>
-                        <span>{itemTitle(item)}</span>
-                      </h3>
-                      <div className="text-xs text-gray-400 mt-1 flex items-center gap-2">
-                        <HighlightedSnippet snippet={item.snippet} searchStr={searchStr} />
-                      </div>
-                      <div className="mt-1 text-[8px] bg-gray-100 max-w-fit py-1 px-2 rounded-lg font-bold">
-                        Matches: {item.count}
-                      </div>
-                    </a>
-                  </li>
+                {searchList.map((item, index) => (
+                  <SearchItem
+                    list={searchList} 
+                    index={index}
+                    item={item} 
+                    searchStr={searchStr} 
+                  />
+                  // <li
+                  //   key={item.id}
+                  //   role="option"
+                  //   aria-selected={activeIndex === i}
+                  //   className={`p-2 m-0 ${activeIndex === i ? 'bg-gray-100' : ''}`}
+                  // >
+                  //   <a
+                  //     href={item.url}
+                  //     className="block hover:bg-gray-50 transition"
+                  //     ref={(el) => {
+                  //       if (el) resultRefs.current[i] = el;
+                  //     }}
+                  //   >
+                  //     <h3 className="p-0 m-0 text-sm font-semibold inline-flex items-center gap-2">
+                  //       <span className="text-[10px] font-bold">
+                  //         <BsFiletypeHtml size={16} /> 
+                  //         {/* {item.documentType} */}
+                  //       </span>
+                  //       <span>{item.anchorTitle || itemPageTitle(item)}</span>
+                  //     </h3>
+                  //     {item.anchorTitle && (
+                  //       <p className="text-xs text-gray-500 mt-1">In: {itemPageTitle(item)}</p>
+                  //     )}
+                  //     <div className="text-xs text-gray-400 mt-1 flex items-center gap-2">
+                  //       <HighlightedSnippet snippet={item.snippet} searchStr={searchStr} />
+                  //     </div>
+                  //     <div className="mt-1 text-[8px] bg-gray-100 max-w-fit py-1 px-2 rounded-lg font-bold">
+                  //       Matches: {item.count}
+                  //     </div>
+                  //   </a>
+                  // </li>
                 ))}
               </ul>
               {!searchList.length && (
