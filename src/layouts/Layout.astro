@@ -4,7 +4,7 @@ import Header from './header/Header.astro';
 import Footer from './footer/short-version/Footer.astro';
 import ScrollBehavior from '@/components/script-components/ScrollBehavior.astro';
 import MenuBehavior from '@/components/script-components/MenuBehavior.astro';
-
+import BodyMinHeightBehavior from '@/components/script-components/BodyMinHeightBehavior.astro';
 
 /** Canonical URL (per-page, so we keep it) */
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -23,9 +23,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <!-- Site verification - Algolia -->
+  <meta name="algolia-site-verification"  content="67465B629349804B" />
+
     <!-- ────────────── Fonts (non-blocking) ────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
@@ -43,6 +47,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       />
     </noscript>
+
+    <!-- 🔴  REMOVED: hard-wired <title>, description, OG & Twitter tags -->
 
     <!-- Optional global brand tags that never change -->
     <meta property="og:site_name" content="Phaeno" />
@@ -70,26 +76,17 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
     <ScrollBehavior />
     <MenuBehavior />
+    <BodyMinHeightBehavior />
   </body>
 </html>
 
 <style>
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
 .page-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  flex: 1; /* Grows to fill remaining space, pushing footer down */
+  height: 100%;
 }
 
 .skip-link {
@@ -120,3 +117,4 @@ body {
   }         
 }
 </style>
+
