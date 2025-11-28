@@ -63,7 +63,7 @@ export async function getStaticPaths() {
         &nbsp;|&nbsp;{job.slug}
       </p>
 
-      <h1 class="alternative">{id} – {title}</h1>
+      <h1 id={`${job.data.id}-${job.data.title.replace(/\s+/g, '-').toLowerCase()}`} class="alternative">{id} – {title}</h1>
       <p class="text-sm text-gray-600">
         {employmentType} • {locationType} • {locationDescription}
       </p>
