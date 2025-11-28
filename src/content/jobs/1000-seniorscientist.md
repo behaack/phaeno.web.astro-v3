@@ -2,7 +2,7 @@
 id: '1000'
 title: Senior Scientist    
 locationType: On-Site
-locationDescription: UC Santa Barbara
+locationDescription: Santa Barbara, CA USA
 city: Santa Barbara
 region: California
 country: USA
