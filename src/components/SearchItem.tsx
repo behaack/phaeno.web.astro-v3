@@ -64,7 +64,9 @@ export default function SearchItem({ list, index, item, searchStr }: IProps) {
               <h3 className="p-0 m-0 text-sm font-semibold inline-flex items-center gap-2">
                 <div>{ item.anchorTitle }</div>
               </h3>
-              <div className="text-[10px]">{ item.description}</div>
+              <div className="text-[10px]">
+                <HighlightedSnippet snippet={item.snippet} searchStr={searchStr} />
+              </div>
             </div>
           </a>
         </div>
