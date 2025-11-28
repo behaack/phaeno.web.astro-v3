@@ -252,37 +252,6 @@ export default function Search() {
                     item={item} 
                     searchStr={searchStr} 
                   />
-                  // <li
-                  //   key={item.id}
-                  //   role="option"
-                  //   aria-selected={activeIndex === i}
-                  //   className={`p-2 m-0 ${activeIndex === i ? 'bg-gray-100' : ''}`}
-                  // >
-                  //   <a
-                  //     href={item.url}
-                  //     className="block hover:bg-gray-50 transition"
-                  //     ref={(el) => {
-                  //       if (el) resultRefs.current[i] = el;
-                  //     }}
-                  //   >
-                  //     <h3 className="p-0 m-0 text-sm font-semibold inline-flex items-center gap-2">
-                  //       <span className="text-[10px] font-bold">
-                  //         <BsFiletypeHtml size={16} /> 
-                  //         {/* {item.documentType} */}
-                  //       </span>
-                  //       <span>{item.anchorTitle || itemPageTitle(item)}</span>
-                  //     </h3>
-                  //     {item.anchorTitle && (
-                  //       <p className="text-xs text-gray-500 mt-1">In: {itemPageTitle(item)}</p>
-                  //     )}
-                  //     <div className="text-xs text-gray-400 mt-1 flex items-center gap-2">
-                  //       <HighlightedSnippet snippet={item.snippet} searchStr={searchStr} />
-                  //     </div>
-                  //     <div className="mt-1 text-[8px] bg-gray-100 max-w-fit py-1 px-2 rounded-lg font-bold">
-                  //       Matches: {item.count}
-                  //     </div>
-                  //   </a>
-                  // </li>
                 ))}
               </ul>
               {!searchList.length && (
