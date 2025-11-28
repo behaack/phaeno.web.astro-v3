@@ -1,8 +1,6 @@
 import type { articletypes, webtypes } from '@/assets/docTypes';
 import { useEffect, useRef, useState } from 'react';
 import { FaMagnifyingGlass, FaX } from 'react-icons/fa6';
-import { BsFiletypeHtml } from "react-icons/bs";
-import SearchHighlightedSnippet from './SearchHighlightedSnippet';
 import SearchItem from './SearchItem';
 
 export interface ISearchResult {
@@ -32,6 +30,7 @@ export default function Search() {
   const modalRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const resultRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -44,7 +43,6 @@ export default function Search() {
     setOpen((prev) => !prev);
   };
 
-  // Handle backdrop click to close modal
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === modalRef.current) {
       setOpen(false);
@@ -79,13 +77,14 @@ export default function Search() {
       'textarea',
       'select',
       '[tabindex]:not([tabindex="-1"])',
-    ];
+    ].join(',');
 
     const trapFocus = (e: KeyboardEvent) => {
       if (!modalRef.current || e.key !== 'Tab') return;
       const focusables = Array.from(
-        modalRef.current.querySelectorAll<HTMLElement>(focusableSelectors.join(',')),
-      );
+        modalRef.current.querySelectorAll<HTMLElement>(focusableSelectors),
+      ).filter(el => el.tabIndex >= 0);
+      if (focusables.length === 0) return;
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
       if (e.shiftKey && document.activeElement === first) {
@@ -114,42 +113,45 @@ export default function Search() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpen(false);
+        return;
       }
       if (e.key === 'ArrowDown') {
         e.preventDefault();
-        setActiveIndex((prev) => Math.min(prev + 1, searchList.length - 1));
+        setActiveIndex((prev) => {
+          const next = prev + 1;
+          return next >= searchList.length ? 0 : next; // Wrap around or clamp
+        });
       }
       if (e.key === 'ArrowUp') {
         e.preventDefault();
-        setActiveIndex((prev) => Math.max(prev - 1, 0));
+        setActiveIndex((prev) => {
+          const next = prev - 1;
+          return next < 0 ? searchList.length - 1 : next; // Wrap around
+        });
       }
-      if (e.key === 'Enter' && activeIndex >= 0 && resultRefs.current[activeIndex]) {
+      if (e.key === 'Enter' && activeIndex >= 0) {
         resultRefs.current[activeIndex]?.click();
       }
     };
-    document.addEventListener('keydown', handleKeyDown);
+    if (open) {
+      document.addEventListener('keydown', handleKeyDown);
+    }
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [activeIndex, searchList]);
+  }, [open, activeIndex, searchList.length]);
 
   useEffect(() => {
-    const container = modalRef.current?.querySelector('.overflow-y-auto');
     const target = resultRefs.current[activeIndex];
-
-    if (container && target) {
-      const containerRect = container.getBoundingClientRect();
-      const targetRect = target.getBoundingClientRect();
-      const extraOffset = 8;
-
-      if (targetRect.top < containerRect.top) {
-        container.scrollTop -= containerRect.top - targetRect.top + extraOffset;
-      } else if (targetRect.bottom > containerRect.bottom) {
-        container.scrollTop += targetRect.bottom - containerRect.bottom + extraOffset;
-      }
+    if (target) {
+      target.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     }
   }, [activeIndex]);
 
   useEffect(() => {
-    if (!(debouncedSearch.length >= 3)) {
+    setActiveIndex(-1); // Reset on results change
+  }, [searchList]);
+
+  useEffect(() => {
+    if (debouncedSearch.length < 3) {
       setSearchList([]);
       return;
     }
@@ -157,7 +159,7 @@ export default function Search() {
     const fetchResults = async () => {
       try {
         const res = await fetch(
-          `${BASE_URL}website/searchpages?search=${encodeURIComponent(searchStr)}`,
+          `${BASE_URL}website/searchpages?search=${encodeURIComponent(debouncedSearch)}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -185,11 +187,9 @@ export default function Search() {
     };
     fetchResults();
     return () => controller.abort();
-  }, [debouncedSearch]);
+  }, [debouncedSearch, BASE_URL]);
 
-  const itemPageTitle = (item: ISearchResult): string => {
-    return item.pageTitle.split(' | ')[0];
-  };
+  const activeDescendant = activeIndex >= 0 ? `result-${activeIndex}` : undefined;
 
   return (
     <>
@@ -213,7 +213,7 @@ export default function Search() {
           aria-modal="true"
           aria-labelledby="search-title"
           className="fixed inset-0 z-[9999] h-dvh w-dvw flex justify-center items-start bg-black/20 backdrop-blur-sm"
-          onClick={handleBackdropClick} // Add click handler here
+          onClick={handleBackdropClick}
         >
           <div className="bg-white w-[calc(100vw-2rem)] md:w-1/2 mt-10 rounded-md max-h-[calc(100vh-5rem)] flex flex-col overflow-hidden">
             <h2 id="search-title" className="sr-only">Search site</h2>
@@ -225,7 +225,11 @@ export default function Search() {
                   id="site-search"
                   ref={inputRef}
                   type="search"
-                  role="searchbox"
+                  role="combobox" // Better than searchbox for this pattern
+                  aria-autocomplete="list"
+                  aria-controls="search-results"
+                  aria-activedescendant={activeDescendant}
+                  aria-expanded="true"
                   aria-describedby="search-status"
                   className="flex-1 border-none outline-none shadow-none focus:outline-none focus:ring-0"
                   placeholder="Start typing to search..."
@@ -244,25 +248,32 @@ export default function Search() {
               <div id="search-status" className="sr-only" aria-live="polite">
                 {ariaMessage}
               </div>
-              <ul role="listbox" className="list-none divide-y divide-gray-200 p-0 pb-2 m-0 gap-0">
+              <ul
+                ref={listRef}
+                id="search-results"
+                role="listbox"
+                className="list-none divide-y divide-gray-200 p-0 pb-2 m-0 gap-0"
+              >
                 {searchList.map((item, index) => (
                   <SearchItem
-                    list={searchList} 
+                    key={item.id}
+                    list={searchList}
                     index={index}
-                    item={item} 
-                    searchStr={searchStr} 
+                    item={item}
+                    searchStr={searchStr}
+                    active={activeIndex === index}
+                    linkRef={(el) => { resultRefs.current[index] = el; }}
+                    optionId={`result-${index}`}
                   />
                 ))}
               </ul>
               {!searchList.length && (
                 <div className="text-center p-5 text-gray-700">
                   {searchStr.length === 0 && <span>Nothing here yet. Let’s find something!</span>}
-
-                  {searchStr.length > 0 && searchStr.length <= 3 && (
+                  {searchStr.length > 0 && searchStr.length < 3 && (
                     <span>Keep typing... we’ll match full words after 3 characters.</span>
                   )}
-
-                  {searchStr.length > 3 && !searchList.length && (
+                  {searchStr.length >= 3 && (
                     <span>No exact word matches found. Try typing the full name or word, or try a different term.</span>
                   )}
                 </div>
