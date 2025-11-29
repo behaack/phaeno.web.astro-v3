@@ -5,6 +5,7 @@ import MediaCollection from '@/components/MediaCollection.astro'
 import MediaCard from '@/components/MediaCard.astro'
 import TopPageBanner from '@/components/TopPageBanner-3.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
+import MediaSearch from '@/components/MediaSearch.astro'
 
 const papers = await getCollection('white_papers')
 ---
@@ -22,15 +23,7 @@ const papers = await getCollection('white_papers')
   <main>
     <TopPageBanner title="White Papers" />
     <section>
-      {papers.length ? (
-        <input
-          id="mediaSearch"
-          class="mb-6"
-          type="text"
-          placeholder="Search title or author"
-          class="w-full"
-        />) : null
-      }
+      {papers.length ? <MediaSearch placeholder="Search title or author" /> : null }
       <MediaCollection>
         {papers.map(paper => (
           <MediaCard 

@@ -6,6 +6,7 @@ import MediaCard from '@/components/MediaCard.astro'
 import MediaCollection from '@/components/MediaCollection.astro'
 import TopPageBanner from '@/components/TopPageBanner-3.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
+import MediaSearch from '@/components/MediaSearch.astro';
 
 const events = await getCollection('events')
 const news = await getCollection('news')
@@ -44,15 +45,7 @@ const news = await getCollection('news')
       ) : <div>No events</div>}
       <br />
       <h2>Phaeno in the news</h2>
-      {news.length ? (
-        <input
-          id="mediaSearch"
-          class="mb-6"
-          type="text"
-          placeholder="Search title"
-          class="w-full"
-        />) : null
-      }
+      {news.length ? <MediaSearch placeholder="Search title" /> : null }
       
       <MediaCollection>
         {news.map(item => (

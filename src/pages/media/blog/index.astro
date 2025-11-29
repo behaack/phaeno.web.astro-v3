@@ -6,6 +6,7 @@ import MediaCollection from '@/components/MediaCollection.astro'
 import RSSFeed from '@/components/RSSFeed.astro'
 import TopPageBanner from '@/components/TopPageBanner-1.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro'
+import MediaSearch from '@/components/MediaSearch.astro'
 
 const papers = await getCollection('blog')
 ---
@@ -28,13 +29,7 @@ const papers = await getCollection('blog')
         <div class="mb-2 flex justify-end">
           <RSSFeed feedName="blog.xml"/>
         </div>
-        <input
-          id="mediaSearch"
-          class="mb-6"
-          type="text"
-          placeholder="Search title or author"
-          class="w-full"
-        />
+        <MediaSearch placeholder="Search title or author" />
       </div>
       ) : null
     }

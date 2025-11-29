@@ -1,0 +1,15 @@
+---
+interface IProps {
+  placeholder: string
+}
+
+const { placeholder } = Astro.props as IProps
+---
+
+<input
+  id="mediaSearch"
+  class="mb-6"
+  type="text"
+  placeholder={placeholder}
+  class="w-full"
+/>

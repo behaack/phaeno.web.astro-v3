@@ -6,6 +6,7 @@ import RSSFeed from '@/components/RSSFeed.astro'
 import TopPageBanner from '@/components/TopPageBanner-2.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 import MediaCollection from '@/components/MediaCollection.astro'
+import MediaSearch from '@/components/MediaSearch.astro'
 
 const press = await getCollection('press')
 ---
@@ -27,14 +28,8 @@ const press = await getCollection('press')
         <div class="mb-2 flex justify-end">
           <RSSFeed feedName="press.xml"/>
         </div>
-        <input
-          id="mediaSearch"
-          class="mb-6"
-          type="text"
-          placeholder="Search title"
-          class="w-full"
-        />) : null
-      }
+        <MediaSearch placeholder="Search title" />
+      ) : null}
 
       <MediaCollection stacked>
         {press.map(item => (
