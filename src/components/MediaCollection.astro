@@ -9,6 +9,7 @@ const { stacked=false } = Astro.props as IProps
 <ul id="mediaList" class={`${(stacked)?'media-stack':'media-list'}`}>
   <slot />
 </ul>
+<p id="noResults" class="text-gray-600 italic text-center" hidden>No items match your search criteria</p>
 
 <style>
 .media-list {
@@ -43,6 +44,12 @@ const { stacked=false } = Astro.props as IProps
       for (const item of list.children) {
         const haystack = (item.dataset.search ?? '').toLowerCase();
         item.hidden = q && !haystack.includes(q);
+      }
+
+      const visible = Array.from(list.children).some(item => !item.hidden);
+      const noResults = document.getElementById('noResults');
+      if (noResults) {
+        noResults.hidden = !(q && !visible);
       }
     };
 

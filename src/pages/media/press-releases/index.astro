@@ -23,10 +23,10 @@ const press = await getCollection('press')
   <main>
     <TopPageBanner title="Press Releases" />
     <section>
-      <div class="mb-2 flex justify-end">
-        <RSSFeed feedName="press.xml"/>
-      </div>
       {press.length ? (
+        <div class="mb-2 flex justify-end">
+          <RSSFeed feedName="press.xml"/>
+        </div>
         <input
           id="mediaSearch"
           class="mb-6"
@@ -52,7 +52,7 @@ const press = await getCollection('press')
           </li>
         ))}
       </MediaCollection>    
-      {!press.length?<div class="w-full min-h-[50vh] flex justify-center items-center"><div>No Press Releases</div></div>:null}
+      {!press.length?<div class="w-full mt-10 flex justify-center items-center"><div>No press releases, check back later.</div></div>:null}
     </section>
   </main>
 </Layout>

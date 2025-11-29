@@ -46,7 +46,7 @@ const papers = await getCollection('scientific_papers')
           </MediaCard>
         ))}      
       </MediaCollection> 
-      {!papers.length?<div class="w-full min-h-[50vh] flex justify-center items-center"><div>No Scientific Publications</div></div>:null}
+      {!papers.length?<div class="w-full mt-10 flex justify-center items-center"><div>No scientific publications, check back later.</div></div>:null}
     </section>
   </main>
 </Layout>

@@ -51,7 +51,7 @@ const papers = await getCollection('blog')
         </MediaCard>
       ))}      
     </MediaCollection>  
-    {!papers.length?<div class="w-full min-h-[50vh] flex justify-center items-center"><div>No Blog Items</div></div>:null}   
+    {!papers.length?<div class="w-full mt-10 flex justify-center items-center"><div>No blog items, check back later.</div></div>:null}   
     </section>
   </main>
 </Layout>
