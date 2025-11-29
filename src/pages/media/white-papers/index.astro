@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
-import MediaCardCollection from '@/components/MediaCardCollection.astro'
+import MediaCollection from '@/components/MediaCollection.astro'
 import MediaCard from '@/components/MediaCard.astro'
 import TopPageBanner from '@/components/TopPageBanner-3.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
@@ -22,14 +22,16 @@ const papers = await getCollection('white_papers')
   <main>
     <TopPageBanner title="White Papers" />
     <section>
-      <input
-        id="mediaSearch"
-        class="mb-6"
-        type="text"
-        placeholder="Search title or author"
-        class="w-full"
-      />
-      <MediaCardCollection>
+      {papers.length ? (
+        <input
+          id="mediaSearch"
+          class="mb-6"
+          type="text"
+          placeholder="Search title or author"
+          class="w-full"
+        />) : null
+      }
+      <MediaCollection>
         {papers.map(paper => (
           <MediaCard 
             searchString={`${paper.data.title} ${paper.data.authors.join(' ')}`.toLowerCase()}
@@ -41,7 +43,8 @@ const papers = await getCollection('white_papers')
             <div>{new Date(paper.data.date).toLocaleDateString('en-US')}</div>
           </MediaCard>
         ))}      
-      </MediaCardCollection>
+      </MediaCollection>
+      {!papers.length?<div class="w-full min-h-[50vh] flex justify-center items-center"><div>No White Papers</div></div>:null}
       <br />
     </section>
   </main>

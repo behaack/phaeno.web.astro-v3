@@ -1,19 +1,30 @@
 ---
+interface IProps {
+  stacked?: boolean
+}
 
+const { stacked=false } = Astro.props as IProps
 ---
 
-<ul id="mediaList" class="media-card-list">
+<ul id="mediaList" class={`${(stacked)?'media-stack':'media-list'}`}>
   <slot />
 </ul>
 
 <style>
-.media-card-list {
+.media-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.media-stack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.25rem;
 }
 
 /* Optional: lock to an exact track count at wider widths */

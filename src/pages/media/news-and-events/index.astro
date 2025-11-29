@@ -3,7 +3,7 @@ import { FaCaretRight } from 'react-icons/fa6';
 import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
 import MediaCard from '@/components/MediaCard.astro'
-import MediaCardCollection from '@/components/MediaCardCollection.astro'
+import MediaCollection from '@/components/MediaCollection.astro'
 import TopPageBanner from '@/components/TopPageBanner-3.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 
@@ -26,7 +26,7 @@ const news = await getCollection('news')
     <section>
       <h2>Upcoming events</h2>
       {events.length ? (
-        <ul class="flex flex-col gap-5">
+        <ul class="event-list">
           {events.map(item => (
             <li data-lastdate={item.data.lastdate} > 
               <dir class="flex items-center gap-4">
@@ -44,16 +44,17 @@ const news = await getCollection('news')
       ) : <div>No events</div>}
       <br />
       <h2>Phaeno in the news</h2>
-
-      <input
-        id="mediaSearch"
-        class="mb-6"
-        type="text"
-        placeholder="Search title"
-        class="w-full"
-      />
+      {news.length ? (
+        <input
+          id="mediaSearch"
+          class="mb-6"
+          type="text"
+          placeholder="Search title"
+          class="w-full"
+        />) : null
+      }
       
-      <MediaCardCollection>
+      <MediaCollection>
         {news.map(item => (
           <MediaCard 
             searchString={`${item.data.title}`.toLowerCase()}
@@ -64,15 +65,24 @@ const news = await getCollection('news')
             <div>{new Date(item.data.date).toLocaleDateString('en-US')}</div>
           </MediaCard>
         ))}      
-      </MediaCardCollection>
+      </MediaCollection>
+      {!news.length?<div class="w-full min-h-[50vh] flex justify-center items-center"><div>No News Items</div></div>:null}
       <br/>
     </section>
   </main>
 </Layout>
 
 <style>
-  ul {
-    list-style: none;
-    margin-left: 0;
-  }
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  list-style: none;
+  margin-left: 0;
+}
+
+.event-list li:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 1.25rem;
+}
 </style>

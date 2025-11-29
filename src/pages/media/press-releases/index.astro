@@ -5,6 +5,7 @@ import Layout from '@/layouts/Layout.astro'
 import RSSFeed from '@/components/RSSFeed.astro'
 import TopPageBanner from '@/components/TopPageBanner-2.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
+import MediaCollection from '@/components/MediaCollection.astro'
 
 const press = await getCollection('press')
 ---
@@ -25,18 +26,17 @@ const press = await getCollection('press')
       <div class="mb-2 flex justify-end">
         <RSSFeed feedName="press.xml"/>
       </div>
-      <input
-        id="mediaSearch"
-        class="mb-6"
-        type="text"
-        placeholder="Search title"
-        class="w-full"
-      />
+      {press.length ? (
+        <input
+          id="mediaSearch"
+          class="mb-6"
+          type="text"
+          placeholder="Search title"
+          class="w-full"
+        />) : null
+      }
 
-      <ul 
-        id="mediaList"
-        class="ml-0" 
-      >
+      <MediaCollection stacked>
         {press.map(item => (
           <li 
             class="media-card-item"
@@ -51,26 +51,23 @@ const press = await getCollection('press')
             </div>       
           </li>
         ))}
-      </ul>          
+      </MediaCollection>    
+      {!press.length?<div class="w-full min-h-[50vh] flex justify-center items-center"><div>No Press Releases</div></div>:null}
     </section>
   </main>
 </Layout>
 
 <style>
-  ul {
-    list-style: none;
-  }
+.media-card-item {
+  padding: .25rem 0 1rem 0;
+  border-bottom: 1px rgba(128, 128, 128, 0.123) solid; 
+}
 
-  li {
-    padding: 10px 0;
-    border-bottom: 1px rgba(128, 128, 128, 0.123) solid; 
-  }
+.media-card-item:last-child {
+  border-bottom: none;
+}
 
-  ul li:last-child {
-    border-bottom: none;
-  }
-
-  a {
-    font-size: 1.5rem;
-  }
+a {
+  font-size: 1.5rem;
+}
 </style>

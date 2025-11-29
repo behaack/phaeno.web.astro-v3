@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
 import MediaCard from '@/components/MediaCard.astro'
-import MediaCardCollection from '@/components/MediaCardCollection.astro'
+import MediaCollection from '@/components/MediaCollection.astro'
 import RSSFeed from '@/components/RSSFeed.astro'
 import TopPageBanner from '@/components/TopPageBanner-1.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro'
@@ -23,17 +23,22 @@ const papers = await getCollection('blog')
   <main>
     <TopPageBanner title="Phaeno Blog" />
     <section>
-    <div class="mb-2 flex justify-end">
-      <RSSFeed feedName="blog.xml"/>
-    </div>
-    <input
-      id="mediaSearch"
-      class="mb-6"
-      type="text"
-      placeholder="Search title or author"
-      class="w-full"
-    />
-    <MediaCardCollection>
+    {papers.length ? (
+      <div>
+        <div class="mb-2 flex justify-end">
+          <RSSFeed feedName="blog.xml"/>
+        </div>
+        <input
+          id="mediaSearch"
+          class="mb-6"
+          type="text"
+          placeholder="Search title or author"
+          class="w-full"
+        />
+      </div>
+      ) : null
+    }
+    <MediaCollection>
       {papers.map(paper => (
         <MediaCard
           searchString={`${paper.data.title} ${paper.data.authors.join(' ')}`.toLowerCase()}        
@@ -45,7 +50,8 @@ const papers = await getCollection('blog')
           <div>{new Date(paper.data.date).toLocaleDateString('en-US')}</div>
         </MediaCard>
       ))}      
-    </MediaCardCollection>     
+    </MediaCollection>  
+    {!papers.length?<div class="w-full min-h-[50vh] flex justify-center items-center"><div>No Blog Items</div></div>:null}   
     </section>
   </main>
 </Layout>
