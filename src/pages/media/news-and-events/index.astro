@@ -25,23 +25,23 @@ const news = await getCollection('news')
     <TopPageBanner title="News & Events" />
     <section>
       <h2>Upcoming events</h2>
-      {(events.length)
-        ? (
-          <ul class="ml-0">
-            {events.map(item => (
-              <li 
-                data-title={item.data.name.toLowerCase()}
-                data-location={item.data.location}
-              > 
-                <dir class="flex items-center gap-2">
-                  <div style="color: #7F943A;"><FaCaretRight size={30}/></div>
-                  <a target="_blank" href={item.data.path}>{item.data.name}</a> | {item.data.dates} | {item.data.location}
-                  </dir>       
-              </li>
-            ))}
-          </ul>          
-        ) : <div>No events</div>
-      }
+      {events.length ? (
+        <ul class="flex flex-col gap-5">
+          {events.map(item => (
+            <li data-lastdate={item.data.lastdate} > 
+              <dir class="flex items-center gap-4">
+                <div style="color: #7F943A;"><FaCaretRight size={30}/></div>
+                <div>
+                  <a target="_blank" href={item.data.path}>
+                    <div class="font-bold">{item.data.name}</div>
+                    <div class="text-xs">{item.data.dates} | {item.data.location}</div>
+                  </a> 
+                </div>
+                </dir>       
+            </li>
+          ))}
+        </ul>          
+      ) : <div>No events</div>}
       <br />
       <h2>Phaeno in the news</h2>
 
@@ -73,10 +73,6 @@ const news = await getCollection('news')
 <style>
   ul {
     list-style: none;
-  }
-
-  a {
-    color:rgb(179, 93, 12);
-    font-weight: 600;
+    margin-left: 0;
   }
 </style>
