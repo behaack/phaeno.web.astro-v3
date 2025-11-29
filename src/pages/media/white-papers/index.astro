@@ -6,6 +6,7 @@ import MediaCard from '@/components/MediaCard.astro'
 import TopPageBanner from '@/components/TopPageBanner-3.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 import MediaSearch from '@/components/MediaSearch.astro'
+import MediaNoItems from '@/components/MediaNoItems.astro'
 
 const papers = await getCollection('white_papers')
 ---
@@ -23,7 +24,7 @@ const papers = await getCollection('white_papers')
   <main>
     <TopPageBanner title="White Papers" />
     <section>
-      {papers.length ? <MediaSearch placeholder="Search title or author" /> : null }
+      <MediaSearch listLength={papers.length} placeholder="Search title or author" />
       <MediaCollection>
         {papers.map(paper => (
           <MediaCard 
@@ -37,7 +38,7 @@ const papers = await getCollection('white_papers')
           </MediaCard>
         ))}      
       </MediaCollection>
-      {!papers.length?<div class="w-full mt-10 flex justify-center items-center"><div>No white papers, check back later.</div></div>:null}
+      <MediaNoItems listLength={papers.length} message="No white papers, check back later." />
       <br />
     </section>
   </main>

@@ -6,6 +6,7 @@ import MediaCollection from '@/components/MediaCollection.astro'
 import TopPageBanner from '@/components/TopPageBanner-1.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 import MediaSearch from '@/components/MediaSearch.astro'
+import MediaNoItems from '@/components/MediaNoItems.astro'
 
 const papers = await getCollection('scientific_papers')
 ---
@@ -23,8 +24,7 @@ const papers = await getCollection('scientific_papers')
   <main>
     <TopPageBanner title="Scientific Publications" />
     <section>
-      {papers.length ? <MediaSearch placeholder="Search title, author or journal" /> : null }
-
+      <MediaSearch listLength={papers.length} placeholder="Search title, author or journal" />
       <MediaCollection>
         {papers.map(paper => (
           <MediaCard
@@ -39,7 +39,7 @@ const papers = await getCollection('scientific_papers')
           </MediaCard>
         ))}      
       </MediaCollection> 
-      {!papers.length?<div class="w-full mt-10 flex justify-center items-center"><div>No scientific publications, check back later.</div></div>:null}
+      <MediaNoItems listLength={papers.length} message="No scientific publications, check back later." />
     </section>
   </main>
 </Layout>

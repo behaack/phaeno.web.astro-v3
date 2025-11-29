@@ -7,6 +7,7 @@ import TopPageBanner from '@/components/TopPageBanner-2.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro';
 import MediaCollection from '@/components/MediaCollection.astro'
 import MediaSearch from '@/components/MediaSearch.astro'
+import MediaNoItems from '@/components/MediaNoItems.astro'
 
 const press = await getCollection('press')
 ---
@@ -28,9 +29,8 @@ const press = await getCollection('press')
         <div class="mb-2 flex justify-end">
           <RSSFeed feedName="press.xml"/>
         </div>
-        <MediaSearch placeholder="Search title" />
       ) : null}
-
+      <MediaSearch listLength={press.length} placeholder="Search title" />
       <MediaCollection stacked>
         {press.map(item => (
           <li 
@@ -47,7 +47,7 @@ const press = await getCollection('press')
           </li>
         ))}
       </MediaCollection>    
-      {!press.length?<div class="w-full mt-10 flex justify-center items-center"><div>No press releases, check back later.</div></div>:null}
+      <MediaNoItems listLength={press.length} message="No press releases, check back later." />
     </section>
   </main>
 </Layout>

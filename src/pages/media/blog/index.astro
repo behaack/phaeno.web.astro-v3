@@ -7,8 +7,9 @@ import RSSFeed from '@/components/RSSFeed.astro'
 import TopPageBanner from '@/components/TopPageBanner-1.astro'
 import SEOMeta from '@/components/meta-data-helpers/SEOMeta.astro'
 import MediaSearch from '@/components/MediaSearch.astro'
+import MediaNoItems from '@/components/MediaNoItems.astro'
 
-const papers = await getCollection('blog')
+const blog = await getCollection('blog')
 ---
 
 <title>Blog | Phaeno</title>
@@ -24,17 +25,14 @@ const papers = await getCollection('blog')
   <main>
     <TopPageBanner title="Phaeno Blog" />
     <section>
-    {papers.length ? (
-      <div>
-        <div class="mb-2 flex justify-end">
-          <RSSFeed feedName="blog.xml"/>
-        </div>
-        <MediaSearch placeholder="Search title or author" />
-      </div>
-      ) : null
+    {blog.length ? (
+      <div class="mb-2 flex justify-end">
+        <RSSFeed feedName="blog.xml"/>
+      </div>) : null
     }
+    <MediaSearch listLength={blog.length} placeholder="Search title or author" />
     <MediaCollection>
-      {papers.map(paper => (
+      {blog.map(paper => (
         <MediaCard
           searchString={`${paper.data.title} ${paper.data.authors.join(' ')}`.toLowerCase()}        
           title={paper.data.title} 
@@ -46,7 +44,7 @@ const papers = await getCollection('blog')
         </MediaCard>
       ))}      
     </MediaCollection>  
-    {!papers.length?<div class="w-full mt-10 flex justify-center items-center"><div>No blog items, check back later.</div></div>:null}   
+    <MediaNoItems listLength={blog.length} message="No blog items, check back later." />
     </section>
   </main>
 </Layout>
