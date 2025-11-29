@@ -1,0 +1,22 @@
+---
+import { FaExternalLinkAlt } from "react-icons/fa";
+import type { IContent } from "./FooterSection.astro";
+
+interface IProps {
+  contentItem: IContent;
+}
+
+const { contentItem } = Astro.props as IProps
+---
+
+<div class="text-sm">
+  <a 
+    class="flex gap-2 justify-center items-center"
+    target="_blank" 
+    href={contentItem.value}
+  >
+    <FaExternalLinkAlt size={12} />
+    <span>{contentItem.label}</span> 
+  </a>  
+</div>
+
