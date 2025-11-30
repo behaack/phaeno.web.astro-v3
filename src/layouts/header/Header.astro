@@ -18,14 +18,15 @@ const currentPath = decodeURIComponent(Astro.url.pathname).toLowerCase();
     </a>
     <div class="flex items-center">
       <div class="mobile-signup-holder">
+        <Search client:load />
         <SignupButton size="wide" />
       </div>
       <MobileMenuButton />
       <Menu menuItems={menu} currentPath={currentPath} />
       <div class="desktop-signup-holder">
+        <Search client:load />
         <SignupButton size="wide" />
       </div>
-      <Search client:load />
     </div>
   </div>
 </header>
